@@ -31,9 +31,9 @@
     
     [self testWords];
     
-    if ([self isForceTouchAvailable]) {
-        self.forceTouchPreviewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
-    }
+//    if ([self isForceTouchAvailable]) {
+//        self.forceTouchPreviewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
+//    }
 }
 
 - (void)wordDataDidChanged:(Word *)word {
@@ -55,64 +55,73 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self performSegueWithIdentifier: @"showDictionarySegue" sender:indexPath];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"showDictionarySegue"]) {
+        
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        NSUInteger index = indexPath.row;
+        Word *word = [self.wordDataManager wordAtIndex:index];
+        
+        DictionaryViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.word = word;
+    }
+}
+
 - (void)testWords {
     [self.wordDataManager addWordString:@"lead"];
     [self.wordDataManager addWordString:@"wordbook"];
 }
 
-- (BOOL)isForceTouchAvailable {
-    BOOL isForceTouchAvailable = NO;
-    if ([self.traitCollection respondsToSelector:@selector(forceTouchCapability)]) {
-        isForceTouchAvailable = self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable;
-    }
-    return isForceTouchAvailable;
-}
-
-- (UIViewController *)previewingContext:(id )previewingContext viewControllerForLocation:(CGPoint)location{
-    // check if we're not already displaying a preview controller (WebViewController is my preview controller)
-    if ([self.presentedViewController isKindOfClass:[DictionaryViewController class]]) {
-        return nil;
-    }
-    
-    CGPoint cellPostion = [self.wordbookTableView convertPoint:location fromView:self.view];
-    NSIndexPath *path = [self.wordbookTableView indexPathForRowAtPoint:cellPostion];
-    
-    if (path) {
-        UITableViewCell *tableCell = [self.wordbookTableView cellForRowAtIndexPath:path];
-        
-        // get your UIStoryboard
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-        // set the view controller by initializing it form the storyboard
-        DictionaryViewController *previewController = [storyboard instantiateViewControllerWithIdentifier:@"DictionaryViewController"];
-        
-        NSUInteger index = path.row;
-        Word *word = [self.wordDataManager wordAtIndex:index];
-        
-        // if you want to transport date use your custom "detailItem" function like this:
-//        previewController.detailItem = [self.data objectAtIndex:path.row];
-//        previewingContext.sourceRect = [self.view convertRect:tableCell.frame fromView:self.tableView];
-        return previewController;
-    }
-    return nil;
-}
-
-- (void)previewingContext:(id )previewingContext commitViewController: (UIViewController *)viewControllerToCommit {
-     [self presentViewController:viewControllerToCommit animated:YES completion:nil];
-}
-
-- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
-    [super traitCollectionDidChange:previousTraitCollection];
-    if ([self isForceTouchAvailable]) {
-        if (!self.forceTouchPreviewingContext) {
-            self.forceTouchPreviewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
-        }
-    } else {
-        if (self.forceTouchPreviewingContext) {
-            [self unregisterForPreviewingWithContext:self.forceTouchPreviewingContext];
-            self.forceTouchPreviewingContext = nil;
-        }
-    }
-}
+//- (BOOL)isForceTouchAvailable {
+//    BOOL isForceTouchAvailable = NO;
+//    if ([self.traitCollection respondsToSelector:@selector(forceTouchCapability)]) {
+//        isForceTouchAvailable = self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable;
+//    }
+//    return isForceTouchAvailable;
+//}
+//
+//- (UIViewController *)previewingContext:(id )previewingContext viewControllerForLocation:(CGPoint)location{
+//    
+//    if ([self.presentedViewController isKindOfClass:[DictionaryViewController class]]) return nil;
+//    
+//    CGPoint cellPostion = [self.wordbookTableView convertPoint:location fromView:self.view];
+//    NSIndexPath *path = [self.wordbookTableView indexPathForRowAtPoint:cellPostion];
+//    if (!path) return nil;
+//    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    DictionaryViewController *previewController = [storyboard instantiateViewControllerWithIdentifier:@"DictionaryViewController"];
+//    
+//    NSUInteger index = path.row;
+//    Word *word = [self.wordDataManager wordAtIndex:index];
+//    previewController.word = word;
+//    
+////    UITableViewCell *tableCell = [self.wordbookTableView cellForRowAtIndexPath:path];
+//    //        previewingContext.sourceRect = [self.view convertRect:tableCell.frame fromView:self.wordbookTableView];
+//    return previewController;
+//    
+//}
+//
+//- (void)previewingContext:(id )previewingContext commitViewController: (UIViewController *)viewControllerToCommit {
+//     [self presentViewController:viewControllerToCommit animated:YES completion:nil];
+//}
+//
+//- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+//    [super traitCollectionDidChange:previousTraitCollection];
+//    if ([self isForceTouchAvailable]) {
+//        if (!self.forceTouchPreviewingContext) {
+//            self.forceTouchPreviewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
+//        }
+//    } else {
+//        if (self.forceTouchPreviewingContext) {
+//            [self unregisterForPreviewingWithContext:self.forceTouchPreviewingContext];
+//            self.forceTouchPreviewingContext = nil;
+//        }
+//    }
+//}
 
 @end

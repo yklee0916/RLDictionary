@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Word.h"
 
 @interface DictionaryViewController : UIViewController
+
+@property Word *word;
 
 @end
