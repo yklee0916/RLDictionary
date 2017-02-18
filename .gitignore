@@ -1,2 +1,6 @@
 **/rio.xcuserdatad/
+*.swp
+Podfile.lock
+/Pods/
+*.xcworkspace/
 
