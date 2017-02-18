@@ -3,6 +3,7 @@ platform :ios, '7.0'
 
 target "RLDictionary" do
 
-     pod 'JSONModel'
+    pod 'JSONModel'
+    pod 'MBProgressHUD', '~> 1.0.0'
 
 end

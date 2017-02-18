@@ -8,6 +8,7 @@
 
 #import "RecourseDictionaryManager.h"
 #import "OxfordDictionariesResponse.h"
+#import "MBProgressHUD.h"
 #import "Result.h"
 
 @interface RecourseDictionaryManager ()
@@ -50,6 +51,8 @@
 //    }
 //    return ;
     
+    [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+    
     NSString * language = @"en";
     NSString * word_id = [string lowercaseString]; //word id is case sensitive and lowercase is required
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://od-api.oxforddictionaries.com:443/api/v1/entries/%@/%@", language, word_id]];
@@ -78,6 +81,8 @@
                                       
                                       if(completionHandler) {
                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                              [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                                              
                                               completionHandler(responseData, error);
                                           });
                                       }
