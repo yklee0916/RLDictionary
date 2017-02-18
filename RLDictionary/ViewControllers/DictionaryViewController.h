@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Word.h"
 
+@interface DictionaryTableViewCell : UITableViewCell
+
+@property (nonatomic, assign) IBOutlet UILabel *index;
+@property (nonatomic, assign) IBOutlet UILabel *definition;
+
+@end
+
+
 @interface DictionaryViewController : UIViewController
 
 @property Word *word;

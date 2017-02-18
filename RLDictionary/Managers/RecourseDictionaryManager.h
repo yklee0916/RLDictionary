@@ -7,9 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OxfordDictionariesResponse.h"
 
 @interface RecourseDictionaryManager : NSObject
 
-- (void)requestRecourseDictionaryWithString:(NSString *)string completionHandler:(void (^)(NSString *resultJsonString, NSError *error))completionHandler;
+- (NSUInteger)count;
+- (NSUInteger)exampleCountAtIndex:(NSUInteger)index;
+- (Sense *)senseAtIndex:(NSUInteger)index;
+- (void)requestRecourseDictionaryWithString:(NSString *)string completionHandler:(void (^)(OxfordDictionariesResponse *response, NSError *error))completionHandler;
 
 @end

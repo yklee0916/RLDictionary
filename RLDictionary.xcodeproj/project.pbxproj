@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		287049441E584C9F00B0EB1F /* Sense.m in Sources */ = {isa = PBXBuildFile; fileRef = 287049431E584C9F00B0EB1F /* Sense.m */; };
+		287049481E584D2700B0EB1F /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 287049471E584D2700B0EB1F /* Entry.m */; };
+		2870494B1E584DB000B0EB1F /* GrammaticalFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 2870494A1E584DB000B0EB1F /* GrammaticalFeature.m */; };
+		2870494E1E584E5A00B0EB1F /* LexicalEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2870494D1E584E5A00B0EB1F /* LexicalEntry.m */; };
+		287049511E584EBB00B0EB1F /* Result.m in Sources */ = {isa = PBXBuildFile; fileRef = 287049501E584EBB00B0EB1F /* Result.m */; };
+		287049541E5850A700B0EB1F /* OxfordDictionariesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 287049531E5850A700B0EB1F /* OxfordDictionariesResponse.m */; };
+		287049571E588B8900B0EB1F /* Example.m in Sources */ = {isa = PBXBuildFile; fileRef = 287049561E588B8900B0EB1F /* Example.m */; };
 		28975D801E56AA3700B102B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28975D7F1E56AA3700B102B6 /* main.m */; };
 		28975D831E56AA3700B102B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28975D821E56AA3700B102B6 /* AppDelegate.m */; };
 		28975D891E56AA3700B102B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28975D871E56AA3700B102B6 /* Main.storyboard */; };
@@ -22,6 +29,20 @@
 
 /* Begin PBXFileReference section */
 		07D82F8F8355E4F21E3AD75C /* Pods-RLDictionary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLDictionary.release.xcconfig"; path = "Pods/Target Support Files/Pods-RLDictionary/Pods-RLDictionary.release.xcconfig"; sourceTree = "<group>"; };
+		287049421E584C9F00B0EB1F /* Sense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sense.h; path = Models/OxfordDictionariesAPI/Sense.h; sourceTree = "<group>"; };
+		287049431E584C9F00B0EB1F /* Sense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sense.m; path = Models/OxfordDictionariesAPI/Sense.m; sourceTree = "<group>"; };
+		287049461E584D2700B0EB1F /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Entry.h; path = Models/OxfordDictionariesAPI/Entry.h; sourceTree = "<group>"; };
+		287049471E584D2700B0EB1F /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Entry.m; path = Models/OxfordDictionariesAPI/Entry.m; sourceTree = "<group>"; };
+		287049491E584DB000B0EB1F /* GrammaticalFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrammaticalFeature.h; path = Models/OxfordDictionariesAPI/GrammaticalFeature.h; sourceTree = "<group>"; };
+		2870494A1E584DB000B0EB1F /* GrammaticalFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrammaticalFeature.m; path = Models/OxfordDictionariesAPI/GrammaticalFeature.m; sourceTree = "<group>"; };
+		2870494C1E584E5A00B0EB1F /* LexicalEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LexicalEntry.h; path = Models/OxfordDictionariesAPI/LexicalEntry.h; sourceTree = "<group>"; };
+		2870494D1E584E5A00B0EB1F /* LexicalEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LexicalEntry.m; path = Models/OxfordDictionariesAPI/LexicalEntry.m; sourceTree = "<group>"; };
+		2870494F1E584EBB00B0EB1F /* Result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Result.h; path = Models/OxfordDictionariesAPI/Result.h; sourceTree = "<group>"; };
+		287049501E584EBB00B0EB1F /* Result.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Result.m; path = Models/OxfordDictionariesAPI/Result.m; sourceTree = "<group>"; };
+		287049521E5850A700B0EB1F /* OxfordDictionariesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OxfordDictionariesResponse.h; path = Models/OxfordDictionariesAPI/OxfordDictionariesResponse.h; sourceTree = "<group>"; };
+		287049531E5850A700B0EB1F /* OxfordDictionariesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OxfordDictionariesResponse.m; path = Models/OxfordDictionariesAPI/OxfordDictionariesResponse.m; sourceTree = "<group>"; };
+		287049551E588B8900B0EB1F /* Example.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Example.h; path = Models/OxfordDictionariesAPI/Example.h; sourceTree = "<group>"; };
+		287049561E588B8900B0EB1F /* Example.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Example.m; path = Models/OxfordDictionariesAPI/Example.m; sourceTree = "<group>"; };
 		28975D7B1E56AA3700B102B6 /* RLDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RLDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28975D7F1E56AA3700B102B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28975D811E56AA3700B102B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,6 +77,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2870493E1E584C1C00B0EB1F /* OxfordDictionariesAPI */ = {
+			isa = PBXGroup;
+			children = (
+				287049421E584C9F00B0EB1F /* Sense.h */,
+				287049431E584C9F00B0EB1F /* Sense.m */,
+				287049461E584D2700B0EB1F /* Entry.h */,
+				287049471E584D2700B0EB1F /* Entry.m */,
+				287049491E584DB000B0EB1F /* GrammaticalFeature.h */,
+				2870494A1E584DB000B0EB1F /* GrammaticalFeature.m */,
+				2870494C1E584E5A00B0EB1F /* LexicalEntry.h */,
+				2870494D1E584E5A00B0EB1F /* LexicalEntry.m */,
+				2870494F1E584EBB00B0EB1F /* Result.h */,
+				287049501E584EBB00B0EB1F /* Result.m */,
+				287049521E5850A700B0EB1F /* OxfordDictionariesResponse.h */,
+				287049531E5850A700B0EB1F /* OxfordDictionariesResponse.m */,
+				287049551E588B8900B0EB1F /* Example.h */,
+				287049561E588B8900B0EB1F /* Example.m */,
+			);
+			name = OxfordDictionariesAPI;
+			sourceTree = "<group>";
+		};
 		28975D721E56AA3700B102B6 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +166,7 @@
 		28975D9C1E56AFE100B102B6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2870493E1E584C1C00B0EB1F /* OxfordDictionariesAPI */,
 				28975DA31E56B10800B102B6 /* Word.h */,
 				28975DA41E56B10800B102B6 /* Word.m */,
 			);
@@ -270,13 +313,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				287049441E584C9F00B0EB1F /* Sense.m in Sources */,
 				28975DA51E56B10800B102B6 /* Word.m in Sources */,
 				28975D831E56AA3700B102B6 /* AppDelegate.m in Sources */,
+				287049481E584D2700B0EB1F /* Entry.m in Sources */,
+				2870494E1E584E5A00B0EB1F /* LexicalEntry.m in Sources */,
+				287049541E5850A700B0EB1F /* OxfordDictionariesResponse.m in Sources */,
 				28975D9F1E56B02000B102B6 /* WordDataManager.m in Sources */,
+				287049511E584EBB00B0EB1F /* Result.m in Sources */,
+				287049571E588B8900B0EB1F /* Example.m in Sources */,
 				28975DA81E56EC0800B102B6 /* RecourseDictionaryManager.m in Sources */,
 				28975D9A1E56AE5700B102B6 /* IntroViewController.m in Sources */,
 				28975D801E56AA3700B102B6 /* main.m in Sources */,
 				28975DAB1E56EEAB00B102B6 /* DictionaryViewController.m in Sources */,
+				2870494B1E584DB000B0EB1F /* GrammaticalFeature.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

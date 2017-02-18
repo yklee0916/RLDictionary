@@ -13,7 +13,7 @@
 @interface IntroViewController () <UIViewControllerPreviewingDelegate>
 
 @property IBOutlet UITableView *wordbookTableView;
-@property WordDataManager *wordDataManager;
+@property (nonatomic) WordDataManager *wordDataManager;
 @property id forceTouchPreviewingContext;
 
 
@@ -29,11 +29,14 @@
                                                  name:@"WordDataDidChangedNotification"
                                                object:nil];
     
-    [self testWords];
+    UIBarButtonItem *addWordButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addWordButtonItemAction:)];
+    self.navigationItem.rightBarButtonItem = addWordButtonItem;
     
-//    if ([self isForceTouchAvailable]) {
-//        self.forceTouchPreviewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
-//    }
+    [self testWords];
+}
+
+- (void)addWordButtonItemAction:(id)sender {
+    
 }
 
 - (void)wordDataDidChanged:(Word *)word {
@@ -76,52 +79,5 @@
     [self.wordDataManager addWordString:@"lead"];
     [self.wordDataManager addWordString:@"wordbook"];
 }
-
-//- (BOOL)isForceTouchAvailable {
-//    BOOL isForceTouchAvailable = NO;
-//    if ([self.traitCollection respondsToSelector:@selector(forceTouchCapability)]) {
-//        isForceTouchAvailable = self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable;
-//    }
-//    return isForceTouchAvailable;
-//}
-//
-//- (UIViewController *)previewingContext:(id )previewingContext viewControllerForLocation:(CGPoint)location{
-//    
-//    if ([self.presentedViewController isKindOfClass:[DictionaryViewController class]]) return nil;
-//    
-//    CGPoint cellPostion = [self.wordbookTableView convertPoint:location fromView:self.view];
-//    NSIndexPath *path = [self.wordbookTableView indexPathForRowAtPoint:cellPostion];
-//    if (!path) return nil;
-//    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    DictionaryViewController *previewController = [storyboard instantiateViewControllerWithIdentifier:@"DictionaryViewController"];
-//    
-//    NSUInteger index = path.row;
-//    Word *word = [self.wordDataManager wordAtIndex:index];
-//    previewController.word = word;
-//    
-////    UITableViewCell *tableCell = [self.wordbookTableView cellForRowAtIndexPath:path];
-//    //        previewingContext.sourceRect = [self.view convertRect:tableCell.frame fromView:self.wordbookTableView];
-//    return previewController;
-//    
-//}
-//
-//- (void)previewingContext:(id )previewingContext commitViewController: (UIViewController *)viewControllerToCommit {
-//     [self presentViewController:viewControllerToCommit animated:YES completion:nil];
-//}
-//
-//- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
-//    [super traitCollectionDidChange:previousTraitCollection];
-//    if ([self isForceTouchAvailable]) {
-//        if (!self.forceTouchPreviewingContext) {
-//            self.forceTouchPreviewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
-//        }
-//    } else {
-//        if (self.forceTouchPreviewingContext) {
-//            [self unregisterForPreviewingWithContext:self.forceTouchPreviewingContext];
-//            self.forceTouchPreviewingContext = nil;
-//        }
-//    }
-//}
 
 @end
