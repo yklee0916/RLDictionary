@@ -7,11 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JSONModel.h"
 
-@interface DictionaryManager : NSObject
+@interface DictionaryManager : JSONModel
 
-@property (nonatomic, strong) NSMutableArray <NSString *> *wordbook;
-@property (nonatomic, strong) NSMutableArray <NSString *> *recentHistory;
++ (instancetype)savedObject;
+- (void)save;
+
+- (NSUInteger)wordbookCount;
+- (NSString *)wordAtIndexFromWordbook:(NSUInteger)index;
+- (BOOL)addWordToWordbook:(NSString *)word;
+- (BOOL)deleteWordToWordbook:(NSString *)word;
 
 - (void)findDefinitionFromDictionaryForTerm:(NSString *)term completionHandler:(void (^)(UIReferenceLibraryViewController *libarayViewController, NSError *error))completionHandler;
 

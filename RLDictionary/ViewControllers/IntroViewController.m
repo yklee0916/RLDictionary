@@ -11,9 +11,9 @@
 
 @interface IntroViewController ()
 
-@property IBOutlet UITableView *tableView;
+@property (nonatomic, assign) IBOutlet UITableView *tableView;
+@property (nonatomic, assign) IBOutlet UITextField *searchTextField;
 @property (nonatomic, strong) DictionaryManager *dictionaryManager;
-@property id forceTouchPreviewingContext;
 
 @end
 
@@ -21,40 +21,63 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dictionaryManager = [[DictionaryManager alloc] init];
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(wordDataDidChanged:)
-//                                                 name:@"WordDataDidChangedNotification"
-//                                               object:nil];
-//    
-    UIBarButtonItem *addWordButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addWordButtonItemAction:)];
-    self.navigationItem.rightBarButtonItem = addWordButtonItem;
+    self.dictionaryManager = [DictionaryManager savedObject];
     
-    [self testWords];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(wordbookDidChanged:)
+                                                 name:@"wordbookDidChangedNotification"
+                                               object:nil];
 }
 
-- (void)addWordButtonItemAction:(id)sender {
+- (IBAction)settingNavigationBarButtonItemAction:(id)sender {
     
+}
+
+- (IBAction)searchNavigationBarButtonItemAction:(id)sender {
+    [self textFieldShouldReturn:self.searchTextField];
+}
+
+- (void)wordbookDidChanged:(NSString *)word {
+    [self.tableView reloadData];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    
+    NSString *keyword = textField.text;
+    textField.text = nil;
+    [self findDefinitionFromDictionaryForTerm:keyword];
+    return NO;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dictionaryManager.wordbook.count;
+    return self.dictionaryManager.wordbookCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wordbookCell"];
-    NSString *word = [self.dictionaryManager.wordbook objectAtIndex:indexPath.row];
+    NSString *word = [self.dictionaryManager wordAtIndexFromWordbook:indexPath.row];
     [cell.textLabel setText:word];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *term = [self.dictionaryManager.wordbook objectAtIndex:indexPath.row];
+    NSString *term = [self.dictionaryManager wordAtIndexFromWordbook:indexPath.row];
     [self findDefinitionFromDictionaryForTerm:term];
     [self.tableView reloadData];
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSString *word = [self.dictionaryManager wordAtIndexFromWordbook:indexPath.row];
+        [self.dictionaryManager deleteWordToWordbook:word];
+    }
+}
+
 - (void)findDefinitionFromDictionaryForTerm:(NSString *)term {
+    if(term.length == 0) return ;
+    
     [self.dictionaryManager findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *libarayViewController, NSError *error) {
         
         if(error) {
@@ -69,12 +92,6 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-}
-
-- (void)testWords {
-    [self.dictionaryManager.wordbook addObject:@"bonjour"];
-    [self.dictionaryManager.wordbook addObject:@"hello"];
-    [self.dictionaryManager.wordbook addObject:@"안녕하세요"];
 }
 
 @end
