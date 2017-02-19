@@ -18,6 +18,7 @@
 - (NSString *)wordAtIndexFromWordbook:(NSUInteger)index;
 - (BOOL)addWordToWordbook:(NSString *)word;
 - (BOOL)deleteWordToWordbook:(NSString *)word;
++ (void)resetWordbook;
 
 - (void)findDefinitionFromDictionaryForTerm:(NSString *)term completionHandler:(void (^)(UIReferenceLibraryViewController *libarayViewController, NSError *error))completionHandler;
 

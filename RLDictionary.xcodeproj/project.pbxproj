@@ -13,7 +13,10 @@
 		28150C521E59313C00F807A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28150C511E59313C00F807A3 /* Assets.xcassets */; };
 		28150C551E59318100F807A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28150C541E59318100F807A3 /* AppDelegate.m */; };
 		28150C571E59318B00F807A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28150C561E59318B00F807A3 /* LaunchScreen.storyboard */; };
-		28150C591E5932B300F807A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28150C581E5932B300F807A3 /* Main.storyboard */; };
+		28150C5D1E596C2000F807A3 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28150C5C1E596C2000F807A3 /* SettingViewController.m */; };
+		28150C771E5976E600F807A3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28150C751E5976E600F807A3 /* Localizable.strings */; };
+		2860700A1E597A830074D933 /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 286070091E597A830074D933 /* Setting.plist */; };
+		2860700B1E59850F0074D933 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2860700D1E59850F0074D933 /* Main.storyboard */; };
 		28975D9A1E56AE5700B102B6 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28975D991E56AE5700B102B6 /* IntroViewController.m */; };
 		94AAD185A31C1C5C0BE0B0AD /* libPods-RLDictionary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C44C30A74F032040D6087 /* libPods-RLDictionary.a */; };
 /* End PBXBuildFile section */
@@ -28,8 +31,14 @@
 		28150C531E59318100F807A3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SupportingFiles/AppDelegate.h; sourceTree = "<group>"; };
 		28150C541E59318100F807A3 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SupportingFiles/AppDelegate.m; sourceTree = "<group>"; };
 		28150C561E59318B00F807A3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SupportingFiles/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		28150C581E5932B300F807A3 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = SupportingFiles/Main.storyboard; sourceTree = "<group>"; };
 		28150C5A1E59339A00F807A3 /* common.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = common.pch; path = SupportingFiles/common.pch; sourceTree = "<group>"; };
+		28150C5B1E596C2000F807A3 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = ViewControllers/SettingViewController.h; sourceTree = "<group>"; };
+		28150C5C1E596C2000F807A3 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = ViewControllers/SettingViewController.m; sourceTree = "<group>"; };
+		28150C761E5976E600F807A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = SupportingFiles/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		28150C781E5976EA00F807A3 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = SupportingFiles/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		286070091E597A830074D933 /* Setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Setting.plist; path = SupportingFiles/Setting.plist; sourceTree = "<group>"; };
+		2860700C1E59850F0074D933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2860700F1E5985120074D933 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		28975D7B1E56AA3700B102B6 /* RLDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RLDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28975D981E56AE5700B102B6 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntroViewController.h; path = ViewControllers/IntroViewController.h; sourceTree = "<group>"; };
 		28975D991E56AE5700B102B6 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IntroViewController.m; path = ViewControllers/IntroViewController.m; sourceTree = "<group>"; };
@@ -52,7 +61,8 @@
 		28150C4C1E5930E200F807A3 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				28150C581E5932B300F807A3 /* Main.storyboard */,
+				28150C751E5976E600F807A3 /* Localizable.strings */,
+				2860700D1E59850F0074D933 /* Main.storyboard */,
 				28150C561E59318B00F807A3 /* LaunchScreen.storyboard */,
 				28150C531E59318100F807A3 /* AppDelegate.h */,
 				28150C541E59318100F807A3 /* AppDelegate.m */,
@@ -60,6 +70,7 @@
 				28150C4D1E5930F100F807A3 /* Info.plist */,
 				28150C4E1E5930F100F807A3 /* main.m */,
 				28150C5A1E59339A00F807A3 /* common.pch */,
+				286070091E597A830074D933 /* Setting.plist */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -97,6 +108,8 @@
 			children = (
 				28975D981E56AE5700B102B6 /* IntroViewController.h */,
 				28975D991E56AE5700B102B6 /* IntroViewController.m */,
+				28150C5B1E596C2000F807A3 /* SettingViewController.h */,
+				28150C5C1E596C2000F807A3 /* SettingViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -173,6 +186,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 28975D721E56AA3700B102B6;
 			productRefGroup = 28975D7C1E56AA3700B102B6 /* Products */;
@@ -189,10 +203,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28150C591E5932B300F807A3 /* Main.storyboard in Resources */,
+				28150C771E5976E600F807A3 /* Localizable.strings in Resources */,
+				2860700B1E59850F0074D933 /* Main.storyboard in Resources */,
 				28150C4F1E5930F100F807A3 /* Info.plist in Resources */,
 				28150C571E59318B00F807A3 /* LaunchScreen.storyboard in Resources */,
 				28150C521E59313C00F807A3 /* Assets.xcassets in Resources */,
+				2860700A1E597A830074D933 /* Setting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,16 +271,40 @@
 				28975D9A1E56AE5700B102B6 /* IntroViewController.m in Sources */,
 				28150C501E5930F100F807A3 /* main.m in Sources */,
 				28150C431E592CD200F807A3 /* DictionaryManager.m in Sources */,
+				28150C5D1E596C2000F807A3 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		28150C751E5976E600F807A3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28150C761E5976E600F807A3 /* Base */,
+				28150C781E5976EA00F807A3 /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		2860700D1E59850F0074D933 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2860700C1E59850F0074D933 /* Base */,
+				2860700F1E5985120074D933 /* ko */,
+			);
+			name = Main.storyboard;
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		28975D901E56AA3700B102B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -301,7 +341,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -313,6 +353,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -343,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

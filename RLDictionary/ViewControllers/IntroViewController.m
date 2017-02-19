@@ -29,8 +29,13 @@
                                                object:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 - (IBAction)settingNavigationBarButtonItemAction:(id)sender {
-    
+    [self performSegueWithIdentifier: @"presentSettingSegue" sender: self];
 }
 
 - (IBAction)searchNavigationBarButtonItemAction:(id)sender {
@@ -92,6 +97,10 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if([segue.identifier isEqualToString:@"showSettingSegue"]) {
+        
+    }
 }
 
 @end

@@ -68,6 +68,12 @@
     return [[DictionaryManager alloc] initWithString:jsonString error:&error];
 }
 
++ (void)resetWordbook {
+    NSString *key = NSStringFromClass([DictionaryManager class]);
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 - (void)save {
     NSString *jsonString = [self toJSONString];
     NSString *key = NSStringFromClass([DictionaryManager class]);
