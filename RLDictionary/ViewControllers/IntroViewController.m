@@ -49,16 +49,23 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSString *word = [self.dictionaryManager.wordbook objectAtIndex:indexPath.row];
-    if ([UIReferenceLibraryViewController dictionaryHasDefinitionForTerm:word]) {
-        UIReferenceLibraryViewController* ref =
-        [[UIReferenceLibraryViewController alloc] initWithTerm:word];
-        [self presentViewController:ref animated:YES completion:nil];
-    }
-    else {
+    NSString *term = [self.dictionaryManager.wordbook objectAtIndex:indexPath.row];
+    [self findDefinitionFromDictionaryForTerm:term];
+    [self.tableView reloadData];
+}
+
+- (void)findDefinitionFromDictionaryForTerm:(NSString *)term {
+    [self.dictionaryManager findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *libarayViewController, NSError *error) {
         
-    }
+        if(error) {
+            [self.view makeToast:error.domain];
+            return ;
+        }
+        
+        if(libarayViewController) {
+            [self presentViewController:libarayViewController animated:YES completion:nil];
+        }
+    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

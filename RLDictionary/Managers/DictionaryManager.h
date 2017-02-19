@@ -13,4 +13,6 @@
 @property (nonatomic, strong) NSMutableArray <NSString *> *wordbook;
 @property (nonatomic, strong) NSMutableArray <NSString *> *recentHistory;
 
+- (void)findDefinitionFromDictionaryForTerm:(NSString *)term completionHandler:(void (^)(UIReferenceLibraryViewController *libarayViewController, NSError *error))completionHandler;
+
 @end

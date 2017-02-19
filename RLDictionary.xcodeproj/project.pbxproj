@@ -29,6 +29,7 @@
 		28150C541E59318100F807A3 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SupportingFiles/AppDelegate.m; sourceTree = "<group>"; };
 		28150C561E59318B00F807A3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SupportingFiles/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28150C581E5932B300F807A3 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = SupportingFiles/Main.storyboard; sourceTree = "<group>"; };
+		28150C5A1E59339A00F807A3 /* common.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = common.pch; path = SupportingFiles/common.pch; sourceTree = "<group>"; };
 		28975D7B1E56AA3700B102B6 /* RLDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RLDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28975D981E56AE5700B102B6 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntroViewController.h; path = ViewControllers/IntroViewController.h; sourceTree = "<group>"; };
 		28975D991E56AE5700B102B6 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IntroViewController.m; path = ViewControllers/IntroViewController.m; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 				28150C511E59313C00F807A3 /* Assets.xcassets */,
 				28150C4D1E5930F100F807A3 /* Info.plist */,
 				28150C4E1E5930F100F807A3 /* main.m */,
+				28150C5A1E59339A00F807A3 /* common.pch */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -355,6 +357,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8BCVHFF9UB;
+				GCC_PREFIX_HEADER = RLDictionary/SupportingFiles/common.pch;
 				INFOPLIST_FILE = RLDictionary/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -371,6 +374,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8BCVHFF9UB;
+				GCC_PREFIX_HEADER = RLDictionary/SupportingFiles/common.pch;
 				INFOPLIST_FILE = RLDictionary/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
