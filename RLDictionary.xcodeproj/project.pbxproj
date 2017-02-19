@@ -7,60 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		287049441E584C9F00B0EB1F /* Sense.m in Sources */ = {isa = PBXBuildFile; fileRef = 287049431E584C9F00B0EB1F /* Sense.m */; };
-		287049481E584D2700B0EB1F /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 287049471E584D2700B0EB1F /* Entry.m */; };
-		2870494B1E584DB000B0EB1F /* GrammaticalFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 2870494A1E584DB000B0EB1F /* GrammaticalFeature.m */; };
-		2870494E1E584E5A00B0EB1F /* LexicalEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2870494D1E584E5A00B0EB1F /* LexicalEntry.m */; };
-		287049511E584EBB00B0EB1F /* Result.m in Sources */ = {isa = PBXBuildFile; fileRef = 287049501E584EBB00B0EB1F /* Result.m */; };
-		287049541E5850A700B0EB1F /* OxfordDictionariesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 287049531E5850A700B0EB1F /* OxfordDictionariesResponse.m */; };
-		287049571E588B8900B0EB1F /* Example.m in Sources */ = {isa = PBXBuildFile; fileRef = 287049561E588B8900B0EB1F /* Example.m */; };
-		28975D801E56AA3700B102B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28975D7F1E56AA3700B102B6 /* main.m */; };
-		28975D831E56AA3700B102B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28975D821E56AA3700B102B6 /* AppDelegate.m */; };
-		28975D891E56AA3700B102B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28975D871E56AA3700B102B6 /* Main.storyboard */; };
-		28975D8B1E56AA3700B102B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28975D8A1E56AA3700B102B6 /* Assets.xcassets */; };
-		28975D8E1E56AA3700B102B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28975D8C1E56AA3700B102B6 /* LaunchScreen.storyboard */; };
+		28150C431E592CD200F807A3 /* DictionaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28150C421E592CD200F807A3 /* DictionaryManager.m */; };
+		28150C4F1E5930F100F807A3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28150C4D1E5930F100F807A3 /* Info.plist */; };
+		28150C501E5930F100F807A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28150C4E1E5930F100F807A3 /* main.m */; };
+		28150C521E59313C00F807A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28150C511E59313C00F807A3 /* Assets.xcassets */; };
+		28150C551E59318100F807A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28150C541E59318100F807A3 /* AppDelegate.m */; };
+		28150C571E59318B00F807A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28150C561E59318B00F807A3 /* LaunchScreen.storyboard */; };
+		28150C591E5932B300F807A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28150C581E5932B300F807A3 /* Main.storyboard */; };
 		28975D9A1E56AE5700B102B6 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28975D991E56AE5700B102B6 /* IntroViewController.m */; };
-		28975D9F1E56B02000B102B6 /* WordDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28975D9E1E56B02000B102B6 /* WordDataManager.m */; };
-		28975DA51E56B10800B102B6 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 28975DA41E56B10800B102B6 /* Word.m */; };
-		28975DA81E56EC0800B102B6 /* RecourseDictionaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28975DA71E56EC0800B102B6 /* RecourseDictionaryManager.m */; };
-		28975DAB1E56EEAB00B102B6 /* DictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28975DAA1E56EEAB00B102B6 /* DictionaryViewController.m */; };
 		94AAD185A31C1C5C0BE0B0AD /* libPods-RLDictionary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C44C30A74F032040D6087 /* libPods-RLDictionary.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		07D82F8F8355E4F21E3AD75C /* Pods-RLDictionary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLDictionary.release.xcconfig"; path = "Pods/Target Support Files/Pods-RLDictionary/Pods-RLDictionary.release.xcconfig"; sourceTree = "<group>"; };
-		287049421E584C9F00B0EB1F /* Sense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sense.h; path = Models/OxfordDictionariesAPI/Sense.h; sourceTree = "<group>"; };
-		287049431E584C9F00B0EB1F /* Sense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sense.m; path = Models/OxfordDictionariesAPI/Sense.m; sourceTree = "<group>"; };
-		287049461E584D2700B0EB1F /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Entry.h; path = Models/OxfordDictionariesAPI/Entry.h; sourceTree = "<group>"; };
-		287049471E584D2700B0EB1F /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Entry.m; path = Models/OxfordDictionariesAPI/Entry.m; sourceTree = "<group>"; };
-		287049491E584DB000B0EB1F /* GrammaticalFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrammaticalFeature.h; path = Models/OxfordDictionariesAPI/GrammaticalFeature.h; sourceTree = "<group>"; };
-		2870494A1E584DB000B0EB1F /* GrammaticalFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrammaticalFeature.m; path = Models/OxfordDictionariesAPI/GrammaticalFeature.m; sourceTree = "<group>"; };
-		2870494C1E584E5A00B0EB1F /* LexicalEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LexicalEntry.h; path = Models/OxfordDictionariesAPI/LexicalEntry.h; sourceTree = "<group>"; };
-		2870494D1E584E5A00B0EB1F /* LexicalEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LexicalEntry.m; path = Models/OxfordDictionariesAPI/LexicalEntry.m; sourceTree = "<group>"; };
-		2870494F1E584EBB00B0EB1F /* Result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Result.h; path = Models/OxfordDictionariesAPI/Result.h; sourceTree = "<group>"; };
-		287049501E584EBB00B0EB1F /* Result.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Result.m; path = Models/OxfordDictionariesAPI/Result.m; sourceTree = "<group>"; };
-		287049521E5850A700B0EB1F /* OxfordDictionariesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OxfordDictionariesResponse.h; path = Models/OxfordDictionariesAPI/OxfordDictionariesResponse.h; sourceTree = "<group>"; };
-		287049531E5850A700B0EB1F /* OxfordDictionariesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OxfordDictionariesResponse.m; path = Models/OxfordDictionariesAPI/OxfordDictionariesResponse.m; sourceTree = "<group>"; };
-		287049551E588B8900B0EB1F /* Example.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Example.h; path = Models/OxfordDictionariesAPI/Example.h; sourceTree = "<group>"; };
-		287049561E588B8900B0EB1F /* Example.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Example.m; path = Models/OxfordDictionariesAPI/Example.m; sourceTree = "<group>"; };
+		28150C411E592CD200F807A3 /* DictionaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryManager.h; path = Managers/DictionaryManager.h; sourceTree = "<group>"; };
+		28150C421E592CD200F807A3 /* DictionaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryManager.m; path = Managers/DictionaryManager.m; sourceTree = "<group>"; };
+		28150C4D1E5930F100F807A3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SupportingFiles/Info.plist; sourceTree = "<group>"; };
+		28150C4E1E5930F100F807A3 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SupportingFiles/main.m; sourceTree = "<group>"; };
+		28150C511E59313C00F807A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SupportingFiles/Assets.xcassets; sourceTree = "<group>"; };
+		28150C531E59318100F807A3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SupportingFiles/AppDelegate.h; sourceTree = "<group>"; };
+		28150C541E59318100F807A3 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SupportingFiles/AppDelegate.m; sourceTree = "<group>"; };
+		28150C561E59318B00F807A3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SupportingFiles/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		28150C581E5932B300F807A3 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = SupportingFiles/Main.storyboard; sourceTree = "<group>"; };
 		28975D7B1E56AA3700B102B6 /* RLDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RLDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		28975D7F1E56AA3700B102B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		28975D811E56AA3700B102B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		28975D821E56AA3700B102B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		28975D881E56AA3700B102B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		28975D8A1E56AA3700B102B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		28975D8D1E56AA3700B102B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		28975D8F1E56AA3700B102B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28975D981E56AE5700B102B6 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntroViewController.h; path = ViewControllers/IntroViewController.h; sourceTree = "<group>"; };
 		28975D991E56AE5700B102B6 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IntroViewController.m; path = ViewControllers/IntroViewController.m; sourceTree = "<group>"; };
-		28975D9D1E56B02000B102B6 /* WordDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordDataManager.h; path = Managers/WordDataManager.h; sourceTree = "<group>"; };
-		28975D9E1E56B02000B102B6 /* WordDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordDataManager.m; path = Managers/WordDataManager.m; sourceTree = "<group>"; };
-		28975DA31E56B10800B102B6 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Word.h; path = Models/Word.h; sourceTree = "<group>"; };
-		28975DA41E56B10800B102B6 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Word.m; path = Models/Word.m; sourceTree = "<group>"; };
-		28975DA61E56EC0800B102B6 /* RecourseDictionaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecourseDictionaryManager.h; path = Managers/RecourseDictionaryManager.h; sourceTree = "<group>"; };
-		28975DA71E56EC0800B102B6 /* RecourseDictionaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecourseDictionaryManager.m; path = Managers/RecourseDictionaryManager.m; sourceTree = "<group>"; };
-		28975DA91E56EEAB00B102B6 /* DictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryViewController.h; path = ViewControllers/DictionaryViewController.h; sourceTree = "<group>"; };
-		28975DAA1E56EEAB00B102B6 /* DictionaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryViewController.m; path = ViewControllers/DictionaryViewController.m; sourceTree = "<group>"; };
 		8F9C44C30A74F032040D6087 /* libPods-RLDictionary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RLDictionary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1ED5A479913DECF94F7AA92 /* Pods-RLDictionary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLDictionary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RLDictionary/Pods-RLDictionary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,25 +48,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2870493E1E584C1C00B0EB1F /* OxfordDictionariesAPI */ = {
+		28150C4C1E5930E200F807A3 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				287049421E584C9F00B0EB1F /* Sense.h */,
-				287049431E584C9F00B0EB1F /* Sense.m */,
-				287049461E584D2700B0EB1F /* Entry.h */,
-				287049471E584D2700B0EB1F /* Entry.m */,
-				287049491E584DB000B0EB1F /* GrammaticalFeature.h */,
-				2870494A1E584DB000B0EB1F /* GrammaticalFeature.m */,
-				2870494C1E584E5A00B0EB1F /* LexicalEntry.h */,
-				2870494D1E584E5A00B0EB1F /* LexicalEntry.m */,
-				2870494F1E584EBB00B0EB1F /* Result.h */,
-				287049501E584EBB00B0EB1F /* Result.m */,
-				287049521E5850A700B0EB1F /* OxfordDictionariesResponse.h */,
-				287049531E5850A700B0EB1F /* OxfordDictionariesResponse.m */,
-				287049551E588B8900B0EB1F /* Example.h */,
-				287049561E588B8900B0EB1F /* Example.m */,
+				28150C581E5932B300F807A3 /* Main.storyboard */,
+				28150C561E59318B00F807A3 /* LaunchScreen.storyboard */,
+				28150C531E59318100F807A3 /* AppDelegate.h */,
+				28150C541E59318100F807A3 /* AppDelegate.m */,
+				28150C511E59313C00F807A3 /* Assets.xcassets */,
+				28150C4D1E5930F100F807A3 /* Info.plist */,
+				28150C4E1E5930F100F807A3 /* main.m */,
 			);
-			name = OxfordDictionariesAPI;
+			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		28975D721E56AA3700B102B6 = {
@@ -119,26 +83,11 @@
 		28975D7D1E56AA3700B102B6 /* RLDictionary */ = {
 			isa = PBXGroup;
 			children = (
-				28975D9C1E56AFE100B102B6 /* Models */,
+				28150C4C1E5930E200F807A3 /* SupportingFiles */,
 				28975D9B1E56AFA600B102B6 /* Managers */,
 				28975D951E56AC1800B102B6 /* ViewControllers */,
-				28975D811E56AA3700B102B6 /* AppDelegate.h */,
-				28975D821E56AA3700B102B6 /* AppDelegate.m */,
-				28975D871E56AA3700B102B6 /* Main.storyboard */,
-				28975D8A1E56AA3700B102B6 /* Assets.xcassets */,
-				28975D8C1E56AA3700B102B6 /* LaunchScreen.storyboard */,
-				28975D8F1E56AA3700B102B6 /* Info.plist */,
-				28975D7E1E56AA3700B102B6 /* Supporting Files */,
 			);
 			path = RLDictionary;
-			sourceTree = "<group>";
-		};
-		28975D7E1E56AA3700B102B6 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				28975D7F1E56AA3700B102B6 /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		28975D951E56AC1800B102B6 /* ViewControllers */ = {
@@ -146,8 +95,6 @@
 			children = (
 				28975D981E56AE5700B102B6 /* IntroViewController.h */,
 				28975D991E56AE5700B102B6 /* IntroViewController.m */,
-				28975DA91E56EEAB00B102B6 /* DictionaryViewController.h */,
-				28975DAA1E56EEAB00B102B6 /* DictionaryViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -155,22 +102,10 @@
 		28975D9B1E56AFA600B102B6 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				28975D9D1E56B02000B102B6 /* WordDataManager.h */,
-				28975D9E1E56B02000B102B6 /* WordDataManager.m */,
-				28975DA61E56EC0800B102B6 /* RecourseDictionaryManager.h */,
-				28975DA71E56EC0800B102B6 /* RecourseDictionaryManager.m */,
+				28150C411E592CD200F807A3 /* DictionaryManager.h */,
+				28150C421E592CD200F807A3 /* DictionaryManager.m */,
 			);
 			name = Managers;
-			sourceTree = "<group>";
-		};
-		28975D9C1E56AFE100B102B6 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				2870493E1E584C1C00B0EB1F /* OxfordDictionariesAPI */,
-				28975DA31E56B10800B102B6 /* Word.h */,
-				28975DA41E56B10800B102B6 /* Word.m */,
-			);
-			name = Models;
 			sourceTree = "<group>";
 		};
 		55BF56C289BD86E2AD9BA955 /* Pods */ = {
@@ -252,9 +187,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28975D8E1E56AA3700B102B6 /* LaunchScreen.storyboard in Resources */,
-				28975D8B1E56AA3700B102B6 /* Assets.xcassets in Resources */,
-				28975D891E56AA3700B102B6 /* Main.storyboard in Resources */,
+				28150C591E5932B300F807A3 /* Main.storyboard in Resources */,
+				28150C4F1E5930F100F807A3 /* Info.plist in Resources */,
+				28150C571E59318B00F807A3 /* LaunchScreen.storyboard in Resources */,
+				28150C521E59313C00F807A3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,43 +249,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				287049441E584C9F00B0EB1F /* Sense.m in Sources */,
-				28975DA51E56B10800B102B6 /* Word.m in Sources */,
-				28975D831E56AA3700B102B6 /* AppDelegate.m in Sources */,
-				287049481E584D2700B0EB1F /* Entry.m in Sources */,
-				2870494E1E584E5A00B0EB1F /* LexicalEntry.m in Sources */,
-				287049541E5850A700B0EB1F /* OxfordDictionariesResponse.m in Sources */,
-				28975D9F1E56B02000B102B6 /* WordDataManager.m in Sources */,
-				287049511E584EBB00B0EB1F /* Result.m in Sources */,
-				287049571E588B8900B0EB1F /* Example.m in Sources */,
-				28975DA81E56EC0800B102B6 /* RecourseDictionaryManager.m in Sources */,
+				28150C551E59318100F807A3 /* AppDelegate.m in Sources */,
 				28975D9A1E56AE5700B102B6 /* IntroViewController.m in Sources */,
-				28975D801E56AA3700B102B6 /* main.m in Sources */,
-				28975DAB1E56EEAB00B102B6 /* DictionaryViewController.m in Sources */,
-				2870494B1E584DB000B0EB1F /* GrammaticalFeature.m in Sources */,
+				28150C501E5930F100F807A3 /* main.m in Sources */,
+				28150C431E592CD200F807A3 /* DictionaryManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		28975D871E56AA3700B102B6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				28975D881E56AA3700B102B6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		28975D8C1E56AA3700B102B6 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				28975D8D1E56AA3700B102B6 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		28975D901E56AA3700B102B6 /* Debug */ = {
@@ -448,7 +355,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8BCVHFF9UB;
-				INFOPLIST_FILE = RLDictionary/Info.plist;
+				INFOPLIST_FILE = RLDictionary/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SKTelecom.rldictionary;
@@ -464,7 +371,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8BCVHFF9UB;
-				INFOPLIST_FILE = RLDictionary/Info.plist;
+				INFOPLIST_FILE = RLDictionary/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SKTelecom.rldictionary;

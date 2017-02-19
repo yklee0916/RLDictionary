@@ -7,15 +7,13 @@
 //
 
 #import "IntroViewController.h"
-#import "WordDataManager.h"
-#import "DictionaryViewController.h"
+#import "DictionaryManager.h"
 
-@interface IntroViewController () <UIViewControllerPreviewingDelegate>
+@interface IntroViewController ()
 
-@property IBOutlet UITableView *wordbookTableView;
-@property (nonatomic) WordDataManager *wordDataManager;
+@property IBOutlet UITableView *tableView;
+@property (nonatomic, strong) DictionaryManager *dictionaryManager;
 @property id forceTouchPreviewingContext;
-
 
 @end
 
@@ -23,12 +21,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.wordDataManager = [[WordDataManager alloc] init];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(wordDataDidChanged:)
-                                                 name:@"WordDataDidChangedNotification"
-                                               object:nil];
-    
+    self.dictionaryManager = [[DictionaryManager alloc] init];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(wordDataDidChanged:)
+//                                                 name:@"WordDataDidChangedNotification"
+//                                               object:nil];
+//    
     UIBarButtonItem *addWordButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addWordButtonItemAction:)];
     self.navigationItem.rightBarButtonItem = addWordButtonItem;
     
@@ -39,45 +37,37 @@
     
 }
 
-- (void)wordDataDidChanged:(Word *)word {
-    [self.wordbookTableView reloadData];
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.wordDataManager.count;
+    return self.dictionaryManager.wordbook.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wordbookTableViewCell"];
-    
-    NSUInteger index = indexPath.row;
-    Word *word = [self.wordDataManager wordAtIndex:index];
-    [cell.textLabel setText:word.string];
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wordbookCell"];
+    NSString *word = [self.dictionaryManager.wordbook objectAtIndex:indexPath.row];
+    [cell.textLabel setText:word];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self performSegueWithIdentifier: @"showDictionarySegue" sender:indexPath];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"showDictionarySegue"]) {
+    NSString *word = [self.dictionaryManager.wordbook objectAtIndex:indexPath.row];
+    if ([UIReferenceLibraryViewController dictionaryHasDefinitionForTerm:word]) {
+        UIReferenceLibraryViewController* ref =
+        [[UIReferenceLibraryViewController alloc] initWithTerm:word];
+        [self presentViewController:ref animated:YES completion:nil];
+    }
+    else {
         
-        NSIndexPath *indexPath = (NSIndexPath *)sender;
-        NSUInteger index = indexPath.row;
-        Word *word = [self.wordDataManager wordAtIndex:index];
-        
-        DictionaryViewController *destinationViewController = segue.destinationViewController;
-        destinationViewController.word = word;
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+}
+
 - (void)testWords {
-    [self.wordDataManager addWordString:@"lead"];
-    [self.wordDataManager addWordString:@"wordbook"];
+    [self.dictionaryManager.wordbook addObject:@"bonjour"];
+    [self.dictionaryManager.wordbook addObject:@"hello"];
+    [self.dictionaryManager.wordbook addObject:@"안녕하세요"];
 }
 
 @end
