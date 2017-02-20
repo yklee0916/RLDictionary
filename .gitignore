@@ -1,4 +1,4 @@
-**/rio.xcuserdatad/
+**/*.xcuserdatad/
 *.swp
 Podfile.lock
 /Pods/

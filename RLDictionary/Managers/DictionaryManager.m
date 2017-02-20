@@ -61,17 +61,24 @@
 }
 
 + (instancetype)savedObject {
-    NSString *key = NSStringFromClass([DictionaryManager class]);
-    NSString *jsonString = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-    NSError *error;
-    if(!jsonString) return [[DictionaryManager alloc] init];
-    return [[DictionaryManager alloc] initWithString:jsonString error:&error];
+    
+    static DictionaryManager *accessorname = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        NSString *key = NSStringFromClass([DictionaryManager class]);
+        NSString *jsonString = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+        NSError *error;
+        accessorname = jsonString ? [[DictionaryManager alloc] initWithString:jsonString error:&error] : [[DictionaryManager alloc] init];
+    });
+    return accessorname;
 }
 
-+ (void)resetWordbook {
+- (void)resetWordbook {
     NSString *key = NSStringFromClass([DictionaryManager class]);
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.wordbook removeAllObjects];
 }
 
 - (void)save {

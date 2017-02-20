@@ -22,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02B672351E5AB2C2008B386B /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = Libraries/SynthesizeSingleton/SynthesizeSingleton.h; sourceTree = "<group>"; };
+		02B672361E5AB4CB008B386B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		07D82F8F8355E4F21E3AD75C /* Pods-RLDictionary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLDictionary.release.xcconfig"; path = "Pods/Target Support Files/Pods-RLDictionary/Pods-RLDictionary.release.xcconfig"; sourceTree = "<group>"; };
 		28150C411E592CD200F807A3 /* DictionaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryManager.h; path = Managers/DictionaryManager.h; sourceTree = "<group>"; };
 		28150C421E592CD200F807A3 /* DictionaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryManager.m; path = Managers/DictionaryManager.m; sourceTree = "<group>"; };
@@ -38,7 +40,6 @@
 		28150C781E5976EA00F807A3 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = SupportingFiles/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		286070091E597A830074D933 /* Setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Setting.plist; path = SupportingFiles/Setting.plist; sourceTree = "<group>"; };
 		2860700C1E59850F0074D933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2860700F1E5985120074D933 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		28975D7B1E56AA3700B102B6 /* RLDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RLDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28975D981E56AE5700B102B6 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntroViewController.h; path = ViewControllers/IntroViewController.h; sourceTree = "<group>"; };
 		28975D991E56AE5700B102B6 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IntroViewController.m; path = ViewControllers/IntroViewController.m; sourceTree = "<group>"; };
@@ -58,6 +59,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02B672331E5AB27E008B386B /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				02B672341E5AB2B9008B386B /* SynthesizeSingleton */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		02B672341E5AB2B9008B386B /* SynthesizeSingleton */ = {
+			isa = PBXGroup;
+			children = (
+				02B672351E5AB2C2008B386B /* SynthesizeSingleton.h */,
+			);
+			name = SynthesizeSingleton;
+			sourceTree = "<group>";
+		};
 		28150C4C1E5930E200F807A3 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +113,7 @@
 		28975D7D1E56AA3700B102B6 /* RLDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				02B672331E5AB27E008B386B /* Libraries */,
 				28150C4C1E5930E200F807A3 /* SupportingFiles */,
 				28975D9B1E56AFA600B102B6 /* Managers */,
 				28975D951E56AC1800B102B6 /* ViewControllers */,
@@ -291,7 +309,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2860700C1E59850F0074D933 /* Base */,
-				2860700F1E5985120074D933 /* ko */,
+				02B672361E5AB4CB008B386B /* ko */,
 			);
 			name = Main.storyboard;
 			path = SupportingFiles;
@@ -402,10 +420,10 @@
 				INFOPLIST_FILE = RLDictionary/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SKTelecom.rldictionary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.tmap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "10097147-63b6-4697-bd93-9acf938724fc";
-				PROVISIONING_PROFILE_SPECIFIER = SKTelecom_wildcard;
+				PROVISIONING_PROFILE = "74cac3d7-b8b5-4e84-acc1-bb9f118b354f";
+				PROVISIONING_PROFILE_SPECIFIER = com.test.tmap;
 			};
 			name = Debug;
 		};
@@ -419,10 +437,10 @@
 				INFOPLIST_FILE = RLDictionary/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SKTelecom.rldictionary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.tmap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "10097147-63b6-4697-bd93-9acf938724fc";
-				PROVISIONING_PROFILE_SPECIFIER = SKTelecom_wildcard;
+				PROVISIONING_PROFILE = "74cac3d7-b8b5-4e84-acc1-bb9f118b354f";
+				PROVISIONING_PROFILE_SPECIFIER = com.test.tmap;
 			};
 			name = Release;
 		};

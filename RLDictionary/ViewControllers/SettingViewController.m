@@ -79,7 +79,7 @@
 }
 
 - (void)resetWordbookAction:(id)sender {
-    [DictionaryManager resetWordbook];
+    [[DictionaryManager savedObject] resetWordbook];
     [self.view makeToast:@"초기화 되었습니다."];
 }
 

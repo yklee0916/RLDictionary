@@ -19,3 +19,6 @@
 
 /* Class = "UINavigationItem"; title = "Setting"; ObjectID = "y18-5q-RBB"; */
 "y18-5q-RBB.title" = "설정";
+
+/* Class = "barButtonItem"; title = "Close"; ObjectID = "OMF-lZ-wtM"; */
+"OMF-lZ-wtM.title" = "닫기";
