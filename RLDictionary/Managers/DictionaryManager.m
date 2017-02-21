@@ -36,23 +36,23 @@
     return YES;
 }
 
-- (BOOL)addWordString:(NSString *)wordString {
+- (void)addWordString:(NSString *)string {
     
-    [self.wordbook addObjectByString:wordString];
+    [self.wordbook addObjectByString:string];
     [self save];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"wordbookDidChangedNotification" object:wordString];
-    });
-    return YES;
+    [self notifyWordbookDidChanged:string];
 }
 
-- (BOOL)deleteWordString:(NSString *)wordString {
-    [self.wordbook removeObjectByString:wordString];
+- (void)deleteWordString:(NSString *)string {
+    [self.wordbook removeObjectByString:string];
     [self save];
+    [self notifyWordbookDidChanged:string];
+}
+
+- (void)notifyWordbookDidChanged:(NSString *)wordString {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"wordbookDidChangedNotification" object:wordString];
     });
-    return YES;
 }
 
 + (instancetype)savedObject {
@@ -78,7 +78,7 @@
 
 - (void)save {
     NSString *jsonString = [self toJSONString];
-    if(jsonString.length == 0) return;
+    if(jsonString.length == 0) return ;
     NSString *key = NSStringFromClass([DictionaryManager class]);
     [[NSUserDefaults standardUserDefaults] setObject:jsonString forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
