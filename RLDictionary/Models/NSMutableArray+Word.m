@@ -1,14 +1,14 @@
 //
-//  NSMutableArray+Wordbook.m
+//  NSMutableArray+Word.m
 //  RLDictionary
 //
 //  Created by younggi.lee on 21/02/2017.
 //  Copyright © 2017 Ryan Lee. All rights reserved.
 //
 
-#import "NSMutableArray+Wordbook.h"
+#import "NSMutableArray+Word.h"
 
-@implementation NSMutableArray (Wordbook)
+@implementation NSMutableArray (Word)
 
 - (BOOL)containsString:(NSString *)string {
     NSUInteger index = [self indexOfString:string];

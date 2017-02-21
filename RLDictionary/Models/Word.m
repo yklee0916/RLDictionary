@@ -19,4 +19,8 @@
     return self;
 }
 
+- (void)setString:(NSString *)string {
+    _string = string.lowercaseString;
+}
+
 @end

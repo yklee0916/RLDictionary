@@ -7,7 +7,7 @@
 //
 
 #import "SettingViewController.h"
-#import "DictionaryManager.h"
+#import "WordDataManager.h"
 
 @implementation SettingTableViewCell
 @end
@@ -81,7 +81,7 @@
 - (void)resetWordbookAction:(id)sender {
     
     [self presenResetAlertViewControllerWithCompletionHandler:^(UIAlertAction *action) {
-        [[DictionaryManager savedObject] resetWordbook];
+        [[WordDataManager savedObject] resetAll];
         [self.view makeToast:NSLocalizedString(@"SettingResetAlertResetActionToastMessage", nil)];
     }];
 }

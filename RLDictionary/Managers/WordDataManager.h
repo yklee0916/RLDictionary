@@ -1,5 +1,5 @@
 //
-//  DictionaryManager.h
+//  WordDataManager.h
 //  RLDictionary
 //
 //  Created by Rio on 19/02/2017.
@@ -8,16 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import "JSONModel.h"
+#import "NSMutableArray+Word.h"
 
-@interface DictionaryManager : JSONModel
+@interface WordDataManager : JSONModel
+
+@property (nonatomic, strong) NSMutableArray <Word> *wordbook;
 
 + (instancetype)savedObject;
 
-- (NSUInteger)wordbookCount;
-- (NSString *)wordStringAtIndex:(NSUInteger)index;
-- (void)addWordString:(NSString *)word;
-- (void)deleteWordString:(NSString *)word;
-- (void)resetWordbook;
+- (NSUInteger)count;
+- (NSString *)stringAtIndex:(NSUInteger)index;
+
+- (void)addWithString:(NSString *)word;
+- (void)deleteWithString:(NSString *)word;
+
+- (void)resetAll;
 
 - (void)findDefinitionFromDictionaryForTerm:(NSString *)term completionHandler:(void (^)(UIReferenceLibraryViewController *libarayViewController, NSError *error))completionHandler;
 

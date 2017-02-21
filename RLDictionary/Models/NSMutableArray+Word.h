@@ -1,5 +1,5 @@
 //
-//  NSMutableArray+Wordbook.h
+//  NSMutableArray+Word.h
 //  RLDictionary
 //
 //  Created by younggi.lee on 21/02/2017.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Word.h"
 
-@interface NSMutableArray (Wordbook)
+@interface NSMutableArray (Word)
 
 - (BOOL)containsString:(NSString *)string;
 

@@ -1,21 +1,27 @@
 //
-//  DictionaryManager.m
+//  WordDataManager.m
 //  RLDictionary
 //
 //  Created by Rio on 19/02/2017.
 //  Copyright © 2017 Ryan Lee. All rights reserved.
 //
 
-#import "DictionaryManager.h"
-#import "NSMutableArray+Wordbook.h"
+#import "WordDataManager.h"
 
-@interface DictionaryManager ()
-
-@property (nonatomic, strong) NSMutableArray <Word> *wordbook;
+@interface WordDataManager ()
 
 @end
 
-@implementation DictionaryManager
+@implementation WordDataManager
+
+
+
+
+
+
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
 
 - (instancetype)init {
     if([super init]) {
@@ -24,11 +30,11 @@
     return self;
 }
 
-- (NSUInteger)wordbookCount {
+- (NSUInteger)count {
     return self.wordbook.count;
 }
 
-- (NSString *)wordStringAtIndex:(NSUInteger)index {
+- (NSString *)stringAtIndex:(NSUInteger)index {
     return [self.wordbook stringAtIndex:index];
 }
 
@@ -36,14 +42,14 @@
     return YES;
 }
 
-- (void)addWordString:(NSString *)string {
+- (void)addWithString:(NSString *)string {
     
     [self.wordbook addObjectByString:string];
     [self save];
     [self notifyWordbookDidChanged:string];
 }
 
-- (void)deleteWordString:(NSString *)string {
+- (void)deleteWithString:(NSString *)string {
     [self.wordbook removeObjectByString:string];
     [self save];
     [self notifyWordbookDidChanged:string];
@@ -57,29 +63,28 @@
 
 + (instancetype)savedObject {
     
-    static DictionaryManager *accessorname = nil;
+    static WordDataManager *accessorname = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        NSString *key = NSStringFromClass([DictionaryManager class]);
+        NSString *key = NSStringFromClass([WordDataManager class]);
         NSString *jsonString = [[NSUserDefaults standardUserDefaults] objectForKey:key];
         NSError *error;
-        accessorname = jsonString.length > 0 ? [[DictionaryManager alloc] initWithString:jsonString error:&error] : [[DictionaryManager alloc] init];
+        accessorname = jsonString.length > 0 ? [[WordDataManager alloc] initWithString:jsonString error:&error] : [[WordDataManager alloc] init];
     });
     return accessorname;
 }
 
-- (void)resetWordbook {
-    NSString *key = NSStringFromClass([DictionaryManager class]);
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+- (void)resetAll {
     [self.wordbook removeAllObjects];
+    [self save];
+    [self notifyWordbookDidChanged:nil];
 }
 
 - (void)save {
     NSString *jsonString = [self toJSONString];
     if(jsonString.length == 0) return ;
-    NSString *key = NSStringFromClass([DictionaryManager class]);
+    NSString *key = NSStringFromClass([WordDataManager class]);
     [[NSUserDefaults standardUserDefaults] setObject:jsonString forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -96,7 +101,7 @@
         if ([UIReferenceLibraryViewController dictionaryHasDefinitionForTerm:term]) {
             
             if(self.shouldAddWordWhenItSearching) {
-                [self addWordString:term];
+                [self addWithString:term];
             }
             libraryViewController = [[UIReferenceLibraryViewController alloc] initWithTerm:term];
         }

@@ -1,0 +1,20 @@
+//
+//  Wordbook.h
+//  RLDictionary
+//
+//  Created by younggi.lee on 21/02/2017.
+//  Copyright © 2017 Ryan Lee. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "Word.h"
+
+@protocol Wordbook
+@end
+
+@interface Wordbook : NSObject
+
+@property (nonatomic, strong) NSDate *createdDate;
+@property (nonatomic, strong) NSArray <Word> *words;
+
+@end

@@ -7,13 +7,15 @@
 //
 
 #import "IntroViewController.h"
-#import "DictionaryManager.h"
+#import "WordDataManager.h"
+#import "WordbookManager.h"
 
 @interface IntroViewController ()
 
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) IBOutlet UITextField *searchTextField;
-@property (nonatomic, strong) DictionaryManager *dictionaryManager;
+@property (nonatomic, strong) WordDataManager *wordDataManager;
+@property (nonatomic, strong) WordbookManager *wordbookManager;
 
 @end
 
@@ -21,12 +23,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dictionaryManager = [DictionaryManager savedObject];
+    self.wordDataManager = [WordDataManager savedObject];
+    self.wordbookManager = [WordbookManager sharedInstance];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(wordbookDidChanged:)
                                                  name:@"wordbookDidChangedNotification"
                                                object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,18 +63,18 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dictionaryManager.wordbookCount;
+    return self.wordDataManager.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wordbookCell"];
-    NSString *string = [self.dictionaryManager wordStringAtIndex:indexPath.row];
+    NSString *string = [self.wordDataManager stringAtIndex:indexPath.row];
     [cell.textLabel setText:string];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *term = [self.dictionaryManager wordStringAtIndex:indexPath.row];
+    NSString *term = [self.wordDataManager stringAtIndex:indexPath.row];
     [self findDefinitionFromDictionaryForTerm:term];
     [self.tableView reloadData];
 }
@@ -75,15 +82,15 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSString *string = [self.dictionaryManager wordStringAtIndex:indexPath.row];
-        [self.dictionaryManager deleteWordString:string];
+        NSString *string = [self.wordDataManager stringAtIndex:indexPath.row];
+        [self.wordDataManager deleteWithString:string];
     }
 }
 
 - (void)findDefinitionFromDictionaryForTerm:(NSString *)term {
     if(term.length == 0) return ;
     
-    [self.dictionaryManager findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *libarayViewController, NSError *error) {
+    [self.wordDataManager findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *libarayViewController, NSError *error) {
         
         if(error) {
             [self.view makeToast:error.domain];
