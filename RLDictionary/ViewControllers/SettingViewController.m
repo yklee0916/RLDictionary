@@ -79,8 +79,19 @@
 }
 
 - (void)resetWordbookAction:(id)sender {
-//    [[DictionaryManager savedObject] resetWordbook];
-    [self.view makeToast:@"초기화 되었습니다."];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"SettingResetAlertTitle", nil)
+                                                                             message:NSLocalizedString(@"SettingResetAlertMessage", nil)
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"SettingResetAlertCancelActionTitle", nil) style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *resetAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"SettingResetAlertResetActionTitle", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+//        [[DictionaryManager savedObject] resetWordbook];
+        [self.view makeToast:NSLocalizedString(@"SettingResetAlertResetActionToastMessage", nil)];
+    }];
+    [alertController addAction:resetAction];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)donateToDeveloperAction:(id)sender {

@@ -23,3 +23,9 @@
 "Contact" = "mailto.ryan.lee@gmail.com";
 "Archor" = "Ryan Lee";
 "Donate" = "Donate to developer";
+
+"SettingResetAlertTitle" = "Warning";
+"SettingResetAlertMessage" = "Are you sure you want to reset wordbook?";
+"SettingResetAlertCancelActionTitle" = "Cancel";
+"SettingResetAlertResetActionTitle" = "Reset";
+"SettingResetAlertResetActionToastMessage" = "Wordbook has been initialized succesfully.";
