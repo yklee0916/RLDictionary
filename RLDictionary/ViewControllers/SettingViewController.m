@@ -80,15 +80,24 @@
 
 - (void)resetWordbookAction:(id)sender {
     
+    [self presenResetAlertViewControllerWithCompletionHandler:^(UIAlertAction *action) {
+//        [[DictionaryManager savedObject] resetWordbook];
+        [self.view makeToast:NSLocalizedString(@"SettingResetAlertResetActionToastMessage", nil)];
+    }];
+}
+
+- (void)presenResetAlertViewControllerWithCompletionHandler:(void (^)(UIAlertAction *action))handler {
+    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"SettingResetAlertTitle", nil)
                                                                              message:NSLocalizedString(@"SettingResetAlertMessage", nil)
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"SettingResetAlertCancelActionTitle", nil) style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *resetAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"SettingResetAlertResetActionTitle", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-//        [[DictionaryManager savedObject] resetWordbook];
-        [self.view makeToast:NSLocalizedString(@"SettingResetAlertResetActionToastMessage", nil)];
-    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"SettingResetAlertCancelActionTitle", nil)
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    UIAlertAction *resetAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"SettingResetAlertResetActionTitle", nil)
+                                                          style:UIAlertActionStyleDestructive
+                                                        handler:handler];
     [alertController addAction:resetAction];
     [alertController addAction:cancelAction];
     [self presentViewController:alertController animated:YES completion:nil];
