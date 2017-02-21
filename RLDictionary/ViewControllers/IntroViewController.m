@@ -61,13 +61,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wordbookCell"];
-    NSString *word = [self.dictionaryManager wordAtIndexFromWordbook:indexPath.row];
-    [cell.textLabel setText:word];
+    NSString *string = [self.dictionaryManager wordStringAtIndex:indexPath.row];
+    [cell.textLabel setText:string];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *term = [self.dictionaryManager wordAtIndexFromWordbook:indexPath.row];
+    NSString *term = [self.dictionaryManager wordStringAtIndex:indexPath.row];
     [self findDefinitionFromDictionaryForTerm:term];
     [self.tableView reloadData];
 }
@@ -75,8 +75,8 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSString *word = [self.dictionaryManager wordAtIndexFromWordbook:indexPath.row];
-        [self.dictionaryManager deleteWordToWordbook:word];
+        NSString *string = [self.dictionaryManager wordStringAtIndex:indexPath.row];
+        [self.dictionaryManager deleteWordString:string];
     }
 }
 

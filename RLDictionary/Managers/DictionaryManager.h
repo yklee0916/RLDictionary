@@ -14,9 +14,9 @@
 + (instancetype)savedObject;
 
 - (NSUInteger)wordbookCount;
-- (NSString *)wordAtIndexFromWordbook:(NSUInteger)index;
-- (BOOL)addWordToWordbook:(NSString *)word;
-- (BOOL)deleteWordToWordbook:(NSString *)word;
+- (NSString *)wordStringAtIndex:(NSUInteger)index;
+- (BOOL)addWordString:(NSString *)word;
+- (BOOL)deleteWordString:(NSString *)word;
 - (void)resetWordbook;
 
 - (void)findDefinitionFromDictionaryForTerm:(NSString *)term completionHandler:(void (^)(UIReferenceLibraryViewController *libarayViewController, NSError *error))completionHandler;

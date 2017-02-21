@@ -81,7 +81,7 @@
 - (void)resetWordbookAction:(id)sender {
     
     [self presenResetAlertViewControllerWithCompletionHandler:^(UIAlertAction *action) {
-//        [[DictionaryManager savedObject] resetWordbook];
+        [[DictionaryManager savedObject] resetWordbook];
         [self.view makeToast:NSLocalizedString(@"SettingResetAlertResetActionToastMessage", nil)];
     }];
 }

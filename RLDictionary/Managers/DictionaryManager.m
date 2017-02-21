@@ -7,11 +7,11 @@
 //
 
 #import "DictionaryManager.h"
+#import "NSMutableArray+Wordbook.h"
 
 @interface DictionaryManager ()
 
-@property (nonatomic, strong) NSMutableArray <NSString *> *wordbook;
-@property (nonatomic, strong) NSMutableArray <NSString *> *recentHistory;
+@property (nonatomic, strong) NSMutableArray <Word> *wordbook;
 
 @end
 
@@ -19,8 +19,7 @@
 
 - (instancetype)init {
     if([super init]) {
-        self.wordbook = [NSMutableArray array];
-        self.recentHistory = [NSMutableArray array];
+        self.wordbook = [NSMutableArray <Word> array];
     }
     return self;
 }
@@ -29,34 +28,30 @@
     return self.wordbook.count;
 }
 
-- (NSString *)wordAtIndexFromWordbook:(NSUInteger)index {
-    return self.wordbookCount <= index ? nil : [self.wordbook objectAtIndex:index];
+- (NSString *)wordStringAtIndex:(NSUInteger)index {
+    return [self.wordbook stringAtIndex:index];
 }
 
-- (BOOL)shouldAddWordToWorkbook {
+- (BOOL)shouldAddWordWhenItSearching {
     return YES;
 }
 
-- (BOOL)addWordToWordbook:(NSString *)word {
+- (BOOL)addWordString:(NSString *)wordString {
     
-    if(!word) return NO;
-    if([self.wordbook containsObject:word]) return NO;
-    
-    [self.wordbook insertObject:word atIndex:0];
+    [self.wordbook addObjectByString:wordString];
     [self save];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"wordbookDidChangedNotification" object:word];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"wordbookDidChangedNotification" object:wordString];
+    });
     return YES;
 }
 
-- (BOOL)deleteWordToWordbook:(NSString *)word {
-    if(!word) return NO;
-    if(![self.wordbook containsObject:word]) return NO;
-    
-    [self.wordbook removeObject:word];
+- (BOOL)deleteWordString:(NSString *)wordString {
+    [self.wordbook removeObjectByString:wordString];
     [self save];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"wordbookDidChangedNotification" object:word];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"wordbookDidChangedNotification" object:wordString];
+    });
     return YES;
 }
 
@@ -69,7 +64,7 @@
         NSString *key = NSStringFromClass([DictionaryManager class]);
         NSString *jsonString = [[NSUserDefaults standardUserDefaults] objectForKey:key];
         NSError *error;
-        accessorname = jsonString ? [[DictionaryManager alloc] initWithString:jsonString error:&error] : [[DictionaryManager alloc] init];
+        accessorname = jsonString.length > 0 ? [[DictionaryManager alloc] initWithString:jsonString error:&error] : [[DictionaryManager alloc] init];
     });
     return accessorname;
 }
@@ -83,6 +78,7 @@
 
 - (void)save {
     NSString *jsonString = [self toJSONString];
+    if(jsonString.length == 0) return;
     NSString *key = NSStringFromClass([DictionaryManager class]);
     [[NSUserDefaults standardUserDefaults] setObject:jsonString forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -99,8 +95,8 @@
         
         if ([UIReferenceLibraryViewController dictionaryHasDefinitionForTerm:term]) {
             
-            if(self.shouldAddWordToWorkbook) {
-                [self addWordToWordbook:term];
+            if(self.shouldAddWordWhenItSearching) {
+                [self addWordString:term];
             }
             libraryViewController = [[UIReferenceLibraryViewController alloc] initWithTerm:term];
         }
@@ -113,6 +109,10 @@
             if(completionHandler) completionHandler(libraryViewController, error);
         });
     });
+}
+
+- (NSString *)description {
+    return [self toJSONString];
 }
 
 @end

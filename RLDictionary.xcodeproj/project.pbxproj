@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02E9BB511E5BDA4300863E00 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E9BB501E5BDA4300863E00 /* Word.m */; };
+		02E9BB541E5BDBD400863E00 /* NSMutableArray+Wordbook.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E9BB531E5BDBD400863E00 /* NSMutableArray+Wordbook.m */; };
 		28150C431E592CD200F807A3 /* DictionaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28150C421E592CD200F807A3 /* DictionaryManager.m */; };
 		28150C4F1E5930F100F807A3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28150C4D1E5930F100F807A3 /* Info.plist */; };
 		28150C501E5930F100F807A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28150C4E1E5930F100F807A3 /* main.m */; };
@@ -24,6 +26,10 @@
 /* Begin PBXFileReference section */
 		02B672351E5AB2C2008B386B /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = Libraries/SynthesizeSingleton/SynthesizeSingleton.h; sourceTree = "<group>"; };
 		02B672361E5AB4CB008B386B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		02E9BB4F1E5BDA4300863E00 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Word.h; path = Models/Word.h; sourceTree = "<group>"; };
+		02E9BB501E5BDA4300863E00 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Word.m; path = Models/Word.m; sourceTree = "<group>"; };
+		02E9BB521E5BDBD400863E00 /* NSMutableArray+Wordbook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+Wordbook.h"; path = "Models/NSMutableArray+Wordbook.h"; sourceTree = "<group>"; };
+		02E9BB531E5BDBD400863E00 /* NSMutableArray+Wordbook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+Wordbook.m"; path = "Models/NSMutableArray+Wordbook.m"; sourceTree = "<group>"; };
 		07D82F8F8355E4F21E3AD75C /* Pods-RLDictionary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLDictionary.release.xcconfig"; path = "Pods/Target Support Files/Pods-RLDictionary/Pods-RLDictionary.release.xcconfig"; sourceTree = "<group>"; };
 		28150C411E592CD200F807A3 /* DictionaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryManager.h; path = Managers/DictionaryManager.h; sourceTree = "<group>"; };
 		28150C421E592CD200F807A3 /* DictionaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryManager.m; path = Managers/DictionaryManager.m; sourceTree = "<group>"; };
@@ -75,6 +81,17 @@
 			name = SynthesizeSingleton;
 			sourceTree = "<group>";
 		};
+		02E9BB4E1E5BDA2C00863E00 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				02E9BB4F1E5BDA4300863E00 /* Word.h */,
+				02E9BB501E5BDA4300863E00 /* Word.m */,
+				02E9BB521E5BDBD400863E00 /* NSMutableArray+Wordbook.h */,
+				02E9BB531E5BDBD400863E00 /* NSMutableArray+Wordbook.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		28150C4C1E5930E200F807A3 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +130,7 @@
 		28975D7D1E56AA3700B102B6 /* RLDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				02E9BB4E1E5BDA2C00863E00 /* Models */,
 				02B672331E5AB27E008B386B /* Libraries */,
 				28150C4C1E5930E200F807A3 /* SupportingFiles */,
 				28975D9B1E56AFA600B102B6 /* Managers */,
@@ -287,6 +305,8 @@
 			files = (
 				28150C551E59318100F807A3 /* AppDelegate.m in Sources */,
 				28975D9A1E56AE5700B102B6 /* IntroViewController.m in Sources */,
+				02E9BB511E5BDA4300863E00 /* Word.m in Sources */,
+				02E9BB541E5BDBD400863E00 /* NSMutableArray+Wordbook.m in Sources */,
 				28150C501E5930F100F807A3 /* main.m in Sources */,
 				28150C431E592CD200F807A3 /* DictionaryManager.m in Sources */,
 				28150C5D1E596C2000F807A3 /* SettingViewController.m in Sources */,
