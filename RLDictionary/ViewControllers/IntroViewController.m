@@ -9,9 +9,8 @@
 #import "IntroViewController.h"
 #import "WordDataManager.h"
 #import "WordbookManager.h"
-
-@implementation WordbookHeaderCell
-@end
+#import "WordbookHeaderView.h"
+#import "WordbookTableViewCell.h"
 
 @interface IntroViewController ()
 
@@ -25,9 +24,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *identifier = NSStringFromClass([WordbookTableViewCell class]);
+    [self.tableView registerNib:[UINib nibWithNibName:identifier bundle:nil] forCellReuseIdentifier:identifier];
     self.wordbookManager = [WordbookManager sharedInstance];
     [self.wordbookManager reload];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(wordbookDidChanged:)
@@ -82,22 +82,22 @@
     return wordbook.words.count;
 }
 
-- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    WordbookHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([WordbookHeaderCell class])];
-    
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+
+    WordbookHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"WordbookHeaderView" owner:self options:nil] firstObject];
     Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:section];
     NSString *string = [wordbook.createdDate descriptionWithDateFormatString:NSLocalizedString(@"IntroWordbookHeaderDateFormat", nil)];
-    [cell.textLabel setText:string];
-    return cell;
+    [header.textLabel setText:string];
+    return header;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wordbookCell"];
+    WordbookTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WordbookTableViewCell"];
     
     Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:indexPath.section];
     Word *word = [wordbook.words objectAtIndex:indexPath.row];
     NSString *string = word.string;
-    [cell.textLabel setText:string];
+    [cell.contentLabel setText:string];
     return cell;
 }
 

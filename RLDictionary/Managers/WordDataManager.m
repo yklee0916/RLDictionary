@@ -14,15 +14,6 @@
 
 @implementation WordDataManager
 
-
-
-
-
-
-
-
-//-----------------------------------------------------------------------------------------------------------------------------
-
 - (instancetype)init {
     if([super init]) {
         self.words = [NSMutableArray <Word> array];

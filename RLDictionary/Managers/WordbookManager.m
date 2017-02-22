@@ -60,6 +60,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
             [wordbook.words addObject:word];
         }
         else {
+            comparativeValue = diffrence;
             [self.wordbooks addObject:wordbook];
             wordbook = [[Wordbook alloc] init];
             wordbook.createdDate = fromDate;
@@ -70,7 +71,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
             [self.wordbooks addObject:wordbook];
         }
     }
-    NSLog(@"Wordbooks\n%@",[self.wordbooks description]);
     [self notifyWordbookDidChanged:nil];
 }
 
