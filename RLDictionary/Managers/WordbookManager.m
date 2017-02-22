@@ -29,7 +29,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
     return self;
 }
 
-- (void)notifywordsDidChanged:(NSString *)wordString {
+- (void)notifyWordbookDidChanged:(NSString *)wordString {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"wordbookDidChangedNotification" object:wordString];
     });
@@ -71,7 +71,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
         }
     }
     NSLog(@"Wordbooks\n%@",[self.wordbooks description]);
-    [self notifywordsDidChanged:nil];
+    [self notifyWordbookDidChanged:nil];
 }
 
 - (BOOL)shouldInsertWordkWithComparativeValue:(NSInteger)comparativeValue diffrence:(NSInteger)diffrence {
@@ -127,6 +127,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
             if(completionHandler) completionHandler(libraryViewController, error);
         });
     });
+}
+
+- (void)resetAll {
+    [self.wordDataManager resetAll];
+    [self reload];
+    
 }
 
 - (void)deleteWithString:(NSString *)word {
