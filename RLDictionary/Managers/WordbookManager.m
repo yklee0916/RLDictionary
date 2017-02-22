@@ -24,7 +24,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
     if(self = [super init]) {
         self.wordDataManager = [WordDataManager savedObject];
         self.wordbooks = [NSMutableArray <Wordbook> array];
-//        self.groupingType = WordbookManagerGroupingTypeByWeek;
+        self.groupingType = WordbookManagerGroupingTypeByWeek;
     }
     return self;
 }
@@ -56,7 +56,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
         NSLog(@"%@ diffrence: %ld",word.string, diffrence);
         
         if([self shouldInsertWordkWithComparativeValue:comparativeValue diffrence:diffrence]) {
-            wordbook.createdDate = fromDate;
+            if(!wordbook.createdDate) {
+                wordbook.createdDate = fromDate;
+            }
             [wordbook.words addObject:word];
         }
         else {
