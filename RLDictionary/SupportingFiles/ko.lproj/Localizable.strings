@@ -10,6 +10,7 @@
 
 "kSettingDictionary" = "사전 설정";
 "kResetWordbook" = "초기화";
+"kWordbookArrangeByType" = "정렬 방식";
 "kDescription" = "설명";
 "kContact" = "문의하기";
 "kAppVersion" = "버전";
@@ -24,6 +25,9 @@
 "Archor" = "YoungKi Lee";
 "Usage" = "이 앱은 무료앱으로 별도 과금없이 모든 기능을 사용할 수 있습니다.\n단, 해당 앱의 기능 향상을 위한 후원의 목적으로 아래의 링크로 개발자에게 기부를 할 수 있습니다.";
 "Donate" = "개발자에게 기부하기";
+
+"WordbookArrangeByTypeDay" = "일 단위";
+"WordbookArrangeByTypeWeek" = "주 단위";
 
 "SettingResetAlertTitle" = "경고";
 "SettingResetAlertMessage" = "단어장을 초기화 하시겠습니까?";

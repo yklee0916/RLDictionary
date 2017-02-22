@@ -67,6 +67,14 @@
         [cell.linkableContent setTitle:content forState:UIControlStateHighlighted];
         [cell.linkableContent addTarget:self action:@selector(resetWordbookAction:) forControlEvents:UIControlEventTouchUpInside];
     }
+    else if([key isEqualToString:@"kWordbookArrangeByType"]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"linkableCell"];
+        [cell.title setText:title];
+        content = NSLocalizedString(self.wordbookArrangeType ? @"WordbookArrangeByTypeWeek" : @"WordbookArrangeByTypeDay", nil);
+        [cell.linkableContent setTitle:content forState:UIControlStateNormal];
+        [cell.linkableContent setTitle:content forState:UIControlStateHighlighted];
+        [cell.linkableContent addTarget:self action:@selector(setWordbookArrangeTypeAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
     else if([key isEqualToString:@"kDonate"]) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"linkableCell"];
         [cell.title setText:title];
@@ -76,6 +84,21 @@
     }
     
     return cell;
+}
+
+- (BOOL)wordbookArrangeType {
+    NSString *key = @"WordbookManagerGroupingType";
+    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
+}
+
+- (void)setWordbookArrangeTypeAction:(id)sender {
+    NSString *key = @"WordbookManagerGroupingType";
+    BOOL byDate = [self wordbookArrangeType];
+    [[NSUserDefaults standardUserDefaults] setBool:!byDate forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.tableView reloadData];
+    
+    [[WordbookManager sharedInstance] reload];
 }
 
 - (void)resetWordbookAction:(id)sender {

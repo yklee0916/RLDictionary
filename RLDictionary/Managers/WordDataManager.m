@@ -47,7 +47,7 @@
     dispatch_once(&onceToken, ^{
         
         NSString *key = NSStringFromClass([WordDataManager class]);
-        NSString *jsonString = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+        NSString *jsonString = [[NSUserDefaults standardUserDefaults] stringForKey:key];
         NSError *error;
         accessorname = jsonString.length > 0 ? [[WordDataManager alloc] initWithString:jsonString error:&error] : [[WordDataManager alloc] init];
     });

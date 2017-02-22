@@ -24,7 +24,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
     if(self = [super init]) {
         self.wordDataManager = [WordDataManager savedObject];
         self.wordbooks = [NSMutableArray <Wordbook> array];
-        self.groupingType = WordbookManagerGroupingTypeByWeek;
     }
     return self;
 }
@@ -35,9 +34,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
     });
 }
 
+- (BOOL)wordbookArrangeType {
+    NSString *key = @"WordbookManagerGroupingType";
+    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
+}
+
 - (void)reload {
     
     self.wordbooks = [NSMutableArray <Wordbook> array];
+    self.groupingType = self.wordbookArrangeType ? WordbookManagerGroupingTypeByWeek : WordbookManagerGroupingTypeByDay;
     
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSLog(@"path: %@",path);

@@ -10,6 +10,7 @@
 
 "kSettingDictionary" = "Dictionary";
 "kResetWordbook" = "Reset";
+"kWordbookArrangeByType" = "ArrangeType";
 "kDescription" = "Description";
 "kAppVersion" = "Version";
 "kContact" = "Contact";
@@ -23,6 +24,9 @@
 "Contact" = "mailto.ryan.lee@gmail.com";
 "Archor" = "Ryan Lee";
 "Donate" = "Donate to developer";
+
+"WordbookArrangeByTypeDay" = "by Day";
+"WordbookArrangeByTypeWeek" = "by Week";
 
 "SettingResetAlertTitle" = "Warning";
 "SettingResetAlertMessage" = "Are you sure you want to reset wordbook?";
