@@ -31,7 +31,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
 
 - (void)notifywordsDidChanged:(NSString *)wordString {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"wordsDidChangedNotification" object:wordString];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"wordbookDidChangedNotification" object:wordString];
     });
 }
 
