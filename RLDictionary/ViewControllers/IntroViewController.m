@@ -28,6 +28,10 @@
     [self.tableView registerNib:[UINib nibWithNibName:identifier bundle:nil] forCellReuseIdentifier:identifier];
     self.wordbookManager = [WordbookManager sharedInstance];
     [self.wordbookManager reload];
+    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 5)];
+    leftView.backgroundColor = [UIColor clearColor];
+    self.searchTextField.leftViewMode = UITextFieldViewModeAlways;
+    self.searchTextField.leftView = leftView;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(wordbookDidChanged:)
