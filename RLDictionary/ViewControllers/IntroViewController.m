@@ -28,6 +28,7 @@
     [super viewDidLoad];
     self.wordbookManager = [WordbookManager sharedInstance];
     [self.wordbookManager reload];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(wordbookDidChanged:)
