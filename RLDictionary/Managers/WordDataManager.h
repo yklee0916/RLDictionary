@@ -24,6 +24,4 @@
 
 - (void)resetAll;
 
-- (void)findDefinitionFromDictionaryForTerm:(NSString *)term completionHandler:(void (^)(UIReferenceLibraryViewController *libarayViewController, NSError *error))completionHandler;
-
 @end

@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSDate *createdDate;
 @property (nonatomic, strong) NSString *string;
+@property (nonatomic, assign) BOOL hasRead;
 
 - (instancetype)initWithString:(NSString *)string;
 

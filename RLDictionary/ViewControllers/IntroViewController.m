@@ -17,7 +17,6 @@
 
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) IBOutlet UITextField *searchTextField;
-//@property (nonatomic, strong) WordDataManager *wordDataManager;
 @property (nonatomic, strong) WordbookManager *wordbookManager;
 
 @end
@@ -118,24 +117,24 @@
     NSString *string = word.string;
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [self.wordDataManager deleteWithString:string];
+        [self.wordbookManager deleteWithString:string];
     }
 }
 
 - (void)findDefinitionFromDictionaryForTerm:(NSString *)term {
     if(term.length == 0) return ;
     
-//    [self.wordDataManager findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *libarayViewController, NSError *error) {
-//        
-//        if(error) {
-//            [self.view makeToast:error.domain];
-//            return ;
-//        }
-//        
-//        if(libarayViewController) {
-//            [self presentViewController:libarayViewController animated:YES completion:nil];
-//        }
-//    }];
+    [self.wordbookManager findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *viewController, NSError *error) {
+        
+        if(error) {
+            [self.view makeToast:error.domain];
+            return ;
+        }
+        
+        if(viewController) {
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
