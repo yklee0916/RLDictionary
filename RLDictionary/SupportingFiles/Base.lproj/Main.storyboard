@@ -129,8 +129,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o5I-xT-ZHF">
-                                <rect key="frame" x="0.0" y="89" width="375" height="568"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o5I-xT-ZHF">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -208,6 +208,11 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="rect" keyPath="contentInset">
+                                        <rect key="value" x="25" y="0.0" width="25" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="q50-xn-2YJ" id="2At-Pc-lXR"/>
                                     <outlet property="delegate" destination="q50-xn-2YJ" id="2Rg-Xt-jLq"/>
@@ -216,9 +221,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="o5I-xT-ZHF" firstAttribute="top" secondItem="2rJ-NJ-Qff" secondAttribute="bottom" constant="25" id="4iV-TG-qge"/>
+                            <constraint firstItem="o5I-xT-ZHF" firstAttribute="top" secondItem="2rJ-NJ-Qff" secondAttribute="bottom" id="4iV-TG-qge"/>
                             <constraint firstItem="o5I-xT-ZHF" firstAttribute="leading" secondItem="WUc-9n-agU" secondAttribute="leading" id="ODH-a8-sij"/>
-                            <constraint firstItem="eOf-zw-JQP" firstAttribute="top" secondItem="o5I-xT-ZHF" secondAttribute="bottom" constant="10" id="SuY-gD-GaC"/>
+                            <constraint firstItem="eOf-zw-JQP" firstAttribute="top" secondItem="o5I-xT-ZHF" secondAttribute="bottom" id="SuY-gD-GaC"/>
                             <constraint firstAttribute="trailing" secondItem="o5I-xT-ZHF" secondAttribute="trailing" id="pc1-IL-3n1"/>
                         </constraints>
                     </view>

@@ -96,8 +96,10 @@
     BOOL byDate = [self wordbookArrangeType];
     [[NSUserDefaults standardUserDefaults] setBool:!byDate forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [self.tableView reloadData];
     
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
+    
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [[WordbookManager sharedInstance] reload];
 }
 
