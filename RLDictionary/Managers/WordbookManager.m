@@ -61,7 +61,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
         }
         else {
             comparativeValue = diffrence;
-            [self.wordbooks addObject:wordbook];
+            if(wordbook.words.count > 0) {
+                [self.wordbooks addObject:wordbook];
+            }
             wordbook = [[Wordbook alloc] init];
             wordbook.createdDate = fromDate;
             [wordbook.words addObject:word];
