@@ -17,7 +17,7 @@
 "kUsage" = "Usage";
 "kDonate" = "";
 
-"SettingDictionary" = "";
+"SettingDictionary" = " ";
 "ResetWordbook" = "Reset all wordbook contents";
 "Description" = "It is based on Apple Dictionary";
 "Contact" = "mailto.ryan.lee@gmail.com";
@@ -29,3 +29,5 @@
 "SettingResetAlertCancelActionTitle" = "Cancel";
 "SettingResetAlertResetActionTitle" = "Reset";
 "SettingResetAlertResetActionToastMessage" = "Wordbook has been initialized succesfully.";
+
+"IntroWordbookHeaderDateFormat" = "MMM d, yyyy";

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@interface WordbookHeaderCell : UITableViewCell
+
+@property (nonatomic, assign) IBOutlet UILabel *textLabel;
+
+@end
+
 @interface IntroViewController : UIViewController
 
 @end

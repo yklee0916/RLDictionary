@@ -10,11 +10,14 @@
 #import "WordDataManager.h"
 #import "WordbookManager.h"
 
+@implementation WordbookHeaderCell
+@end
+
 @interface IntroViewController ()
 
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) IBOutlet UITextField *searchTextField;
-@property (nonatomic, strong) WordDataManager *wordDataManager;
+//@property (nonatomic, strong) WordDataManager *wordDataManager;
 @property (nonatomic, strong) WordbookManager *wordbookManager;
 
 @end
@@ -23,7 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.wordDataManager = [WordDataManager savedObject];
     self.wordbookManager = [WordbookManager sharedInstance];
     [self.wordbookManager reload];
     
@@ -63,45 +65,76 @@
     return NO;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.wordbookManager.wordbooks.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 40.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44.0;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.wordDataManager.count;
+    Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:section];
+    return wordbook.words.count;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    WordbookHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([WordbookHeaderCell class])];
+    
+    Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:section];
+    NSString *string = [wordbook.createdDate descriptionWithDateFormatString:NSLocalizedString(@"IntroWordbookHeaderDateFormat", nil)];
+    [cell.textLabel setText:string];
+    return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wordbookCell"];
-    NSString *string = [self.wordDataManager stringAtIndex:indexPath.row];
+    
+    Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:indexPath.section];
+    Word *word = [wordbook.words objectAtIndex:indexPath.row];
+    NSString *string = word.string;
     [cell.textLabel setText:string];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *term = [self.wordDataManager stringAtIndex:indexPath.row];
+    Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:indexPath.section];
+    Word *word = [wordbook.words objectAtIndex:indexPath.row];
+    NSString *term = word.string;
+    
     [self findDefinitionFromDictionaryForTerm:term];
     [self.tableView reloadData];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:indexPath.section];
+    Word *word = [wordbook.words objectAtIndex:indexPath.row];
+    NSString *string = word.string;
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSString *string = [self.wordDataManager stringAtIndex:indexPath.row];
-        [self.wordDataManager deleteWithString:string];
+//        [self.wordDataManager deleteWithString:string];
     }
 }
 
 - (void)findDefinitionFromDictionaryForTerm:(NSString *)term {
     if(term.length == 0) return ;
     
-    [self.wordDataManager findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *libarayViewController, NSError *error) {
-        
-        if(error) {
-            [self.view makeToast:error.domain];
-            return ;
-        }
-        
-        if(libarayViewController) {
-            [self presentViewController:libarayViewController animated:YES completion:nil];
-        }
-    }];
+//    [self.wordDataManager findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *libarayViewController, NSError *error) {
+//        
+//        if(error) {
+//            [self.view makeToast:error.domain];
+//            return ;
+//        }
+//        
+//        if(libarayViewController) {
+//            [self presentViewController:libarayViewController animated:YES completion:nil];
+//        }
+//    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

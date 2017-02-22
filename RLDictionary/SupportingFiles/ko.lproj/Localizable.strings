@@ -30,3 +30,5 @@
 "SettingResetAlertCancelActionTitle" = "취소";
 "SettingResetAlertResetActionTitle" = "초기화";
 "SettingResetAlertResetActionToastMessage" = "단어장이 초기화 되었습니다.";
+
+"IntroWordbookHeaderDateFormat" = "yyyy년 M월 d일";
