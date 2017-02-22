@@ -23,4 +23,8 @@
     _string = string.lowercaseString;
 }
 
+- (NSString *)description {
+    return [self toJSONString];
+}
+
 @end

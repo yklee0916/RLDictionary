@@ -12,7 +12,6 @@
 @interface WordbookManager ()
 
 @property (nonatomic, strong) WordDataManager *wordDataManager;
-@property (nonatomic, strong) NSMutableArray <Wordbook> *wordbooks;
 @property (nonatomic, assign) WordbookManagerGroupingType groupingType;
 
 @end
@@ -25,24 +24,58 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
     if(self = [super init]) {
         self.wordDataManager = [WordDataManager savedObject];
         self.wordbooks = [NSMutableArray <Wordbook> array];
+//        self.groupingType = WordbookManagerGroupingTypeByWeek;
     }
     return self;
 }
 
 - (void)reload {
     
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSLog(@"path: %@",path);
+    
     NSDate *fromDate;
-    NSDate *toDate;
+    NSDate *toDate = [NSDate date];
+    NSInteger comparativeValue = 0;
+    NSInteger diffrence = 0;
+    Wordbook *wordbook = [[Wordbook alloc] init];
+    
+    for(Word *word in self.wordDataManager.words) {
+        
+        fromDate = word.createdDate;
+        diffrence = [self differencesByGroupingType:self.groupingType fromDate:fromDate toDate:toDate];
+        if(diffrence == -1) continue;
+        NSLog(@"%@ diffrence: %ld",word.string, diffrence);
+        
+        if([self shouldInsertWordkWithComparativeValue:comparativeValue diffrence:diffrence]) {
+            wordbook.createdDate = fromDate;
+            [wordbook.words addObject:word];
+        }
+        else {
+            [self.wordbooks addObject:wordbook];
+            wordbook = [[Wordbook alloc] init];
+            wordbook.createdDate = fromDate;
+            [wordbook.words addObject:word];
+        }
+        
+        if([[self.wordDataManager.words lastObject] isEqual:word]) {
+            [self.wordbooks addObject:wordbook];
+        }
+    }
+    NSLog(@"Wordbooks\n%@",[self.wordbooks description]);
+}
+
+- (BOOL)shouldInsertWordkWithComparativeValue:(NSInteger)comparativeValue diffrence:(NSInteger)diffrence {
+    return comparativeValue == diffrence;
+}
+
+- (NSInteger)differencesByGroupingType:(WordbookManagerGroupingType)type fromDate:fromDate toDate:toDate {
     
     NSDateComponents *differenceComponents = [self differenceComponentsFromDate:fromDate toDate:toDate];
     
-    if(self.groupingType == WordbookManagerGroupingTypeByDay) {
-        [differenceComponents day];
-    }
-    else if(self.groupingType == WordbookManagerGroupingTypeByWeek) {
-        [differenceComponents weekOfMonth];
-    }
-    
+    if(type == WordbookManagerGroupingTypeByDay) return [differenceComponents day];
+    else if(type == WordbookManagerGroupingTypeByWeek) return ([differenceComponents day] / 7);
+    else return -1;
 }
 
 - (BOOL)isGroupedByDateRange:(NSRange)range {

@@ -25,17 +25,17 @@
 
 - (instancetype)init {
     if([super init]) {
-        self.wordbook = [NSMutableArray <Word> array];
+        self.words = [NSMutableArray <Word> array];
     }
     return self;
 }
 
 - (NSUInteger)count {
-    return self.wordbook.count;
+    return self.words.count;
 }
 
 - (NSString *)stringAtIndex:(NSUInteger)index {
-    return [self.wordbook stringAtIndex:index];
+    return [self.words stringAtIndex:index];
 }
 
 - (BOOL)shouldAddWordWhenItSearching {
@@ -44,20 +44,20 @@
 
 - (void)addWithString:(NSString *)string {
     
-    [self.wordbook addObjectByString:string];
+    [self.words addObjectByString:string];
     [self save];
-    [self notifyWordbookDidChanged:string];
+    [self notifywordsDidChanged:string];
 }
 
 - (void)deleteWithString:(NSString *)string {
-    [self.wordbook removeObjectByString:string];
+    [self.words removeObjectByString:string];
     [self save];
-    [self notifyWordbookDidChanged:string];
+    [self notifywordsDidChanged:string];
 }
 
-- (void)notifyWordbookDidChanged:(NSString *)wordString {
+- (void)notifywordsDidChanged:(NSString *)wordString {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"wordbookDidChangedNotification" object:wordString];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"wordsDidChangedNotification" object:wordString];
     });
 }
 
@@ -76,9 +76,9 @@
 }
 
 - (void)resetAll {
-    [self.wordbook removeAllObjects];
+    [self.words removeAllObjects];
     [self save];
-    [self notifyWordbookDidChanged:nil];
+    [self notifywordsDidChanged:nil];
 }
 
 - (void)save {

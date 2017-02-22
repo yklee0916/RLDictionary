@@ -10,4 +10,15 @@
 
 @implementation Wordbook
 
+- (instancetype)init {
+    if(self = [super init]) {
+        self.words = [NSMutableArray <Word> array];
+    }
+    return self;
+}
+
+- (NSString *)description {
+    return [self toJSONString];
+}
+
 @end

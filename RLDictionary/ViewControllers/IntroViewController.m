@@ -25,6 +25,7 @@
     [super viewDidLoad];
     self.wordDataManager = [WordDataManager savedObject];
     self.wordbookManager = [WordbookManager sharedInstance];
+    [self.wordbookManager reload];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(wordbookDidChanged:)

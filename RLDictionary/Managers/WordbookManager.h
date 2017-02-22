@@ -16,6 +16,8 @@ typedef NS_ENUM(NSUInteger, WordbookManagerGroupingType) {
 
 @interface WordbookManager : NSObject
 
+@property (nonatomic, strong) NSMutableArray <Wordbook> *wordbooks;
+
 + (WordbookManager *)sharedInstance;
 
 - (void)reload;

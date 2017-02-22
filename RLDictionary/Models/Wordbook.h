@@ -12,9 +12,9 @@
 @protocol Wordbook
 @end
 
-@interface Wordbook : NSObject
+@interface Wordbook : JSONModel
 
 @property (nonatomic, strong) NSDate *createdDate;
-@property (nonatomic, strong) NSArray <Word> *words;
+@property (nonatomic, strong) NSMutableArray <Word> *words;
 
 @end

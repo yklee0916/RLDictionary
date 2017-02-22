@@ -12,7 +12,7 @@
 
 @interface WordDataManager : JSONModel
 
-@property (nonatomic, strong) NSMutableArray <Word> *wordbook;
+@property (nonatomic, strong) NSMutableArray <Word> *words;
 
 + (instancetype)savedObject;
 
