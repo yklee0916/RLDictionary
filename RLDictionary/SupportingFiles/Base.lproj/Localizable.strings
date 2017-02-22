@@ -25,8 +25,8 @@
 "Archor" = "Ryan Lee";
 "Donate" = "Donate to developer";
 
-"WordbookArrangeByTypeDay" = "by Day";
-"WordbookArrangeByTypeWeek" = "by Week";
+"WordbookArrangeByTypeDay" = "By Day";
+"WordbookArrangeByTypeWeek" = "By Week";
 
 "SettingResetAlertTitle" = "Warning";
 "SettingResetAlertMessage" = "Are you sure you want to reset wordbook?";
