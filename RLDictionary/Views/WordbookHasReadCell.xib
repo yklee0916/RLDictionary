@@ -20,13 +20,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzE-qG-mpA">
-                        <rect key="frame" x="33" y="12" width="91.5" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.54509803921568623" green="0.54509803921568623" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="33" y="12" width="90.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                        <color key="textColor" red="0.4823529411764706" green="0.4823529411764706" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Otc-Md-tHE">
-                        <rect key="frame" x="332" y="9.5" width="25" height="25"/>
+                        <rect key="frame" x="335" y="9.5" width="25" height="25"/>
                         <state key="normal" image="checked"/>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rEZ-oM-eYM" userLabel="Bottom Line">
@@ -39,7 +39,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="rEZ-oM-eYM" secondAttribute="bottom" id="J96-bm-ZCx"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Otc-Md-tHE" secondAttribute="trailing" constant="10" id="KrJ-RT-fBx"/>
+                    <constraint firstAttribute="trailing" secondItem="Otc-Md-tHE" secondAttribute="trailing" constant="15" id="KrJ-RT-fBx"/>
                     <constraint firstItem="Otc-Md-tHE" firstAttribute="centerY" secondItem="C3F-iU-fd7" secondAttribute="centerY" id="NYe-2N-a9M"/>
                     <constraint firstItem="XzE-qG-mpA" firstAttribute="leading" secondItem="C3F-iU-fd7" secondAttribute="leadingMargin" constant="25" id="kNe-1E-5Z9"/>
                     <constraint firstItem="rEZ-oM-eYM" firstAttribute="centerX" secondItem="C3F-iU-fd7" secondAttribute="centerX" id="pXO-ai-xch"/>

@@ -128,22 +128,54 @@
 
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    UIImage *(^imageWithView)(UIView *) = ^(UIView *view) {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
+        [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return image;
+    };
+    
+    UIColor *(^getColorWithLabelText)(NSString*, UIColor*, UIColor*) = ^(NSString *text, UIColor *textColor, UIColor *bgColor) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+        label.font = [UIFont boldSystemFontOfSize:12];
+        label.numberOfLines = 2;
+        label.text = text;
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = textColor;
+        label.backgroundColor = bgColor;
+        return [UIColor colorWithPatternImage:imageWithView(label)];
+    };
+    
     Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:indexPath.section];
     Word *word = [wordbook.words objectAtIndex:indexPath.row];
     BOOL hasRead = word.hasRead;
     NSString *string = word.string;
     NSString *readActionTitle = NSLocalizedString(hasRead ?@"IntroWordbookHideReadWordsYES" : @"IntroWordbookHideReadWordsNO", nil);
     
-    UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:readActionTitle handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
-        
-        [self.wordbookManager setHasRead:!hasRead withString:string];
-        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    }];
-    moreAction.backgroundColor = [UIColor lightGrayColor];
+    UITableViewRowAction *moreAction;
+    moreAction = [UITableViewRowAction
+                rowActionWithStyle:UITableViewRowActionStyleNormal
+                title:@"      "
+                handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+                    [self.wordbookManager setHasRead:!hasRead withString:string];
+//                    tableView.editing = NO;
+                    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                }];
+    moreAction.backgroundColor = getColorWithLabelText(readActionTitle, [UIColor whiteColor], [UIColor lightGrayColor]);
     
-    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"삭제"  handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
-        [self.wordbookManager deleteWithString:string];
-    }];
+    
+    UITableViewRowAction *deleteAction;
+    deleteAction = [UITableViewRowAction
+                  rowActionWithStyle:UITableViewRowActionStyleNormal
+                  title:@"      "
+                    handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+                        
+                        tableView.editing = NO;
+                      [self.wordbookManager deleteWithString:string];
+                  }];
+    deleteAction.backgroundColor = getColorWithLabelText(@"삭제", [UIColor whiteColor], [UIColor redColor]);
+    
     
     return @[deleteAction, moreAction];
     
