@@ -35,6 +35,21 @@
     [self save];
 }
 
+- (Word *)wordAtString:(NSString *)string {
+    return [self.words wordAtString:string];
+}
+
+- (BOOL)hasReadWithString:(NSString *)string {
+    Word *word = [self.words wordAtString:string];
+    return word.hasRead;
+}
+
+- (void)setHasRead:(BOOL)hasRead withString:(NSString *)string {
+    Word *word = [self.words wordAtString:string];
+    word.hasRead = hasRead;
+    [self save];
+}
+
 - (void)deleteWithString:(NSString *)string {
     [self.words removeObjectByString:string];
     [self save];

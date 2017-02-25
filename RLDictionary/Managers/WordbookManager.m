@@ -141,7 +141,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
 - (void)resetAll {
     [self.wordDataManager resetAll];
     [self reload];
-    
+}
+
+- (BOOL)hasReadWithString:(NSString *)string {
+    return [self.wordDataManager hasReadWithString:string];
+}
+
+- (void)setHasRead:(BOOL)hasRead withString:(NSString *)string {
+    [self.wordDataManager setHasRead:hasRead withString:string];
 }
 
 - (void)deleteWithString:(NSString *)word {

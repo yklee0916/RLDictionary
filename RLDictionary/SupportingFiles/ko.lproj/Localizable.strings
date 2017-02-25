@@ -11,6 +11,7 @@
 "kSettingDictionary" = "사전 설정";
 "kResetWordbook" = "초기화";
 "kWordbookArrangeByType" = "정렬 방식";
+"kWordbookHideReadWords" = "필터 방식";
 "kDescription" = "설명";
 "kContact" = "문의하기";
 "kAppVersion" = "버전";
@@ -29,6 +30,9 @@
 "WordbookArrangeByTypeDay" = "일 단위";
 "WordbookArrangeByTypeWeek" = "주 단위";
 
+"WordbookHideReadWordsYES" = "읽은 단어 숨김";
+"WordbookHideReadWordsNO" = "읽은 단어 표시";
+
 "SettingResetAlertTitle" = "경고";
 "SettingResetAlertMessage" = "단어장을 초기화 하시겠습니까?";
 "SettingResetAlertCancelActionTitle" = "취소";
@@ -36,3 +40,5 @@
 "SettingResetAlertResetActionToastMessage" = "단어장이 초기화 되었습니다.";
 
 "IntroWordbookHeaderDateFormat" = "yyyy년 M월 d일";
+"IntroWordbookHideReadWordsNO" = "읽음\n표시";
+"IntroWordbookHideReadWordsYES" = "읽지\n않음";

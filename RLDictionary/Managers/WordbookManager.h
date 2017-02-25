@@ -22,6 +22,8 @@ typedef NS_ENUM(NSUInteger, WordbookManagerGroupingType) {
 
 - (void)reload;
 - (void)resetAll;
+- (BOOL)hasReadWithString:(NSString *)word;
+- (void)setHasRead:(BOOL)hasRead withString:(NSString *)word;
 - (void)deleteWithString:(NSString *)word;
 - (void)findDefinitionFromDictionaryForTerm:(NSString *)term completionHandler:(void (^)(UIReferenceLibraryViewController *libarayViewController, NSError *error))completionHandler;
 

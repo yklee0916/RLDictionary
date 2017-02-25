@@ -65,7 +65,8 @@
         [cell.title setText:title];
         [cell.linkableContent setTitle:content forState:UIControlStateNormal];
         [cell.linkableContent setTitle:content forState:UIControlStateHighlighted];
-        [cell.linkableContent addTarget:self action:@selector(resetWordbookAction:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.linkableContent addTarget:self action:@selector(linkContentButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        cell.linkableContent.tag = 901;
     }
     else if([key isEqualToString:@"kWordbookArrangeByType"]) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"linkableCell"];
@@ -73,14 +74,25 @@
         content = NSLocalizedString(self.wordbookArrangeType ? @"WordbookArrangeByTypeWeek" : @"WordbookArrangeByTypeDay", nil);
         [cell.linkableContent setTitle:content forState:UIControlStateNormal];
         [cell.linkableContent setTitle:content forState:UIControlStateHighlighted];
-        [cell.linkableContent addTarget:self action:@selector(setWordbookArrangeTypeAction:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.linkableContent addTarget:self action:@selector(linkContentButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        cell.linkableContent.tag = 902;
+    }
+    else if([key isEqualToString:@"kWordbookHideReadWords"]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"linkableCell"];
+        [cell.title setText:title];
+        content = NSLocalizedString(self.hideReadWords ? @"WordbookHideReadWordsYES" : @"WordbookHideReadWordsNO", nil);
+        [cell.linkableContent setTitle:content forState:UIControlStateNormal];
+        [cell.linkableContent setTitle:content forState:UIControlStateHighlighted];
+        [cell.linkableContent addTarget:self action:@selector(linkContentButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        cell.linkableContent.tag = 903;
     }
     else if([key isEqualToString:@"kDonate"]) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"linkableCell"];
         [cell.title setText:title];
         [cell.linkableContent setTitle:content forState:UIControlStateNormal];
         [cell.linkableContent setTitle:content forState:UIControlStateHighlighted];
-        [cell.linkableContent addTarget:self action:@selector(donateToDeveloperAction:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.linkableContent addTarget:self action:@selector(linkContentButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        cell.linkableContent.tag = 904;
     }
     
     return cell;
@@ -91,6 +103,36 @@
     return [[NSUserDefaults standardUserDefaults] boolForKey:key];
 }
 
+- (BOOL)hideReadWords {
+    NSString *key = @"WordbookHideReadWords";
+    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
+}
+
+- (void)linkContentButtonAction:(UIButton *)sender {
+    NSInteger tag = sender.tag;
+    switch(tag) {
+        case 901: {
+            [self resetWordbookAction:sender];
+            break;
+        }
+        case 902: {
+            [self setWordbookArrangeTypeAction:sender];
+            break;
+        }
+        case 903: {
+            [self setHideReadWordsAction:sender];
+            break;
+        }
+        case 904: {
+            [self donateToDeveloperAction:sender];
+            break;
+        }
+        default :
+            break;
+            
+    }
+}
+
 - (void)setWordbookArrangeTypeAction:(id)sender {
     NSString *key = @"WordbookManagerGroupingType";
     BOOL byDate = [self wordbookArrangeType];
@@ -98,6 +140,19 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
+    
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [[WordbookManager sharedInstance] reload];
+}
+
+
+- (void)setHideReadWordsAction:(id)sender {
+    NSString *key = @"WordbookHideReadWords";
+    BOOL hide = [self hideReadWords];
+    [[NSUserDefaults standardUserDefaults] setBool:!hide forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:4 inSection:0];
     
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [[WordbookManager sharedInstance] reload];

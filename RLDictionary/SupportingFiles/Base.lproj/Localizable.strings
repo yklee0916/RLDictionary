@@ -11,6 +11,8 @@
 "kSettingDictionary" = "Dictionary";
 "kResetWordbook" = "Reset";
 "kWordbookArrangeByType" = "ArrangeType";
+"kWordbookHideReadWords" = "Filter";
+
 "kDescription" = "Description";
 "kAppVersion" = "Version";
 "kContact" = "Contact";

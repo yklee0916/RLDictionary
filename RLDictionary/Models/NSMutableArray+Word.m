@@ -30,6 +30,16 @@
     }
 }
 
+- (Word *)wordAtString:(NSString *)string {
+    if(!string) return nil;
+    for(Word *word in self) {
+        if([word.string isEqualToString:string]) {
+            return word;
+        }
+    }
+    return nil;
+}
+
 - (NSUInteger)indexOfString:(NSString *)string {
     if(!string) return NSNotFound;
     for(Word *word in self) {

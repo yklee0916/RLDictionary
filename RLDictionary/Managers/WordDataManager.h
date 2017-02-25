@@ -19,8 +19,10 @@
 - (NSUInteger)count;
 - (NSString *)stringAtIndex:(NSUInteger)index;
 
-- (void)addWithString:(NSString *)word;
-- (void)deleteWithString:(NSString *)word;
+- (BOOL)hasReadWithString:(NSString *)word;
+- (void)setHasRead:(BOOL)hasRead withString:(NSString *)word;
+- (void)addWithString:(NSString *)string;
+- (void)deleteWithString:(NSString *)string;
 
 - (void)resetAll;
 

@@ -16,6 +16,7 @@
 - (void)addObjectByString:(NSString *)string;
 - (void)removeObjectByString:(NSString *)string;
 
+- (Word *)wordAtString:(NSString *)string;
 - (NSUInteger)indexOfString:(NSString *)string;
 - (NSString *)stringAtIndex:(NSUInteger)index;
 - (NSDate *)createdDateAtIndex:(NSUInteger)index;

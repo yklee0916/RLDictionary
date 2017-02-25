@@ -11,6 +11,7 @@
 #import "WordbookManager.h"
 #import "WordbookHeaderView.h"
 #import "WordbookTableViewCell.h"
+#import "WordbookHasReadCell.h"
 
 @interface IntroViewController ()
 
@@ -24,8 +25,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *identifier = NSStringFromClass([WordbookTableViewCell class]);
-    [self.tableView registerNib:[UINib nibWithNibName:identifier bundle:nil] forCellReuseIdentifier:identifier];
+    NSString *wordbookTableViewCell = NSStringFromClass([WordbookTableViewCell class]);
+    [self.tableView registerNib:[UINib nibWithNibName:wordbookTableViewCell bundle:nil] forCellReuseIdentifier:wordbookTableViewCell];
+    
+    NSString *wordbookHasReadCell = NSStringFromClass([WordbookHasReadCell class]);
+    [self.tableView registerNib:[UINib nibWithNibName:wordbookHasReadCell bundle:nil] forCellReuseIdentifier:wordbookHasReadCell];
+    
     self.wordbookManager = [WordbookManager sharedInstance];
     [self.wordbookManager reload];
     UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 5)];
@@ -96,10 +101,17 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WordbookTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WordbookTableViewCell"];
     
     Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:indexPath.section];
     Word *word = [wordbook.words objectAtIndex:indexPath.row];
+    
+    WordbookTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WordbookTableViewCell"];
+    
+    
+    if(word.hasRead) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"WordbookHasReadCell"];
+    }
+    
     NSString *string = word.string;
     [cell.contentLabel setText:string];
     return cell;
@@ -112,6 +124,30 @@
     
     [self findDefinitionFromDictionaryForTerm:term];
     [self.tableView reloadData];
+}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:indexPath.section];
+    Word *word = [wordbook.words objectAtIndex:indexPath.row];
+    BOOL hasRead = word.hasRead;
+    NSString *string = word.string;
+    NSString *readActionTitle = NSLocalizedString(hasRead ?@"IntroWordbookHideReadWordsYES" : @"IntroWordbookHideReadWordsNO", nil);
+    
+    UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:readActionTitle handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+        
+        [self.wordbookManager setHasRead:!hasRead withString:string];
+        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }];
+    moreAction.backgroundColor = [UIColor lightGrayColor];
+    
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"삭제"  handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+        [self.wordbookManager deleteWithString:string];
+    }];
+    
+    return @[deleteAction, moreAction];
+    
+//    return [deleteRowAction, moreRowAction];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
