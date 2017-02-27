@@ -7,8 +7,12 @@
 //
 
 #import "WordDataManager.h"
+#import "FMDB.h"
 
 @interface WordDataManager ()
+
+@property (nonatomic, strong) FMDatabase *database;
+
 
 @end
 
@@ -17,8 +21,80 @@
 - (instancetype)init {
     if([super init]) {
         self.words = [NSMutableArray <Word> array];
+        
+        [self loadDatabase];
     }
     return self;
+}
+
+- (NSString *)pathForCachesDirectory
+{
+    static NSString *path = nil;
+    static dispatch_once_t token;
+    
+    dispatch_once(&token, ^{
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        
+        path = [paths lastObject];
+    });
+    
+    return path;
+}
+
+- (NSString *)databaseFileName {
+    return @"podic_words.db";
+}
+
+- (BOOL)loadDatabase {
+    NSMutableString *filePath = [NSMutableString string];
+    [filePath appendString:[self pathForCachesDirectory]];
+    [filePath appendString:@"/com.test.tmap/"];
+    [filePath appendString:[self databaseFileName]];
+    NSURL *fileURL = [NSURL URLWithString:filePath];
+    return [self loadDatabaseWithURL:fileURL];
+}
+
+- (BOOL)loadDatabaseWithURL:(NSURL *)filePath {
+    NSString *filePathString = filePath.absoluteString;
+    if(!filePathString) return NO;
+    
+    @try{
+        self.database = [FMDatabase databaseWithPath:filePathString];
+        if(![self.database open]) return NO;
+        
+        [self create];
+    }
+    @catch (NSException * e) {
+    }
+    return YES;
+}
+
+- (void)create {
+    NSString *sql = @"create table words ( text varchar(100) primary key, createdDate varchar(50), hasRead int )";
+    [self.database executeUpdate:sql];
+}
+
+- (void)select {
+    NSString *selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@ ", @"words"];
+    FMResultSet *s = [self.database executeQuery:selectQuery];
+    
+    while ([s next]) {
+        NSString *text = [s stringForColumn:@"text"];
+        NSString *dateString = [s stringForColumn:@"createdDate"];
+        NSUInteger hasRead = [s intForColumn:@"hasRead"];
+        NSDateFormatter *df = [[NSDateFormatter alloc]init];
+        [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+        
+        Word *word = [[Word alloc] init];
+        word.string = text;
+        word.createdDate = [df dateFromString:dateString];
+        word.hasRead = [[NSNumber numberWithInteger:hasRead] boolValue];
+        
+        if(word) {
+            [self.words addObject:word];
+        }
+    }
 }
 
 - (NSUInteger)count {
@@ -61,10 +137,14 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        NSString *key = NSStringFromClass([WordDataManager class]);
-        NSString *jsonString = [[NSUserDefaults standardUserDefaults] stringForKey:key];
-        NSError *error;
-        accessorname = jsonString.length > 0 ? [[WordDataManager alloc] initWithString:jsonString error:&error] : [[WordDataManager alloc] init];
+        accessorname = [[WordDataManager alloc] init];
+        [accessorname select];
+        
+        
+//        NSString *key = NSStringFromClass([WordDataManager class]);
+//        NSString *jsonString = [[NSUserDefaults standardUserDefaults] stringForKey:key];
+//        NSError *error;
+//        accessorname = jsonString.length > 0 ? [[WordDataManager alloc] initWithString:jsonString error:&error] : [[WordDataManager alloc] init];
     });
     return accessorname;
 }
