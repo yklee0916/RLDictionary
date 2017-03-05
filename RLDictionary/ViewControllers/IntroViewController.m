@@ -95,7 +95,7 @@
 
     WordbookHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"WordbookHeaderView" owner:self options:nil] firstObject];
     Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:section];
-    NSString *string = [wordbook.createdDate descriptionWithDateFormatString:NSLocalizedString(@"IntroWordbookHeaderDateFormat", nil)];
+    NSString *string = [wordbook.createdDate descriptionWithDateFormat:NSLocalizedString(@"IntroWordbookHeaderDateFormat", DEFAULT_DATE_FORMAT)];
     [header.textLabel setText:string];
     return header;
 }

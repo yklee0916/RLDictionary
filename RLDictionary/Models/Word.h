@@ -7,7 +7,7 @@
 //
 
 #import <JSONModel/JSONModel.h>
-#import "NSDate+Word.h"
+#import "NSDate+NSDateFormatter.h"
 
 @protocol Word
 @end

@@ -84,12 +84,10 @@
         NSString *text = [s stringForColumn:@"text"];
         NSString *dateString = [s stringForColumn:@"createdDate"];
         NSUInteger hasRead = [s intForColumn:@"hasRead"];
-        NSDateFormatter *df = [[NSDateFormatter alloc]init];
-        [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
         
         Word *word = [[Word alloc] init];
         word.string = text;
-        word.createdDate = [df dateFromString:dateString];
+        word.createdDate = [NSDate dateFromString:dateString];
         word.hasRead = [[NSNumber numberWithInteger:hasRead] boolValue];
         
         if(word) {
@@ -114,10 +112,8 @@
 }
 
 - (void)addWithWord:(Word *)word {
-    NSDateFormatter *df = [[NSDateFormatter alloc]init];
-    [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
-    NSString *createdDate = [df stringFromDate:word.createdDate];
-    NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ VALUES ('%@', '%@', %d)", @"words", word.string, createdDate, word.hasRead];
+    
+    NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ VALUES ('%@', '%@', %d)", @"words", word.string, [word.createdDate description], word.hasRead];
     [self.database executeUpdate:sql];
 }
 
