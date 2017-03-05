@@ -13,7 +13,7 @@
 
 - (BOOL)containsString:(NSString *)string;
 
-- (void)addObjectByString:(NSString *)string;
+- (Word *)addObjectByString:(NSString *)string;
 - (void)removeObjectByString:(NSString *)string;
 
 - (Word *)wordAtString:(NSString *)string;

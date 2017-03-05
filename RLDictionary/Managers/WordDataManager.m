@@ -34,7 +34,7 @@
     
     dispatch_once(&token, ^{
         
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         
         path = [paths lastObject];
     });
@@ -49,7 +49,8 @@
 - (BOOL)loadDatabase {
     NSMutableString *filePath = [NSMutableString string];
     [filePath appendString:[self pathForCachesDirectory]];
-    [filePath appendString:@"/com.test.tmap/"];
+    [filePath appendString:@"/"];
+//    [filePath appendString:@"/com.test.tmap/"];
     [filePath appendString:[self databaseFileName]];
     NSURL *fileURL = [NSURL URLWithString:filePath];
     return [self loadDatabaseWithURL:fileURL];
@@ -107,9 +108,26 @@
 
 - (void)addWithString:(NSString *)string {
     
-    [self.words addObjectByString:string];
+    Word *word = [self.words addObjectByString:string];
+    [self addWithWord:word];
     [self save];
 }
+
+- (void)addWithWord:(Word *)word {
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+    NSString *createdDate = [df stringFromDate:word.createdDate];
+    NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ VALUES ('%@', '%@', %d)", @"words", word.string, createdDate, word.hasRead];
+    [self.database executeUpdate:sql];
+}
+
+
+- (void)removeWithString:(NSString *)string {
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE text='%@'", @"words", string];
+    [self.database executeUpdate:sql];
+}
+
+
 
 - (Word *)wordAtString:(NSString *)string {
     return [self.words wordAtString:string];
@@ -128,6 +146,7 @@
 
 - (void)deleteWithString:(NSString *)string {
     [self.words removeObjectByString:string];
+    [self removeWithString:string];
     [self save];
 }
 
@@ -143,6 +162,7 @@
         
 //        NSString *key = NSStringFromClass([WordDataManager class]);
 //        NSString *jsonString = [[NSUserDefaults standardUserDefaults] stringForKey:key];
+//        NSLog(@"%@",jsonString);
 //        NSError *error;
 //        accessorname = jsonString.length > 0 ? [[WordDataManager alloc] initWithString:jsonString error:&error] : [[WordDataManager alloc] init];
     });

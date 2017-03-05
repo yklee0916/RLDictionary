@@ -15,12 +15,13 @@
     return index != NSNotFound;
 }
 
-- (void)addObjectByString:(NSString *)string {
-    if([self containsString:string]) return;
+- (Word *)addObjectByString:(NSString *)string {
+    if([self containsString:string]) return nil;
     Word *word = [[Word alloc] initWithString:string];
     if(word) {
         [self insertObject:word atIndex:0];
     }
+    return word;
 }
 
 - (void)removeObjectByString:(NSString *)string {
