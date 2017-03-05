@@ -2,7 +2,7 @@
 //  WordbookHasReadCell.h
 //  RLDictionary
 //
-//  Created by Rio on 25/02/2017.
+//  Created by Ryan Lee on 25/02/2017.
 //  Copyright © 2017 Ryan Lee. All rights reserved.
 //
 
