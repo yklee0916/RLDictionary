@@ -20,9 +20,29 @@
 - (instancetype)init {
     if([super init]) {
         self.words = [NSMutableArray <Word> array];
+        [self copyToDocumentData];
         [self openDatabase];
     }
     return self;
+}
+
+
+- (void)copyToDocumentData {
+    NSError *error;
+    if(![[NSFileManager defaultManager] fileExistsAtPath:self.backpupFileURL.absoluteString]) return ;
+    
+    if([[NSFileManager defaultManager] fileExistsAtPath:self.databaseFileURL.absoluteString]) {
+        [[NSFileManager defaultManager] removeItemAtPath:self.databaseFileURL.absoluteString error:&error];
+    }
+    [[NSFileManager defaultManager] moveItemAtPath:self.backpupFileURL.absoluteString toPath:self.databaseFileURL.absoluteString error:&error];
+}
+
+- (NSURL *)backpupFileURL {
+    NSMutableString *filePath = [NSMutableString string];
+    [filePath appendString:[NSFileManager pathForDocumentDirectory]];
+    [filePath appendString:NFFILE_SEPERATOR];
+    [filePath appendString:self.databaseFileName];
+    return [NSURL URLWithString:filePath];
 }
 
 - (NSString *)databaseFileName {
