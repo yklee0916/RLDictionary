@@ -89,12 +89,24 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
     return comparativeValue == diffrence;
 }
 
-- (NSInteger)differencesByGroupingType:(WordbookManagerGroupingType)type fromDate:fromDate toDate:toDate {
+- (NSInteger)differencesByGroupingType:(WordbookManagerGroupingType)type fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate {
     
-    NSDateComponents *differenceComponents = [self differenceComponentsFromDate:fromDate toDate:toDate];
+//NSDateComponents *differenceComponents = [self differenceComponentsFromDate:fromDate toDate:toDate];
+  
+    NSDate *fromRangeDate;
+    NSDate *toRangeDate;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    [calendar setFirstWeekday:2];
+    NSCalendarUnit unit;
+    if(type == WordbookManagerGroupingTypeByDay) unit = NSCalendarUnitDay;
+    else if(type == WordbookManagerGroupingTypeByWeek) unit = NSCalendarUnitWeekOfYear;
+    
+    [calendar rangeOfUnit:unit startDate:&fromRangeDate interval:NULL forDate:fromDate];
+    [calendar rangeOfUnit:unit startDate:&toRangeDate interval:NULL forDate:toDate];
+    NSDateComponents *differenceComponents = [calendar components:unit fromDate:fromRangeDate toDate:toRangeDate options:0];
     
     if(type == WordbookManagerGroupingTypeByDay) return [differenceComponents day];
-    else if(type == WordbookManagerGroupingTypeByWeek) return ([differenceComponents day] / 7);
+    else if(type == WordbookManagerGroupingTypeByWeek) return ([differenceComponents weekOfYear]);
     else return -1;
 }
 

@@ -87,7 +87,7 @@
 }
 
 - (void)select {
-    NSString *selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@ ", @"words"];
+    NSString *selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY createdDate DESC", @"words"];
     FMResultSet *s = [self.database executeQuery:selectQuery];
     
     while ([s next]) {
@@ -107,7 +107,7 @@
 }
 
 - (void)selectWithHasBeenRead:(BOOL)hasRead {
-    NSString *selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE hasRead=%d", @"words", hasRead];
+    NSString *selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE hasRead=%d ORDER BY createdDate DESC", @"words", hasRead];
     FMResultSet *s = [self.database executeQuery:selectQuery];
     
     while ([s next]) {
