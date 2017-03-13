@@ -172,6 +172,16 @@
     Word *word = [self.words wordAtString:string];
     word.hasRead = hasRead;
     [self updateFromWord:word];
+    [self hideWordIfNeeded:word];
+}
+
+- (void)hideWordIfNeeded:(Word *)word {
+    if(!word) return ;
+    
+    NSString *key = @"WordbookHideReadWords";
+    BOOL hasRead = [[NSUserDefaults standardUserDefaults] boolForKey:key];
+    if(!hasRead) return ;
+    [self.words removeObjectByString:word.string];
 }
 
 - (void)deleteWithString:(NSString *)string {

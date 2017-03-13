@@ -160,7 +160,7 @@
                 handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
                     [self.wordbookManager setHasRead:!hasRead withString:string];
 //                    tableView.editing = NO;
-                    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//                    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
                 }];
     moreAction.backgroundColor = getColorWithLabelText(readActionTitle, [UIColor whiteColor], [UIColor lightGrayColor]);
     
