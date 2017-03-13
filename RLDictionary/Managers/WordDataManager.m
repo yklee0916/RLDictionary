@@ -20,7 +20,7 @@
 - (instancetype)init {
     if([super init]) {
         self.words = [NSMutableArray <Word> array];
-        [self loadDatabase];
+        [self openDatabase];
     }
     return self;
 }
@@ -37,17 +37,18 @@
     NSMutableString *filePath = [NSMutableString string];
     [filePath appendString:[NSFileManager pathForCachesDirectory]];
     [filePath appendString:NFFILE_SEPERATOR];
-    //    [filePath appendString:@"/com.test.tmap/"];
+    [filePath appendString:[[NSBundle mainBundle] bundleIdentifier]];
+    [filePath appendString:NFFILE_SEPERATOR];
     [filePath appendString:self.databaseFileName];
     return [NSURL URLWithString:filePath];
 }
 
-- (BOOL)loadDatabase {
+- (BOOL)openDatabase {
     NSURL *fileURL = self.databaseFileURL;
-    return [self loadDatabaseWithURL:fileURL];
+    return [self openDatabaseWithURL:fileURL];
 }
 
-- (BOOL)loadDatabaseWithURL:(NSURL *)filePath {
+- (BOOL)openDatabaseWithURL:(NSURL *)filePath {
     NSString *filePathString = filePath.absoluteString;
     if(!filePathString) return NO;
     
@@ -55,20 +56,58 @@
         self.database = [FMDatabase databaseWithPath:filePathString];
         if(![self.database open]) return NO;
         
-        [self create];
+        [self createTable];
     }
     @catch (NSException * e) {
+        return NO;
     }
     return YES;
 }
 
-- (void)create {
+- (void)createTable {
     NSString *sql = @"create table words ( text varchar(100) primary key, createdDate varchar(50), hasRead int )";
     [self.database executeUpdate:sql];
 }
 
+- (void)reload {
+    [self.words removeAllObjects];
+    [self loadTable];
+}
+
+- (void)loadTable {
+    NSString *key = @"WordbookHideReadWords";
+    BOOL hasRead = [[NSUserDefaults standardUserDefaults] boolForKey:key];
+    
+    if(hasRead) {
+        [self select];
+    }
+    else {
+        [self selectWithHasBeenRead:NO];
+    }
+}
+
 - (void)select {
     NSString *selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@ ", @"words"];
+    FMResultSet *s = [self.database executeQuery:selectQuery];
+    
+    while ([s next]) {
+        NSString *text = [s stringForColumn:@"text"];
+        NSString *dateString = [s stringForColumn:@"createdDate"];
+        NSUInteger hasRead = [s intForColumn:@"hasRead"];
+        
+        Word *word = [[Word alloc] init];
+        word.string = text;
+        word.createdDate = [NSDate dateFromString:dateString];
+        word.hasRead = [[NSNumber numberWithInteger:hasRead] boolValue];
+        
+        if(word) {
+            [self.words addObject:word];
+        }
+    }
+}
+
+- (void)selectWithHasBeenRead:(BOOL)hasRead {
+    NSString *selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE hasRead=%d", @"words", hasRead];
     FMResultSet *s = [self.database executeQuery:selectQuery];
     
     while ([s next]) {
@@ -99,22 +138,26 @@
     
     Word *word = [self.words addObjectByString:string];
     [self addWithWord:word];
-    [self save];
 }
 
 - (void)addWithWord:(Word *)word {
-    
+    if(!word) return ;
     NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ VALUES ('%@', '%@', %d)", @"words", word.string, [word.createdDate description], word.hasRead];
     [self.database executeUpdate:sql];
 }
 
-
-- (void)removeWithString:(NSString *)string {
-    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE text='%@'", @"words", string];
+- (void)updateFromWord:(Word *)word {
+    if(!word) return ;
+    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET createdDate='%@', hasRead=%d WHERE text='%@'", @"words", [word.createdDate description], word.hasRead, word.string];
     [self.database executeUpdate:sql];
 }
 
-
+- (void)removeWithString:(NSString *)string {
+    if(string.isEmpty) return ;
+    
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE text='%@'", @"words", string];
+    [self.database executeUpdate:sql];
+}
 
 - (Word *)wordAtString:(NSString *)string {
     return [self.words wordAtString:string];
@@ -128,13 +171,12 @@
 - (void)setHasRead:(BOOL)hasRead withString:(NSString *)string {
     Word *word = [self.words wordAtString:string];
     word.hasRead = hasRead;
-    [self save];
+    [self updateFromWord:word];
 }
 
 - (void)deleteWithString:(NSString *)string {
     [self.words removeObjectByString:string];
     [self removeWithString:string];
-    [self save];
 }
 
 + (instancetype)savedObject {
@@ -142,31 +184,16 @@
     static WordDataManager *accessorname = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
         accessorname = [[WordDataManager alloc] init];
-        [accessorname select];
-        
-        
-//        NSString *key = NSStringFromClass([WordDataManager class]);
-//        NSString *jsonString = [[NSUserDefaults standardUserDefaults] stringForKey:key];
-//        NSLog(@"%@",jsonString);
-//        NSError *error;
-//        accessorname = jsonString.length > 0 ? [[WordDataManager alloc] initWithString:jsonString error:&error] : [[WordDataManager alloc] init];
+        [accessorname loadTable];
     });
+    
     return accessorname;
 }
 
 - (void)resetAll {
+    
     [self.words removeAllObjects];
-    [self save];
-}
-
-- (void)save {
-    NSString *jsonString = [self toJSONString];
-    if(jsonString.length == 0) return ;
-    NSString *key = NSStringFromClass([WordDataManager class]);
-    [[NSUserDefaults standardUserDefaults] setObject:jsonString forKey:key];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSString *)description {

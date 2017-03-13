@@ -1,13 +1,15 @@
 //
-//  NSMutableArray+FMDB.h
+//  NSString+NSAssert.h
 //  RLDictionary
 //
-//  Created by Ryan Lee on 05/03/2017.
+//  Created by younggi.lee on 13/03/2017.
 //  Copyright © 2017 Ryan Lee. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface NSMutableArray (FMDB)
+@interface NSString (NSASSert)
+
+- (BOOL)isEmpty;
 
 @end

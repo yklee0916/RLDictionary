@@ -32,7 +32,7 @@
 }
 
 - (Word *)wordAtString:(NSString *)string {
-    if(!string) return nil;
+    if(string.isEmpty) return nil;
     for(Word *word in self) {
         if([word.string isEqualToString:string]) {
             return word;
@@ -42,7 +42,7 @@
 }
 
 - (NSUInteger)indexOfString:(NSString *)string {
-    if(!string) return NSNotFound;
+    if(string.isEmpty) return NSNotFound;
     for(Word *word in self) {
         if([word.string isEqualToString:string]) {
             return [self indexOfObject:word];

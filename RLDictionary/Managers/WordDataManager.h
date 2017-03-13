@@ -24,6 +24,7 @@
 - (void)addWithString:(NSString *)string;
 - (void)deleteWithString:(NSString *)string;
 
+- (void)reload;
 - (void)resetAll;
 
 @end

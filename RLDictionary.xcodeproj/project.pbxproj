@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023819F11E7638400050EBD4 /* NSString+NSAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 023819F01E7638400050EBD4 /* NSString+NSAssert.m */; };
 		0247FFF41E5D6A3B008DCEFD /* WordbookHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0247FFF31E5D6A3B008DCEFD /* WordbookHeaderView.m */; };
 		0247FFF61E5D6A6F008DCEFD /* WordbookHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0247FFF51E5D6A6F008DCEFD /* WordbookHeaderView.xib */; };
 		0247FFF91E5D897C008DCEFD /* WordbookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0247FFF81E5D897C008DCEFD /* WordbookTableViewCell.m */; };
@@ -27,7 +28,6 @@
 		28150C571E59318B00F807A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28150C561E59318B00F807A3 /* LaunchScreen.storyboard */; };
 		28150C5D1E596C2000F807A3 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28150C5C1E596C2000F807A3 /* SettingViewController.m */; };
 		28150C771E5976E600F807A3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28150C751E5976E600F807A3 /* Localizable.strings */; };
-		281CA5B71E6BE77700353F1B /* NSMutableArray+FMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 281CA5B61E6BE77700353F1B /* NSMutableArray+FMDB.m */; };
 		2860700A1E597A830074D933 /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 286070091E597A830074D933 /* Setting.plist */; };
 		2860700B1E59850F0074D933 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2860700D1E59850F0074D933 /* Main.storyboard */; };
 		28975D9A1E56AE5700B102B6 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28975D991E56AE5700B102B6 /* IntroViewController.m */; };
@@ -35,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		023819EF1E7638400050EBD4 /* NSString+NSAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+NSAssert.h"; path = "Categories/NSString+NSAssert.h"; sourceTree = "<group>"; };
+		023819F01E7638400050EBD4 /* NSString+NSAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+NSAssert.m"; path = "Categories/NSString+NSAssert.m"; sourceTree = "<group>"; };
 		0247FFF21E5D6A3B008DCEFD /* WordbookHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordbookHeaderView.h; path = Views/WordbookHeaderView.h; sourceTree = "<group>"; };
 		0247FFF31E5D6A3B008DCEFD /* WordbookHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordbookHeaderView.m; path = Views/WordbookHeaderView.m; sourceTree = "<group>"; };
 		0247FFF51E5D6A6F008DCEFD /* WordbookHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordbookHeaderView.xib; sourceTree = "<group>"; };
@@ -72,8 +74,6 @@
 		28150C5C1E596C2000F807A3 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = ViewControllers/SettingViewController.m; sourceTree = "<group>"; };
 		28150C761E5976E600F807A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = SupportingFiles/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		28150C781E5976EA00F807A3 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = SupportingFiles/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
-		281CA5B51E6BE77700353F1B /* NSMutableArray+FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+FMDB.h"; path = "Models/NSMutableArray+FMDB.h"; sourceTree = "<group>"; };
-		281CA5B61E6BE77700353F1B /* NSMutableArray+FMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+FMDB.m"; path = "Models/NSMutableArray+FMDB.m"; sourceTree = "<group>"; };
 		286070091E597A830074D933 /* Setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Setting.plist; path = SupportingFiles/Setting.plist; sourceTree = "<group>"; };
 		2860700C1E59850F0074D933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		28975D7B1E56AA3700B102B6 /* RLDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RLDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +118,8 @@
 				024F89321E6D50DE00FB0E8B /* NSFileManager+RL.m */,
 				024F89331E6D50DE00FB0E8B /* NSDate+NSDateFormatter.h */,
 				024F89341E6D50DE00FB0E8B /* NSDate+NSDateFormatter.m */,
+				023819EF1E7638400050EBD4 /* NSString+NSAssert.h */,
+				023819F01E7638400050EBD4 /* NSString+NSAssert.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -147,8 +149,6 @@
 				02E9BB531E5BDBD400863E00 /* NSMutableArray+Word.m */,
 				02E9BB551E5C125A00863E00 /* Wordbook.h */,
 				02E9BB561E5C125A00863E00 /* Wordbook.m */,
-				281CA5B51E6BE77700353F1B /* NSMutableArray+FMDB.h */,
-				281CA5B61E6BE77700353F1B /* NSMutableArray+FMDB.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -378,11 +378,11 @@
 				28975D9A1E56AE5700B102B6 /* IntroViewController.m in Sources */,
 				02E9BB5A1E5C12D100863E00 /* WordbookManager.m in Sources */,
 				0247FFF91E5D897C008DCEFD /* WordbookTableViewCell.m in Sources */,
+				023819F11E7638400050EBD4 /* NSString+NSAssert.m in Sources */,
 				02E9BB511E5BDA4300863E00 /* Word.m in Sources */,
 				02E9BB541E5BDBD400863E00 /* NSMutableArray+Word.m in Sources */,
 				02E9BB571E5C125A00863E00 /* Wordbook.m in Sources */,
 				28150C501E5930F100F807A3 /* main.m in Sources */,
-				281CA5B71E6BE77700353F1B /* NSMutableArray+FMDB.m in Sources */,
 				28150C431E592CD200F807A3 /* WordDataManager.m in Sources */,
 				28150C5D1E596C2000F807A3 /* SettingViewController.m in Sources */,
 				28128C051E61480E007D28DD /* WordbookHasReadCell.m in Sources */,

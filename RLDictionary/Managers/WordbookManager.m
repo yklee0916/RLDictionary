@@ -41,6 +41,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
 
 - (void)reload {
     
+    [self.wordDataManager reload];
+    
     self.wordbooks = [NSMutableArray <Wordbook> array];
     self.groupingType = self.wordbookArrangeType ? WordbookManagerGroupingTypeByWeek : WordbookManagerGroupingTypeByDay;
     
