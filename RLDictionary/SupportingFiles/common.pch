@@ -13,6 +13,7 @@
     #import "UIView+Toast.h"
     #import "MBProgressHUD.h"
     #import "SynthesizeSingleton.h"
+    #import "NSFileManager+RL.h"
 #endif
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)

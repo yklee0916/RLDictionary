@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong) FMDatabase *database;
 
-
 @end
 
 @implementation WordDataManager
@@ -21,38 +20,30 @@
 - (instancetype)init {
     if([super init]) {
         self.words = [NSMutableArray <Word> array];
-        
         [self loadDatabase];
     }
     return self;
-}
-
-- (NSString *)pathForCachesDirectory
-{
-    static NSString *path = nil;
-    static dispatch_once_t token;
-    
-    dispatch_once(&token, ^{
-        
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        
-        path = [paths lastObject];
-    });
-    
-    return path;
 }
 
 - (NSString *)databaseFileName {
     return @"podic_words.db";
 }
 
-- (BOOL)loadDatabase {
+- (NSString *)tableName {
+    return @"words";
+}
+
+- (NSURL *)databaseFileURL {
     NSMutableString *filePath = [NSMutableString string];
-    [filePath appendString:[self pathForCachesDirectory]];
-    [filePath appendString:@"/"];
-//    [filePath appendString:@"/com.test.tmap/"];
-    [filePath appendString:[self databaseFileName]];
-    NSURL *fileURL = [NSURL URLWithString:filePath];
+    [filePath appendString:[NSFileManager pathForCachesDirectory]];
+    [filePath appendString:NFFILE_SEPERATOR];
+    //    [filePath appendString:@"/com.test.tmap/"];
+    [filePath appendString:self.databaseFileName];
+    return [NSURL URLWithString:filePath];
+}
+
+- (BOOL)loadDatabase {
+    NSURL *fileURL = self.databaseFileURL;
     return [self loadDatabaseWithURL:fileURL];
 }
 
