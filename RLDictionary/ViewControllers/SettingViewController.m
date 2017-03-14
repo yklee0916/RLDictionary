@@ -7,7 +7,7 @@
 //
 
 #import "SettingViewController.h"
-#import "WordbookManager.h"
+#import "WordDataHandler.h"
 
 @implementation SettingTableViewCell
 @end
@@ -142,7 +142,7 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
     
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    [[WordbookManager sharedInstance] reload];
+    [[WordDataHandler sharedInstance] reload];
 }
 
 
@@ -155,13 +155,13 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:4 inSection:0];
     
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    [[WordbookManager sharedInstance] reload];
+    [[WordDataHandler sharedInstance] reload];
 }
 
 - (void)resetWordbookAction:(id)sender {
     
     [self presenResetAlertViewControllerWithCompletionHandler:^(UIAlertAction *action) {
-        [[WordbookManager sharedInstance] resetAll];
+        [[WordDataHandler sharedInstance] resetAll];
         [self.view makeToast:NSLocalizedString(@"SettingResetAlertResetActionToastMessage", nil)];
     }];
 }

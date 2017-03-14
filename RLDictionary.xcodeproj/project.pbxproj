@@ -17,7 +17,7 @@
 		02E9BB511E5BDA4300863E00 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E9BB501E5BDA4300863E00 /* Word.m */; };
 		02E9BB541E5BDBD400863E00 /* NSMutableArray+Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E9BB531E5BDBD400863E00 /* NSMutableArray+Word.m */; };
 		02E9BB571E5C125A00863E00 /* Wordbook.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E9BB561E5C125A00863E00 /* Wordbook.m */; };
-		02E9BB5A1E5C12D100863E00 /* WordbookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E9BB591E5C12D100863E00 /* WordbookManager.m */; };
+		02E9BB5A1E5C12D100863E00 /* WordDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E9BB591E5C12D100863E00 /* WordDataHandler.m */; };
 		28128C051E61480E007D28DD /* WordbookHasReadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28128C041E61480E007D28DD /* WordbookHasReadCell.m */; };
 		28128C071E614884007D28DD /* WordbookHasReadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28128C061E614884007D28DD /* WordbookHasReadCell.xib */; };
 		28150C431E592CD200F807A3 /* WordDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28150C421E592CD200F807A3 /* WordDataManager.m */; };
@@ -55,8 +55,8 @@
 		02E9BB531E5BDBD400863E00 /* NSMutableArray+Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+Word.m"; path = "Models/NSMutableArray+Word.m"; sourceTree = "<group>"; };
 		02E9BB551E5C125A00863E00 /* Wordbook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Wordbook.h; path = Models/Wordbook.h; sourceTree = "<group>"; };
 		02E9BB561E5C125A00863E00 /* Wordbook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Wordbook.m; path = Models/Wordbook.m; sourceTree = "<group>"; };
-		02E9BB581E5C12D100863E00 /* WordbookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordbookManager.h; path = Managers/WordbookManager.h; sourceTree = "<group>"; };
-		02E9BB591E5C12D100863E00 /* WordbookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordbookManager.m; path = Managers/WordbookManager.m; sourceTree = "<group>"; };
+		02E9BB581E5C12D100863E00 /* WordDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordDataHandler.h; path = Managers/WordDataHandler.h; sourceTree = "<group>"; };
+		02E9BB591E5C12D100863E00 /* WordDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordDataHandler.m; path = Managers/WordDataHandler.m; sourceTree = "<group>"; };
 		07D82F8F8355E4F21E3AD75C /* Pods-RLDictionary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLDictionary.release.xcconfig"; path = "Pods/Target Support Files/Pods-RLDictionary/Pods-RLDictionary.release.xcconfig"; sourceTree = "<group>"; };
 		28128C031E61480E007D28DD /* WordbookHasReadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordbookHasReadCell.h; path = Views/WordbookHasReadCell.h; sourceTree = "<group>"; };
 		28128C041E61480E007D28DD /* WordbookHasReadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordbookHasReadCell.m; path = Views/WordbookHasReadCell.m; sourceTree = "<group>"; };
@@ -218,8 +218,8 @@
 			children = (
 				28150C411E592CD200F807A3 /* WordDataManager.h */,
 				28150C421E592CD200F807A3 /* WordDataManager.m */,
-				02E9BB581E5C12D100863E00 /* WordbookManager.h */,
-				02E9BB591E5C12D100863E00 /* WordbookManager.m */,
+				02E9BB581E5C12D100863E00 /* WordDataHandler.h */,
+				02E9BB591E5C12D100863E00 /* WordDataHandler.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -376,7 +376,7 @@
 				024F89351E6D50DE00FB0E8B /* NSFileManager+RL.m in Sources */,
 				024F89361E6D50DE00FB0E8B /* NSDate+NSDateFormatter.m in Sources */,
 				28975D9A1E56AE5700B102B6 /* IntroViewController.m in Sources */,
-				02E9BB5A1E5C12D100863E00 /* WordbookManager.m in Sources */,
+				02E9BB5A1E5C12D100863E00 /* WordDataHandler.m in Sources */,
 				0247FFF91E5D897C008DCEFD /* WordbookTableViewCell.m in Sources */,
 				023819F11E7638400050EBD4 /* NSString+NSAssert.m in Sources */,
 				02E9BB511E5BDA4300863E00 /* Word.m in Sources */,

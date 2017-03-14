@@ -1,5 +1,5 @@
 //
-//  WordbookManager.h
+//  WordDataHandler.h
 //  RLDictionary
 //
 //  Created by Ryan Lee on 21/02/2017.
@@ -14,17 +14,25 @@ typedef NS_ENUM(NSUInteger, WordbookManagerGroupingType) {
     WordbookManagerGroupingTypeByWeek
 };
 
-@interface WordbookManager : NSObject
+@interface WordDataHandler : NSObject
 
 @property (nonatomic, strong) NSMutableArray <Wordbook> *wordbooks;
 
-+ (WordbookManager *)sharedInstance;
++ (WordDataHandler *)sharedInstance;
 
 - (void)reload;
 - (void)resetAll;
-- (BOOL)hasReadWithString:(NSString *)word;
-- (void)setHasRead:(BOOL)hasRead withString:(NSString *)word;
-- (void)deleteWithString:(NSString *)word;
+
+- (Word *)wordAtString:(NSString *)string;
+
+- (void)addWord:(Word *)word;
+- (void)addWordWithString:(NSString *)string;
+
+- (void)deleteWord:(Word *)word;
+- (void)deleteWordFromString:(NSString *)string;
+
+- (void)updateWord:(Word *)word;
+
 - (void)findDefinitionFromDictionaryForTerm:(NSString *)term completionHandler:(void (^)(UIReferenceLibraryViewController *libarayViewController, NSError *error))completionHandler;
 
 @end

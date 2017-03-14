@@ -1,24 +1,24 @@
 //
-//  WordbookManager.m
+//  WordDataHandler.m
 //  RLDictionary
 //
 //  Created by Ryan Lee on 21/02/2017.
 //  Copyright © 2017 Ryan Lee. All rights reserved.
 //
 
-#import "WordbookManager.h"
+#import "WordDataHandler.h"
 #import "WordDataManager.h"
 
-@interface WordbookManager ()
+@interface WordDataHandler ()
 
 @property (nonatomic, strong) WordDataManager *wordDataManager;
 @property (nonatomic, assign) WordbookManagerGroupingType groupingType;
 
 @end
 
-@implementation WordbookManager
+@implementation WordDataHandler
 
-SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
+SYNTHESIZE_SINGLETON_FOR_CLASS(WordDataHandler, sharedInstance);
 
 - (instancetype)init {
     if(self = [super init]) {
@@ -83,6 +83,38 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
         }
     }
     [self notifyWordbookDidChanged:nil];
+}
+
+- (void)resetAll {
+    [self.wordDataManager resetAll];
+    [self reload];
+}
+
+- (Word *)wordAtString:(NSString *)string {
+    return [self.wordDataManager.words wordAtString:string];
+}
+
+- (void)addWord:(Word *)word {
+    
+}
+
+- (void)addWordWithString:(NSString *)string {
+    
+}
+
+- (void)deleteWord:(Word *)word {
+    [self.wordDataManager deleteWithString:word.string];
+    [self reload];
+}
+
+- (void)deleteWordFromString:(NSString *)string {
+    Word *word = [self wordAtString:string];
+    [self deleteWord:word];
+}
+
+- (void)updateWord:(Word *)word {
+    [self.wordDataManager setHasRead:word.hasRead withString:word.string];
+    [self reload];
 }
 
 - (BOOL)shouldInsertWordkWithComparativeValue:(NSInteger)comparativeValue diffrence:(NSInteger)diffrence {
@@ -150,25 +182,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordbookManager, sharedInstance);
             if(completionHandler) completionHandler(libraryViewController, error);
         });
     });
-}
-
-- (void)resetAll {
-    [self.wordDataManager resetAll];
-    [self reload];
-}
-
-- (BOOL)hasReadWithString:(NSString *)string {
-    return [self.wordDataManager hasReadWithString:string];
-}
-
-- (void)setHasRead:(BOOL)hasRead withString:(NSString *)string {
-    [self.wordDataManager setHasRead:hasRead withString:string];
-    [self reload];
-}
-
-- (void)deleteWithString:(NSString *)word {
-    [self.wordDataManager deleteWithString:word];
-    [self reload];
 }
 
 - (BOOL)shouldAddWordWhenItSearching {

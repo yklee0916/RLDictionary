@@ -8,7 +8,7 @@
 
 #import "IntroViewController.h"
 #import "WordDataManager.h"
-#import "WordbookManager.h"
+#import "WordDataHandler.h"
 #import "WordbookHeaderView.h"
 #import "WordbookTableViewCell.h"
 #import "WordbookHasReadCell.h"
@@ -17,7 +17,7 @@
 
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) IBOutlet UITextField *searchTextField;
-@property (nonatomic, strong) WordbookManager *wordbookManager;
+@property (nonatomic, strong) WordDataHandler *WordDataHandler;
 
 @end
 
@@ -31,8 +31,8 @@
     NSString *wordbookHasReadCell = NSStringFromClass([WordbookHasReadCell class]);
     [self.tableView registerNib:[UINib nibWithNibName:wordbookHasReadCell bundle:nil] forCellReuseIdentifier:wordbookHasReadCell];
     
-    self.wordbookManager = [WordbookManager sharedInstance];
-    [self.wordbookManager reload];
+    self.WordDataHandler = [WordDataHandler sharedInstance];
+    [self.WordDataHandler reload];
     UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 5)];
     leftView.backgroundColor = [UIColor clearColor];
     self.searchTextField.leftViewMode = UITextFieldViewModeAlways;
@@ -75,7 +75,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.wordbookManager.wordbooks.count;
+    return self.WordDataHandler.wordbooks.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -87,14 +87,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:section];
+    Wordbook *wordbook = [self.WordDataHandler.wordbooks objectAtIndex:section];
     return wordbook.words.count;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 
     WordbookHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"WordbookHeaderView" owner:self options:nil] firstObject];
-    Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:section];
+    Wordbook *wordbook = [self.WordDataHandler.wordbooks objectAtIndex:section];
     NSString *string = [wordbook.createdDate descriptionWithDateFormat:NSLocalizedString(@"IntroWordbookHeaderDateFormat", DEFAULT_DATE_FORMAT)];
     [header.textLabel setText:string];
     return header;
@@ -102,7 +102,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:indexPath.section];
+    Wordbook *wordbook = [self.WordDataHandler.wordbooks objectAtIndex:indexPath.section];
     Word *word = [wordbook.words objectAtIndex:indexPath.row];
     
     WordbookTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WordbookTableViewCell"];
@@ -118,7 +118,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:indexPath.section];
+    Wordbook *wordbook = [self.WordDataHandler.wordbooks objectAtIndex:indexPath.section];
     Word *word = [wordbook.words objectAtIndex:indexPath.row];
     NSString *term = word.string;
     
@@ -147,7 +147,7 @@
         return [UIColor colorWithPatternImage:imageWithView(label)];
     };
     
-    Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:indexPath.section];
+    Wordbook *wordbook = [self.WordDataHandler.wordbooks objectAtIndex:indexPath.section];
     Word *word = [wordbook.words objectAtIndex:indexPath.row];
     BOOL hasRead = word.hasRead;
     NSString *string = word.string;
@@ -158,9 +158,9 @@
                 rowActionWithStyle:UITableViewRowActionStyleNormal
                 title:@"      "
                 handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-                    [self.wordbookManager setHasRead:!hasRead withString:string];
-//                    tableView.editing = NO;
-//                    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                    Word *word = [self.WordDataHandler wordAtString:string];
+                    word.hasRead = !hasRead;
+                    [self.WordDataHandler updateWord:word];
                 }];
     moreAction.backgroundColor = getColorWithLabelText(readActionTitle, [UIColor whiteColor], [UIColor lightGrayColor]);
     
@@ -172,7 +172,7 @@
                     handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
                         
                         tableView.editing = NO;
-                      [self.wordbookManager deleteWithString:string];
+                        [self.WordDataHandler deleteWordFromString:string];
                   }];
     deleteAction.backgroundColor = getColorWithLabelText(@"삭제", [UIColor whiteColor], [UIColor redColor]);
     
@@ -184,19 +184,19 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Wordbook *wordbook = [self.wordbookManager.wordbooks objectAtIndex:indexPath.section];
+    Wordbook *wordbook = [self.WordDataHandler.wordbooks objectAtIndex:indexPath.section];
     Word *word = [wordbook.words objectAtIndex:indexPath.row];
     NSString *string = word.string;
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.wordbookManager deleteWithString:string];
+        [self.WordDataHandler deleteWordFromString:string];
     }
 }
 
 - (void)findDefinitionFromDictionaryForTerm:(NSString *)term {
     if(term.length == 0) return ;
     
-    [self.wordbookManager findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *viewController, NSError *error) {
+    [self.WordDataHandler findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *viewController, NSError *error) {
         
         if(error) {
             [self.view makeToast:error.domain];
