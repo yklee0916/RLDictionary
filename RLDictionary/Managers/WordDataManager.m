@@ -26,6 +26,84 @@
     return self;
 }
 
+- (void)reload {
+    [self.words removeAllObjects];
+    [self loadTable];
+}
+
+- (void)resetAll {
+    [self.words removeAllObjects];
+}
+
+- (Word *)wordAtString:(NSString *)string {
+    [self.words wordAtString:string];
+}
+
+- (void)addWord:(Word *)word {
+    [self.words addObjectByString:<#(NSString *)#>
+    
+}
+
+- (void)addWordWithString:(NSString *)string {
+    
+    Word *word = [[Word alloc] initWithString:string];
+    [self addWord:word];
+}
+
+- (void)deleteWord:(Word *)word {
+    
+}
+
+- (void)deleteWordFromString:(NSString *)string {
+    
+}
+
+- (void)updateWord:(Word *)word {
+    
+}
+
+- (NSString *)stringAtIndex:(NSUInteger)index {
+    return [self.words stringAtIndex:index];
+}
+
+- (void)addWithString:(NSString *)string {
+    
+}
+
+- (void)addWithWord:(Word *)word {
+    if(!word) return ;
+    NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ VALUES ('%@', '%@', %d)", @"words", word.string, [word.createdDate description], word.hasRead];
+    [self.database executeUpdate:sql];
+}
+
+- (void)updateFromWord:(Word *)word {
+    if(!word) return ;
+    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET createdDate='%@', hasRead=%d WHERE text='%@'", @"words", [word.createdDate description], word.hasRead, word.string];
+    [self.database executeUpdate:sql];
+}
+
+- (void)removeWithString:(NSString *)string {
+    if(string.isEmpty) return ;
+    
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE text='%@'", @"words", string];
+    [self.database executeUpdate:sql];
+}
+
+- (Word *)wordAtString:(NSString *)string {
+    return [self.words wordAtString:string];
+}
+
+- (BOOL)hasReadWithString:(NSString *)string {
+    Word *word = [self.words wordAtString:string];
+    return word.hasRead;
+}
+
+- (void)setHasRead:(BOOL)hasRead withString:(NSString *)string {
+    Word *word = [self.words wordAtString:string];
+    word.hasRead = hasRead;
+    [self updateFromWord:word];
+    [self hideWordIfNeeded:word];
+}
 
 - (void)copyToDocumentData {
     NSError *error;
@@ -89,11 +167,6 @@
     [self.database executeUpdate:sql];
 }
 
-- (void)reload {
-    [self.words removeAllObjects];
-    [self loadTable];
-}
-
 - (void)loadTable {
     NSString *key = @"WordbookHideReadWords";
     BOOL hasRead = [[NSUserDefaults standardUserDefaults] boolForKey:key];
@@ -150,51 +223,6 @@
     return self.words.count;
 }
 
-- (NSString *)stringAtIndex:(NSUInteger)index {
-    return [self.words stringAtIndex:index];
-}
-
-- (void)addWithString:(NSString *)string {
-    
-    Word *word = [self.words addObjectByString:string];
-    [self addWithWord:word];
-}
-
-- (void)addWithWord:(Word *)word {
-    if(!word) return ;
-    NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ VALUES ('%@', '%@', %d)", @"words", word.string, [word.createdDate description], word.hasRead];
-    [self.database executeUpdate:sql];
-}
-
-- (void)updateFromWord:(Word *)word {
-    if(!word) return ;
-    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET createdDate='%@', hasRead=%d WHERE text='%@'", @"words", [word.createdDate description], word.hasRead, word.string];
-    [self.database executeUpdate:sql];
-}
-
-- (void)removeWithString:(NSString *)string {
-    if(string.isEmpty) return ;
-    
-    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE text='%@'", @"words", string];
-    [self.database executeUpdate:sql];
-}
-
-- (Word *)wordAtString:(NSString *)string {
-    return [self.words wordAtString:string];
-}
-
-- (BOOL)hasReadWithString:(NSString *)string {
-    Word *word = [self.words wordAtString:string];
-    return word.hasRead;
-}
-
-- (void)setHasRead:(BOOL)hasRead withString:(NSString *)string {
-    Word *word = [self.words wordAtString:string];
-    word.hasRead = hasRead;
-    [self updateFromWord:word];
-    [self hideWordIfNeeded:word];
-}
-
 - (void)hideWordIfNeeded:(Word *)word {
     if(!word) return ;
     
@@ -219,11 +247,6 @@
     });
     
     return accessorname;
-}
-
-- (void)resetAll {
-    
-    [self.words removeAllObjects];
 }
 
 - (NSString *)description {

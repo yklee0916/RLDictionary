@@ -27,4 +27,14 @@
 - (void)reload;
 - (void)resetAll;
 
+- (Word *)wordAtString:(NSString *)string;
+
+- (void)addWord:(Word *)word;
+- (void)addWordWithString:(NSString *)string;
+
+- (void)deleteWord:(Word *)word;
+- (void)deleteWordFromString:(NSString *)string;
+
+- (void)updateWord:(Word *)word;
+
 @end
