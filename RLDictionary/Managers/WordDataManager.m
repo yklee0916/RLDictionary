@@ -7,11 +7,11 @@
 //
 
 #import "WordDataManager.h"
-#import "FMDB.h"
+#import "WordDataDBHelper.h"
 
 @interface WordDataManager ()
 
-@property (nonatomic, strong) FMDatabase *database;
+@property (nonatomic, strong) WordDataDBHelper *wordDataDBHelper;
 
 @end
 
@@ -19,204 +19,53 @@
 
 - (instancetype)init {
     if([super init]) {
-        self.words = [NSMutableArray <Word> array];
-        [self copyToDocumentData];
-        [self openDatabase];
+        self.wordDataDBHelper = [WordDataDBHelper sharedInstance];
+        self.words = self.wordDataDBHelper.words;
     }
     return self;
 }
 
 - (void)reload {
     [self.words removeAllObjects];
-    [self loadTable];
+    self.words = self.wordDataDBHelper.words;
 }
 
 - (void)resetAll {
     [self.words removeAllObjects];
-}
-
-- (Word *)wordAtString:(NSString *)string {
-    [self.words wordAtString:string];
-}
-
-- (void)addWord:(Word *)word {
-    [self.words addObjectByString:<#(NSString *)#>
-    
-}
-
-- (void)addWordWithString:(NSString *)string {
-    
-    Word *word = [[Word alloc] initWithString:string];
-    [self addWord:word];
-}
-
-- (void)deleteWord:(Word *)word {
-    
-}
-
-- (void)deleteWordFromString:(NSString *)string {
-    
-}
-
-- (void)updateWord:(Word *)word {
-    
-}
-
-- (NSString *)stringAtIndex:(NSUInteger)index {
-    return [self.words stringAtIndex:index];
-}
-
-- (void)addWithString:(NSString *)string {
-    
-}
-
-- (void)addWithWord:(Word *)word {
-    if(!word) return ;
-    NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ VALUES ('%@', '%@', %d)", @"words", word.string, [word.createdDate description], word.hasRead];
-    [self.database executeUpdate:sql];
-}
-
-- (void)updateFromWord:(Word *)word {
-    if(!word) return ;
-    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET createdDate='%@', hasRead=%d WHERE text='%@'", @"words", [word.createdDate description], word.hasRead, word.string];
-    [self.database executeUpdate:sql];
-}
-
-- (void)removeWithString:(NSString *)string {
-    if(string.isEmpty) return ;
-    
-    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE text='%@'", @"words", string];
-    [self.database executeUpdate:sql];
+    [self.wordDataDBHelper deleteAll];
 }
 
 - (Word *)wordAtString:(NSString *)string {
     return [self.words wordAtString:string];
 }
 
-- (BOOL)hasReadWithString:(NSString *)string {
-    Word *word = [self.words wordAtString:string];
-    return word.hasRead;
+- (void)addWord:(Word *)word {
+    [self.words addObjectByString:word.string];
+    [self.wordDataDBHelper addWord:word];
 }
 
-- (void)setHasRead:(BOOL)hasRead withString:(NSString *)string {
+- (void)addWordWithString:(NSString *)string {
+    Word *word = [[Word alloc] initWithString:string];
+    [self addWord:word];
+}
+
+- (void)deleteWord:(Word *)word {
+    [self.words removeObjectByString:word.string];
+    [self.wordDataDBHelper deleteWord:word];
+}
+
+- (void)deleteWordFromString:(NSString *)string {
     Word *word = [self.words wordAtString:string];
-    word.hasRead = hasRead;
-    [self updateFromWord:word];
+    [self deleteWord:word];
+}
+
+- (void)updateWord:(Word *)word {
     [self hideWordIfNeeded:word];
+    [self.wordDataDBHelper updateWord:word];
 }
 
-- (void)copyToDocumentData {
-    NSError *error;
-    if(![[NSFileManager defaultManager] fileExistsAtPath:self.backpupFileURL.absoluteString]) return ;
-    
-    if([[NSFileManager defaultManager] fileExistsAtPath:self.databaseFileURL.absoluteString]) {
-        [[NSFileManager defaultManager] removeItemAtPath:self.databaseFileURL.absoluteString error:&error];
-    }
-    [[NSFileManager defaultManager] moveItemAtPath:self.backpupFileURL.absoluteString toPath:self.databaseFileURL.absoluteString error:&error];
-}
-
-- (NSURL *)backpupFileURL {
-    NSMutableString *filePath = [NSMutableString string];
-    [filePath appendString:[NSFileManager pathForDocumentDirectory]];
-    [filePath appendString:NFFILE_SEPERATOR];
-    [filePath appendString:self.databaseFileName];
-    return [NSURL URLWithString:filePath];
-}
-
-- (NSString *)databaseFileName {
-    return @"podic_words.db";
-}
-
-- (NSString *)tableName {
-    return @"words";
-}
-
-- (NSURL *)databaseFileURL {
-    NSMutableString *filePath = [NSMutableString string];
-    [filePath appendString:[NSFileManager pathForCachesDirectory]];
-    [filePath appendString:NFFILE_SEPERATOR];
-    [filePath appendString:[[NSBundle mainBundle] bundleIdentifier]];
-    [filePath appendString:NFFILE_SEPERATOR];
-    [filePath appendString:self.databaseFileName];
-    return [NSURL URLWithString:filePath];
-}
-
-- (BOOL)openDatabase {
-    NSURL *fileURL = self.databaseFileURL;
-    return [self openDatabaseWithURL:fileURL];
-}
-
-- (BOOL)openDatabaseWithURL:(NSURL *)filePath {
-    NSString *filePathString = filePath.absoluteString;
-    if(!filePathString) return NO;
-    
-    @try{
-        self.database = [FMDatabase databaseWithPath:filePathString];
-        if(![self.database open]) return NO;
-        
-        [self createTable];
-    }
-    @catch (NSException * e) {
-        return NO;
-    }
-    return YES;
-}
-
-- (void)createTable {
-    NSString *sql = @"create table words ( text varchar(100) primary key, createdDate varchar(50), hasRead int )";
-    [self.database executeUpdate:sql];
-}
-
-- (void)loadTable {
-    NSString *key = @"WordbookHideReadWords";
-    BOOL hasRead = [[NSUserDefaults standardUserDefaults] boolForKey:key];
-    
-    if(hasRead) {
-        [self select];
-    }
-    else {
-        [self selectWithHasBeenRead:NO];
-    }
-}
-
-- (void)select {
-    NSString *selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY createdDate DESC", @"words"];
-    FMResultSet *s = [self.database executeQuery:selectQuery];
-    
-    while ([s next]) {
-        NSString *text = [s stringForColumn:@"text"];
-        NSString *dateString = [s stringForColumn:@"createdDate"];
-        NSUInteger hasRead = [s intForColumn:@"hasRead"];
-        
-        Word *word = [[Word alloc] init];
-        word.string = text;
-        word.createdDate = [NSDate dateFromString:dateString];
-        word.hasRead = [[NSNumber numberWithInteger:hasRead] boolValue];
-        
-        if(word) {
-            [self.words addObject:word];
-        }
-    }
-}
-
-- (void)selectWithHasBeenRead:(BOOL)hasRead {
-    NSString *selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE hasRead=%d ORDER BY createdDate DESC", @"words", hasRead];
-    FMResultSet *s = [self.database executeQuery:selectQuery];
-    
-    while ([s next]) {
-        NSString *text = [s stringForColumn:@"text"];
-        NSString *dateString = [s stringForColumn:@"createdDate"];
-        NSUInteger hasRead = [s intForColumn:@"hasRead"];
-        
-        Word *word = [[Word alloc] init];
-        word.string = text;
-        word.createdDate = [NSDate dateFromString:dateString];
-        word.hasRead = [[NSNumber numberWithInteger:hasRead] boolValue];
-        
-        if(word) {
-            [self.words addObject:word];
-        }
-    }
+- (NSString *)stringAtIndex:(NSUInteger)index {
+    return [self.words stringAtIndex:index];
 }
 
 - (NSUInteger)count {
@@ -225,16 +74,12 @@
 
 - (void)hideWordIfNeeded:(Word *)word {
     if(!word) return ;
+    if(!word.hasRead) return;
     
     NSString *key = @"WordbookHideReadWords";
     BOOL hasRead = [[NSUserDefaults standardUserDefaults] boolForKey:key];
     if(!hasRead) return ;
     [self.words removeObjectByString:word.string];
-}
-
-- (void)deleteWithString:(NSString *)string {
-    [self.words removeObjectByString:string];
-    [self removeWithString:string];
 }
 
 + (instancetype)savedObject {
@@ -243,7 +88,6 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         accessorname = [[WordDataManager alloc] init];
-        [accessorname loadTable];
     });
     
     return accessorname;

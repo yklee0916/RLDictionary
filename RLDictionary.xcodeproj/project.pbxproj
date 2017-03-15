@@ -14,6 +14,7 @@
 		0247FFFB1E5D89A0008DCEFD /* WordbookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0247FFFA1E5D89A0008DCEFD /* WordbookTableViewCell.xib */; };
 		024F89351E6D50DE00FB0E8B /* NSFileManager+RL.m in Sources */ = {isa = PBXBuildFile; fileRef = 024F89321E6D50DE00FB0E8B /* NSFileManager+RL.m */; };
 		024F89361E6D50DE00FB0E8B /* NSDate+NSDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 024F89341E6D50DE00FB0E8B /* NSDate+NSDateFormatter.m */; };
+		02AA27AB1E78D4A200C2E9E7 /* WordDataDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AA27AA1E78D4A200C2E9E7 /* WordDataDBHelper.m */; };
 		02E9BB511E5BDA4300863E00 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E9BB501E5BDA4300863E00 /* Word.m */; };
 		02E9BB541E5BDBD400863E00 /* NSMutableArray+Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E9BB531E5BDBD400863E00 /* NSMutableArray+Word.m */; };
 		02E9BB571E5C125A00863E00 /* Wordbook.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E9BB561E5C125A00863E00 /* Wordbook.m */; };
@@ -47,6 +48,8 @@
 		024F89321E6D50DE00FB0E8B /* NSFileManager+RL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+RL.m"; path = "Categories/NSFileManager+RL.m"; sourceTree = "<group>"; };
 		024F89331E6D50DE00FB0E8B /* NSDate+NSDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+NSDateFormatter.h"; path = "Categories/NSDate+NSDateFormatter.h"; sourceTree = "<group>"; };
 		024F89341E6D50DE00FB0E8B /* NSDate+NSDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+NSDateFormatter.m"; path = "Categories/NSDate+NSDateFormatter.m"; sourceTree = "<group>"; };
+		02AA27A91E78D4A200C2E9E7 /* WordDataDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordDataDBHelper.h; path = Managers/WordDataDBHelper.h; sourceTree = "<group>"; };
+		02AA27AA1E78D4A200C2E9E7 /* WordDataDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordDataDBHelper.m; path = Managers/WordDataDBHelper.m; sourceTree = "<group>"; };
 		02B672351E5AB2C2008B386B /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = Libraries/SynthesizeSingleton/SynthesizeSingleton.h; sourceTree = "<group>"; };
 		02B672361E5AB4CB008B386B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		02E9BB4F1E5BDA4300863E00 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Word.h; path = Models/Word.h; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				28150C421E592CD200F807A3 /* WordDataManager.m */,
 				02E9BB581E5C12D100863E00 /* WordDataHandler.h */,
 				02E9BB591E5C12D100863E00 /* WordDataHandler.m */,
+				02AA27A91E78D4A200C2E9E7 /* WordDataDBHelper.h */,
+				02AA27AA1E78D4A200C2E9E7 /* WordDataDBHelper.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 				0247FFF91E5D897C008DCEFD /* WordbookTableViewCell.m in Sources */,
 				023819F11E7638400050EBD4 /* NSString+NSAssert.m in Sources */,
 				02E9BB511E5BDA4300863E00 /* Word.m in Sources */,
+				02AA27AB1E78D4A200C2E9E7 /* WordDataDBHelper.m in Sources */,
 				02E9BB541E5BDBD400863E00 /* NSMutableArray+Word.m in Sources */,
 				02E9BB571E5C125A00863E00 /* Wordbook.m in Sources */,
 				28150C501E5930F100F807A3 /* main.m in Sources */,

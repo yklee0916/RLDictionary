@@ -24,10 +24,6 @@
     return word;
 }
 
-- (void)addObject:(id)anObject {
-    [self insertObject:anObject atIndex:0];
-}
-
 - (void)removeObjectByString:(NSString *)string {
     NSUInteger index = [self indexOfString:string];
     if(index != NSNotFound) {

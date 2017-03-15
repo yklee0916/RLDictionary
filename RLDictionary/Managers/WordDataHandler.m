@@ -95,15 +95,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordDataHandler, sharedInstance);
 }
 
 - (void)addWord:(Word *)word {
-    
+    [self.wordDataManager addWord:word];
+    [self reload];
 }
 
 - (void)addWordWithString:(NSString *)string {
-    
+    Word *word = [[Word alloc] initWithString:string];
+    [self addWord:word];
 }
 
 - (void)deleteWord:(Word *)word {
-    [self.wordDataManager deleteWithString:word.string];
+    [self.wordDataManager deleteWord:word];
     [self reload];
 }
 
@@ -113,7 +115,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordDataHandler, sharedInstance);
 }
 
 - (void)updateWord:(Word *)word {
-    [self.wordDataManager setHasRead:word.hasRead withString:word.string];
+    [self.wordDataManager updateWord:word];
     [self reload];
 }
 
@@ -168,7 +170,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordDataHandler, sharedInstance);
         if ([UIReferenceLibraryViewController dictionaryHasDefinitionForTerm:term]) {
             
             if(self.shouldAddWordWhenItSearching) {
-                [self.wordDataManager addWithString:term];
+                [self.wordDataManager addWordWithString:term];
                 [self reload];
             }
             libraryViewController = [[UIReferenceLibraryViewController alloc] initWithTerm:term];
