@@ -12,7 +12,6 @@
 @interface WordDataDBHelper ()
 
 @property (nonatomic, strong) FMDatabase *database;
-@property (nonatomic, strong) NSMutableArray <Word> *words;
 
 @end
 
@@ -22,7 +21,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordDataDBHelper, sharedInstance);
 
 - (instancetype)init {
     if([super init]) {
-        self.words = [NSMutableArray <Word> array];
         [self copyToDocumentData];
         [self openDatabase];
     }
