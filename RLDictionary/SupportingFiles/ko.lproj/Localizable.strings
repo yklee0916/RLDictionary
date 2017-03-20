@@ -30,8 +30,8 @@
 "WordbookArrangeByTypeDay" = "일 단위";
 "WordbookArrangeByTypeWeek" = "주 단위";
 
-"WordbookHideReadWordsYES" = "읽은 단어 숨김";
-"WordbookHideReadWordsNO" = "읽은 단어 표시";
+"WordbookHideReadWordsYES" = "읽은 단어 표시";
+"WordbookHideReadWordsNO" = "읽은 단어 숨김";
 
 "SettingResetAlertTitle" = "경고";
 "SettingResetAlertMessage" = "단어장을 초기화 하시겠습니까?";
