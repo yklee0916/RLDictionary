@@ -60,7 +60,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordDataHandler, sharedInstance);
         fromDate = word.createdDate;
         diffrence = [self differencesByGroupingType:self.groupingType fromDate:fromDate toDate:toDate];
         if(diffrence == -1) continue;
-        NSLog(@"%@ diffrence: %ld",word.string, diffrence);
+        NSLog(@"%@ diffrence: %d",word.string, (int)diffrence);
         
         if([self shouldInsertWordkWithComparativeValue:comparativeValue diffrence:diffrence]) {
             if(!wordbook.createdDate) {
