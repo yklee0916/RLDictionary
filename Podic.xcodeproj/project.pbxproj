@@ -23,7 +23,6 @@
 		0295F04F1E810F8700E67BA9 /* WordDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F04B1E810F8700E67BA9 /* WordDataHandler.m */; };
 		0295F0541E810F9200E67BA9 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F0501E810F9200E67BA9 /* IntroViewController.m */; };
 		0295F0551E810F9200E67BA9 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F0511E810F9200E67BA9 /* SettingViewController.m */; };
-		0295F05E1E810FA800E67BA9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0295F0561E810FA800E67BA9 /* Info.plist */; };
 		0295F05F1E810FA800E67BA9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F0591E810FA800E67BA9 /* AppDelegate.m */; };
 		0295F0601E810FA800E67BA9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F05A1E810FA800E67BA9 /* main.m */; };
 		0295F0611E810FA800E67BA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0295F05B1E810FA800E67BA9 /* Assets.xcassets */; };
@@ -316,7 +315,6 @@
 				0295F0631E810FA800E67BA9 /* LaunchScreen.storyboard in Resources */,
 				0295F03C1E810F6B00E67BA9 /* WordbookHasReadCell.xib in Resources */,
 				0295F06C1E8111BD00E67BA9 /* WordbookHeaderView.xib in Resources */,
-				0295F05E1E810FA800E67BA9 /* Info.plist in Resources */,
 				0295F0621E810FA800E67BA9 /* Setting.plist in Resources */,
 				0295F0611E810FA800E67BA9 /* Assets.xcassets in Resources */,
 				0295F03D1E810F6B00E67BA9 /* WordbookTableViewCell.xib in Resources */,

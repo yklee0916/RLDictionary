@@ -58,7 +58,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XYF-5K-fqN">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="organize" id="cbC-9V-Cud">
+                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="cbC-9V-Cud">
                             <connections>
                                 <action selector="settingNavigationBarButtonItemAction:" destination="BYZ-38-t0r" id="L32-dd-nCq"/>
                             </connections>
@@ -81,7 +81,7 @@
                                 <outlet property="delegate" destination="BYZ-38-t0r" id="0mj-ii-tt1"/>
                             </connections>
                         </textField>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="1Un-Sb-Y7Z">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="1Un-Sb-Y7Z">
                             <connections>
                                 <action selector="searchNavigationBarButtonItemAction:" destination="BYZ-38-t0r" id="voN-IC-YiB"/>
                             </connections>
@@ -228,7 +228,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Setting" id="y18-5q-RBB">
-                        <barButtonItem key="leftBarButtonItem" title="Close" style="plain" id="OMF-lZ-wtM">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="OMF-lZ-wtM">
                             <connections>
                                 <action selector="doneNavigationBarButtonItemAction:" destination="q50-xn-2YJ" id="pcN-u9-hcV"/>
                             </connections>
