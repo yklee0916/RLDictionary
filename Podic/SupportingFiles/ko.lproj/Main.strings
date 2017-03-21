@@ -2,23 +2,20 @@
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ifi-Ul-dAb"; */
 "Ifi-Ul-dAb.normalTitle" = "Button";
 
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "OMF-lZ-wtM"; */
+"OMF-lZ-wtM.title" = "닫기";
+
 /* Class = "UILabel"; text = "Dictionary"; ObjectID = "QBc-Pm-aH1"; */
 "QBc-Pm-aH1.text" = "Dictionary";
-
-/* Class = "UILabel"; text = "Title"; ObjectID = "WEq-Qt-0Ac"; */
-"WEq-Qt-0Ac.text" = "Title";
 
 /* Class = "UILabel"; text = "Dictionary"; ObjectID = "Wsh-8h-ydg"; */
 "Wsh-8h-ydg.text" = "Dictionary";
 
-/* Class = "UINavigationItem"; prompt = "RLDictionary"; ObjectID = "XYF-5K-fqN"; */
-"XYF-5K-fqN.prompt" = "RLDictionary";
-
 /* Class = "UILabel"; text = "content"; ObjectID = "bAY-Fz-lKb"; */
 "bAY-Fz-lKb.text" = "content";
 
+/* Class = "UITextField"; placeholder = "search"; ObjectID = "gv6-pH-JlW"; */
+"gv6-pH-JlW.placeholder" = "search";
+
 /* Class = "UINavigationItem"; title = "Setting"; ObjectID = "y18-5q-RBB"; */
 "y18-5q-RBB.title" = "설정";
-
-/* Class = "barButtonItem"; title = "Close"; ObjectID = "OMF-lZ-wtM"; */
-"OMF-lZ-wtM.title" = "닫기";
