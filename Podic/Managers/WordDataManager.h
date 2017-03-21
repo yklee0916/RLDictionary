@@ -1,6 +1,6 @@
 //
 //  WordDataManager.h
-//  RLDictionary
+//  Podic
 //
 //  Created by Ryan Lee on 19/02/2017.
 //  Copyright © 2017 Ryan Lee. All rights reserved.
