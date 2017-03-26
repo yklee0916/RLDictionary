@@ -12,6 +12,7 @@
 @interface WNDatabaseTestCase : XCTestCase
 
 @property (nonatomic, strong) WNDBHelper *helper;
+
 @end
 
 @implementation WNDatabaseTestCase
@@ -24,14 +25,14 @@
     [super tearDown];
 }
 
-- (void)testLoadDatabases {
-    self.helper = [WNDBHelper sharedInstance];
-    XCTAssertNotNil(self.helper);
-}
-
-- (void)testWordWithString {
-    WNWord *word = [self.helper wordWithString:@"apple"];
-    XCTAssertNotNil(word);
+- (void)testWordApple {
+    
+    WNWord *word = [[WNDBHelper sharedInstance] wordWithString:@"apple"];
+    XCTAssertNotNil(word.word);
+    
+    for(WNDefinition *definition in word.definitions) {
+        XCTAssertNotNil(definition.definition);
+    }
 }
 
 @end
