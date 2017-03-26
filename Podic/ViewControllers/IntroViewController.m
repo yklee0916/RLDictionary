@@ -223,6 +223,7 @@
     else if([segue.identifier isEqualToString:@"showDefinitionSegue"]) {
         
         DefinitionViewController * vc = segue.destinationViewController;
+        vc.title = sender;
         vc.wordString = sender;
     }
 }

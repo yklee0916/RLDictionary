@@ -28,7 +28,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WNDBHelper, sharedInstance);
     WNWord *word = [[WNWord alloc] init];
     word.word = string;
     word.wordId = [self wordIdWithWord:string];
-    word.definitions = [self definitionsWithWordId:word.wordId];
+    word.definitions = [self orderedDefinitionsWithWordId:word.wordId];
     
     return word;
 }
@@ -122,6 +122,27 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WNDBHelper, sharedInstance);
         [definitions addObject:definition];
     }
     return definitions;
+}
+
+
+- (NSArray <WNDefinition> *)orderedDefinitionsWithWordId:(NSInteger)wordId {
+    
+    NSArray <WNDefinition> *definitions = [self definitionsWithWordId:wordId];
+    if(definitions.count == 0) return nil;
+    
+    NSMutableArray <WNDefinition> *orderedDefinitions = [NSMutableArray <WNDefinition> array];
+    
+    NSInteger partOfSpeech = 0;
+    while(definitions.count != orderedDefinitions.count) {
+        
+        for(WNDefinition *definition in definitions) {
+            if(partOfSpeech != definition.partOfSpeech) continue;
+            [orderedDefinitions addObject:definition];
+            
+        }
+        partOfSpeech ++;
+    }
+    return orderedDefinitions;
 }
 
 - (NSArray <NSNumber *> *)defIdsWithWordId:(NSInteger)wordId {

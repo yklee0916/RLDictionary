@@ -11,5 +11,6 @@
 @interface UILabel (BulletPoint)
 
 - (void)setTextWithBulletPoint:(NSString *)text;
+- (void)setText:(NSString *)text withBulletNumber:(NSInteger)number;
 
 @end

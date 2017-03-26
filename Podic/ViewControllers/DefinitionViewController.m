@@ -11,6 +11,7 @@
 #import "DefinitionCell.h"
 #import "ExampleCell.h"
 #import "WNDBHelper.h"
+#import "ShortDefinitionCell.h"
 
 @interface DefinitionViewController ()
 
@@ -29,6 +30,10 @@
     
     NSString *definitionCell = NSStringFromClass([DefinitionCell class]);
     [self.tableView registerNib:[UINib nibWithNibName:definitionCell bundle:nil] forCellReuseIdentifier:definitionCell];
+    
+    NSString *shortDefinitionCell = NSStringFromClass([ShortDefinitionCell class]);
+    [self.tableView registerNib:[UINib nibWithNibName:shortDefinitionCell bundle:nil] forCellReuseIdentifier:shortDefinitionCell];
+    
     
     NSString *exampleCell = NSStringFromClass([ExampleCell class]);
     [self.tableView registerNib:[UINib nibWithNibName:exampleCell bundle:nil] forCellReuseIdentifier:exampleCell];
@@ -67,9 +72,9 @@
     return UITableViewAutomaticDimension;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 20.0;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 0.0;
+//}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
@@ -80,19 +85,51 @@
         return cell;
     }
     
-    DefinitionCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DefinitionCell class])];
-    WNDefinition *definition = [self.word.definitions objectAtIndex:section-1];
-    [cell.partOfSpeechLabel setText:@"Verb"];
-    [cell.definitionLabel setText:definition.definition];
-    return cell;
+    if([self shouldShowPartOfSpeech:section]) {
+        
+        DefinitionCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DefinitionCell class])];
+        WNDefinition *definition = [self.word.definitions objectAtIndex:section-1];
+        [cell.partOfSpeechLabel setText:[self partOfSpeechByType:definition.partOfSpeech]];
+        [cell.definitionLabel setText:definition.definition withBulletNumber:section];
+        return cell;
+    }
+    else {
+        ShortDefinitionCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ShortDefinitionCell class])];
+        WNDefinition *definition = [self.word.definitions objectAtIndex:section-1];
+        [cell.definitionLabel setText:definition.definition withBulletNumber:section];
+        return cell;
+    }
+    return nil;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    
-    ExampleCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ExampleCell class])];
-    [cell.exampleLabel setText:@""];
-    return cell;
+- (BOOL)shouldShowPartOfSpeech:(NSInteger)section {
+    if(section-1 == 0) return YES;
+    WNDefinition *pre = [self.word.definitions objectAtIndex:section-2];
+    WNDefinition *def = [self.word.definitions objectAtIndex:section-1];
+    return pre.partOfSpeech != def.partOfSpeech;
 }
+
+- (NSString *)partOfSpeechByType:(NSInteger)type {
+    switch(type) {
+        case 0:
+            return @"Noun";
+        case 1:
+            return @"Verb";
+        case 2:
+            return @"Adj";
+        case 3:
+            return @"Adv";
+        default:
+            return @"";
+    }
+}
+
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//    
+//    ExampleCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ExampleCell class])];
+//    [cell.exampleLabel setText:@""];
+//    return cell;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
