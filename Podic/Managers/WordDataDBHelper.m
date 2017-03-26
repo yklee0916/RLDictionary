@@ -88,7 +88,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordDataDBHelper, sharedInstance);
         self.database = [FMDatabase databaseWithPath:filePathString];
         if(![self.database open]) return NO;
         
-        [self createTable];
+        [self createTableIfNeeded];
     }
     @catch (NSException * e) {
         return NO;
@@ -96,9 +96,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordDataDBHelper, sharedInstance);
     return YES;
 }
 
-- (void)createTable {
-    NSString *sql = @"create table words ( text varchar(100) primary key, createdDate varchar(50), hasRead int )";
-    [self.database executeUpdate:sql];
+- (BOOL)tableExist {
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT name FROM sqlite_master WHERE type='table' AND name='%@'", self.tableName];
+    FMResultSet *rs = [self.database executeQuery:query];
+    return ([rs next]);
+}
+
+- (void)createTableIfNeeded {
+    
+    if(!self.tableExist) {
+        
+        NSString *query = [NSString stringWithFormat:@"CREATE TABLE '%@' ( text VARCHAR(100) PRIMARY KEY, createdDate VARCHAR(50), hasRead INT )", self.tableName];
+        [self.database executeUpdate:query];
+    }
 }
 
 - (NSMutableArray<Word> *)select {
