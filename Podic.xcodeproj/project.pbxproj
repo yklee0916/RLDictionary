@@ -36,9 +36,24 @@
 		284048EC1E878EC2006FAFD9 /* WNDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 284048EB1E878EC2006FAFD9 /* WNDefinition.m */; };
 		284048EF1E878EDD006FAFD9 /* WNExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 284048EE1E878EDD006FAFD9 /* WNExample.m */; };
 		284048F31E87929B006FAFD9 /* 170319.WN3.1.db in Resources */ = {isa = PBXBuildFile; fileRef = 284048F21E879287006FAFD9 /* 170319.WN3.1.db */; };
+		284048F71E879747006FAFD9 /* ErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 284048F61E879747006FAFD9 /* ErrorHandler.m */; };
+		284048FF1E879C14006FAFD9 /* PodicUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 284048FE1E879C14006FAFD9 /* PodicUnitTests.m */; };
+		284049091E879D0C006FAFD9 /* WNDatabaseTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 284049081E879D0C006FAFD9 /* WNDatabaseTestCase.m */; };
+		2840490A1E879EB8006FAFD9 /* libPods-Podic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 226ACEB3346D32941C04AFAA /* libPods-Podic.a */; };
+		5C6684EB7433FF7FC74E772D /* libPods-PodicUnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C612AEC2FD72C2F12028173D /* libPods-PodicUnitTests.a */; };
+		980104AF7BB291675B94E071 /* libPods-Podic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C44C30A74F032040D6087 /* libPods-Podic.a */; };
 		A41D3126232B4FDAE10D4BAA /* libPods-Podic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 226ACEB3346D32941C04AFAA /* libPods-Podic.a */; };
-		DFDF8233DDD8BE7789FFEA39 /* libPods-Podic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C44C30A74F032040D6087 /* libPods-Podic.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		284049011E879C14006FAFD9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28975D731E56AA3700B102B6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28975D7A1E56AA3700B102B6;
+			remoteInfo = Podic;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0295F0281E810F5F00E67BA9 /* NSDate+NSDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+NSDateFormatter.m"; path = "Podic/Categories/NSDate+NSDateFormatter.m"; sourceTree = SOURCE_ROOT; };
@@ -95,19 +110,37 @@
 		284048ED1E878EDD006FAFD9 /* WNExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WNExample.h; path = Databases/WordNet/WNExample.h; sourceTree = "<group>"; };
 		284048EE1E878EDD006FAFD9 /* WNExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WNExample.m; path = Databases/WordNet/WNExample.m; sourceTree = "<group>"; };
 		284048F21E879287006FAFD9 /* 170319.WN3.1.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = 170319.WN3.1.db; path = Databases/WordNet/170319.WN3.1.db; sourceTree = "<group>"; };
+		284048F51E879747006FAFD9 /* ErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ErrorHandler.h; path = Managers/ErrorHandler.h; sourceTree = "<group>"; };
+		284048F61E879747006FAFD9 /* ErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ErrorHandler.m; path = Managers/ErrorHandler.m; sourceTree = "<group>"; };
+		284048FC1E879C14006FAFD9 /* PodicUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PodicUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		284048FE1E879C14006FAFD9 /* PodicUnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PodicUnitTests.m; sourceTree = "<group>"; };
+		284049001E879C14006FAFD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		284049081E879D0C006FAFD9 /* WNDatabaseTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WNDatabaseTestCase.m; path = Databases/WordNet/WNDatabaseTestCase.m; sourceTree = "<group>"; };
 		28975D7B1E56AA3700B102B6 /* Podic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Podic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB53D8935EED43090D3865 /* Pods-Podic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podic/Pods-Podic.release.xcconfig"; sourceTree = "<group>"; };
 		8F9C44C30A74F032040D6087 /* libPods-Podic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Podic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AB6FA849B3D5B3D10E1FAA /* Pods-Podic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Podic/Pods-Podic.debug.xcconfig"; sourceTree = "<group>"; };
+		A0939CBBC59375E7FDB6262A /* Pods-PodicUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodicUnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PodicUnitTests/Pods-PodicUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C612AEC2FD72C2F12028173D /* libPods-PodicUnitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PodicUnitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7A44A6C6BA06E852A6C03B2 /* Pods-PodicUnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodicUnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PodicUnitTests/Pods-PodicUnitTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		284048F91E879C14006FAFD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2840490A1E879EB8006FAFD9 /* libPods-Podic.a in Frameworks */,
+				5C6684EB7433FF7FC74E772D /* libPods-PodicUnitTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28975D781E56AA3700B102B6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A41D3126232B4FDAE10D4BAA /* libPods-Podic.a in Frameworks */,
-				DFDF8233DDD8BE7789FFEA39 /* libPods-Podic.a in Frameworks */,
+				980104AF7BB291675B94E071 /* libPods-Podic.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,10 +246,37 @@
 			name = WordNet;
 			sourceTree = "<group>";
 		};
+		284048FD1E879C14006FAFD9 /* PodicUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				284049061E879CD4006FAFD9 /* Databases */,
+				284048FE1E879C14006FAFD9 /* PodicUnitTests.m */,
+				284049001E879C14006FAFD9 /* Info.plist */,
+			);
+			path = PodicUnitTests;
+			sourceTree = "<group>";
+		};
+		284049061E879CD4006FAFD9 /* Databases */ = {
+			isa = PBXGroup;
+			children = (
+				284049071E879CDD006FAFD9 /* WordNet */,
+			);
+			name = Databases;
+			sourceTree = "<group>";
+		};
+		284049071E879CDD006FAFD9 /* WordNet */ = {
+			isa = PBXGroup;
+			children = (
+				284049081E879D0C006FAFD9 /* WNDatabaseTestCase.m */,
+			);
+			name = WordNet;
+			sourceTree = "<group>";
+		};
 		28975D721E56AA3700B102B6 = {
 			isa = PBXGroup;
 			children = (
 				28975D7D1E56AA3700B102B6 /* Podic */,
+				284048FD1E879C14006FAFD9 /* PodicUnitTests */,
 				28975D7C1E56AA3700B102B6 /* Products */,
 				55BF56C289BD86E2AD9BA955 /* Pods */,
 				8D1355BB0CF4B9EB3CA82D82 /* Frameworks */,
@@ -227,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				28975D7B1E56AA3700B102B6 /* Podic.app */,
+				284048FC1E879C14006FAFD9 /* PodicUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -266,6 +327,8 @@
 				0295F04B1E810F8700E67BA9 /* WordDataHandler.m */,
 				0295F04A1E810F8700E67BA9 /* WordDataManager.h */,
 				0295F0471E810F8700E67BA9 /* WordDataManager.m */,
+				284048F51E879747006FAFD9 /* ErrorHandler.h */,
+				284048F61E879747006FAFD9 /* ErrorHandler.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -275,6 +338,8 @@
 			children = (
 				96AB6FA849B3D5B3D10E1FAA /* Pods-Podic.debug.xcconfig */,
 				49AB53D8935EED43090D3865 /* Pods-Podic.release.xcconfig */,
+				A0939CBBC59375E7FDB6262A /* Pods-PodicUnitTests.debug.xcconfig */,
+				E7A44A6C6BA06E852A6C03B2 /* Pods-PodicUnitTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -284,6 +349,7 @@
 			children = (
 				8F9C44C30A74F032040D6087 /* libPods-Podic.a */,
 				226ACEB3346D32941C04AFAA /* libPods-Podic.a */,
+				C612AEC2FD72C2F12028173D /* libPods-PodicUnitTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -291,6 +357,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		284048FB1E879C14006FAFD9 /* PodicUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 284049031E879C14006FAFD9 /* Build configuration list for PBXNativeTarget "PodicUnitTests" */;
+			buildPhases = (
+				E8F1F1EC721EB553CB135A9F /* [CP] Check Pods Manifest.lock */,
+				284048F81E879C14006FAFD9 /* Sources */,
+				284048F91E879C14006FAFD9 /* Frameworks */,
+				284048FA1E879C14006FAFD9 /* Resources */,
+				A0F1CFDFF0A2E3AA0355A110 /* [CP] Embed Pods Frameworks */,
+				9905AD3880420CD659E25159 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				284049021E879C14006FAFD9 /* PBXTargetDependency */,
+			);
+			name = PodicUnitTests;
+			productName = PodicUnitTests;
+			productReference = 284048FC1E879C14006FAFD9 /* PodicUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		28975D7A1E56AA3700B102B6 /* Podic */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28975D921E56AA3700B102B6 /* Build configuration list for PBXNativeTarget "Podic" */;
@@ -320,6 +407,11 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Ryan Lee";
 				TargetAttributes = {
+					284048FB1E879C14006FAFD9 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 28975D7A1E56AA3700B102B6;
+					};
 					28975D7A1E56AA3700B102B6 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 8BCVHFF9UB;
@@ -342,11 +434,19 @@
 			projectRoot = "";
 			targets = (
 				28975D7A1E56AA3700B102B6 /* Podic */,
+				284048FB1E879C14006FAFD9 /* PodicUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		284048FA1E879C14006FAFD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28975D791E56AA3700B102B6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -411,13 +511,68 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		9905AD3880420CD659E25159 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PodicUnitTests/Pods-PodicUnitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0F1CFDFF0A2E3AA0355A110 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PodicUnitTests/Pods-PodicUnitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8F1F1EC721EB553CB135A9F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		284048F81E879C14006FAFD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				284048FF1E879C14006FAFD9 /* PodicUnitTests.m in Sources */,
+				284049091E879D0C006FAFD9 /* WNDatabaseTestCase.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28975D771E56AA3700B102B6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				284048F71E879747006FAFD9 /* ErrorHandler.m in Sources */,
 				0295F04F1E810F8700E67BA9 /* WordDataHandler.m in Sources */,
 				0295F0301E810F5F00E67BA9 /* NSFileManager+RL.m in Sources */,
 				284048E81E878EA8006FAFD9 /* WNWord.m in Sources */,
@@ -443,6 +598,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		284049021E879C14006FAFD9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28975D7A1E56AA3700B102B6 /* Podic */;
+			targetProxy = 284049011E879C14006FAFD9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		0295F0651E81115A00E67BA9 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -465,6 +628,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		284049041E879C14006FAFD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0939CBBC59375E7FDB6262A /* Pods-PodicUnitTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PodicUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.rl.PodicUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Podic.app/Podic";
+			};
+			name = Debug;
+		};
+		284049051E879C14006FAFD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7A44A6C6BA06E852A6C03B2 /* Pods-PodicUnitTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PodicUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.rl.PodicUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Podic.app/Podic";
+			};
+			name = Release;
+		};
 		28975D901E56AA3700B102B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -594,6 +785,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		284049031E879C14006FAFD9 /* Build configuration list for PBXNativeTarget "PodicUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				284049041E879C14006FAFD9 /* Debug */,
+				284049051E879C14006FAFD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		28975D761E56AA3700B102B6 /* Build configuration list for PBXProject "Podic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

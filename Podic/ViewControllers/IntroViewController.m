@@ -13,8 +13,6 @@
 #import "WordbookTableViewCell.h"
 #import "WordbookHasReadCell.h"
 
-#import "WNDBHelper.h"
-
 @interface IntroViewController ()
 
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
@@ -26,8 +24,6 @@
 @implementation IntroViewController
 
 - (void)viewDidLoad {
-    
-    NSLog(@"ykyk : %@", [[WNDBHelper sharedInstance] wordWithString:@"apple"]);
     
     [super viewDidLoad];
     NSString *wordbookTableViewCell = NSStringFromClass([WordbookTableViewCell class]);

@@ -15,6 +15,10 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // create instance to handle error
+    [ErrorHandler createInstance];
+    
     return YES;
 }
 

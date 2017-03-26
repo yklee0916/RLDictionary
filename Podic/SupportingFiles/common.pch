@@ -15,6 +15,7 @@
     #import "SynthesizeSingleton.h"
     #import "NSFileManager+RL.h"
     #import "NSString+NSAssert.h"
+    #import "ErrorHandler.h"
 #endif
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)

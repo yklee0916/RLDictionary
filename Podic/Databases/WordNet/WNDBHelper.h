@@ -14,7 +14,6 @@
 
 + (WNDBHelper *)sharedInstance;
 
-- (BOOL)loadWithError:(NSError **)error;
 - (WNWord *)wordWithString:(NSString *)string;
 
 @end

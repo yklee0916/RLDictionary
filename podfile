@@ -9,3 +9,12 @@ target "Podic" do
     pod 'FMDB'
 
 end
+
+
+target 'PodicUnitTests' do
+   
+    pod 'JSONModel'
+    pod 'MBProgressHUD', '~> 1.0.0'
+    pod 'Toast', '~> 3.1.0'
+    pod 'FMDB'
+end

@@ -21,17 +21,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WNDBHelper, sharedInstance);
 
 #pragma mark - public methods
 
-- (BOOL)loadWithError:(NSError **)error {
-    
-    if(![self openDatabase]) {
-        NSError *databaseOpenError = [NSError errorWithDomain:@"database load failed" code:1001 userInfo:nil];
-        if (error) *error = databaseOpenError;
-        return NO;
-    }
-    
-    return YES;
-}
-
 - (WNWord *)wordWithString:(NSString *)string {
     
     if(!string) return nil;
@@ -47,14 +36,24 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WNDBHelper, sharedInstance);
 #pragma mark - private methods
 
 - (instancetype)init {
+    
     if(self = [super init]) {
-        [self loadWithError:nil];
+        NSError *error;
+        [self openDatabaseWithError:&error];
     }
     return self;
 }
 
 - (void)dealloc {
+    
     [self closeDatabse];
+}
+
+- (void)openDatabaseWithError:(NSError **)error {
+    
+    if(![self openDatabase]) {
+        if (error) *error = [[ErrorHandler sharedInstance] errorWithCode:ERROR_WNDATABASE_OPEN];
+    }
 }
 
 - (BOOL)openDatabase {
