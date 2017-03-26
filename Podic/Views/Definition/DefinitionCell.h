@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PartOfSpeechView.h"
+#import "UILabel+BulletPoint.h"
 
 @interface DefinitionCell : UITableViewCell
 

@@ -10,6 +10,7 @@
 
 @interface ExampleCell : UITableViewCell
 
+@property (nonatomic, assign) IBOutlet UILabel *bulletPointLabel;
 @property (nonatomic, assign) IBOutlet UILabel *exampleLabel;
 
 @end

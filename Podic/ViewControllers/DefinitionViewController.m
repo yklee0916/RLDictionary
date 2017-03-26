@@ -99,7 +99,7 @@
     ExampleCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ExampleCell class])];
     WNDefinition *definition = [self.word.definitions objectAtIndex:indexPath.section - 1];
     WNExample *example = [definition.examples objectAtIndex:indexPath.row];
-    [cell.exampleLabel setText:example.example];
+    [cell.exampleLabel setTextWithBulletPoint:example.example];
     return cell;
 }
 @end

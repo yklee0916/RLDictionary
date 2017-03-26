@@ -18,6 +18,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWb-3G-o71" userLabel="BulletPoint Label">
+                        <rect key="frame" x="10" y="22" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.4823529412" green="0.4823529412" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DS3-Ne-tZK" userLabel="Example Label">
                         <rect key="frame" x="40" y="5" width="305" height="33.5"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
@@ -26,14 +32,17 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="DS3-Ne-tZK" firstAttribute="leading" secondItem="hWf-w9-bYt" secondAttribute="leading" constant="40" id="Jab-CZ-EgM"/>
+                    <constraint firstItem="lWb-3G-o71" firstAttribute="leading" secondItem="hWf-w9-bYt" secondAttribute="leading" constant="10" id="JW1-eK-sGN"/>
+                    <constraint firstItem="DS3-Ne-tZK" firstAttribute="leading" secondItem="hWf-w9-bYt" secondAttribute="leading" constant="40" id="LaI-Bk-jlk"/>
                     <constraint firstAttribute="trailing" secondItem="DS3-Ne-tZK" secondAttribute="trailing" constant="30" id="bSs-oa-xEt"/>
                     <constraint firstItem="DS3-Ne-tZK" firstAttribute="top" secondItem="hWf-w9-bYt" secondAttribute="top" constant="5" id="pDJ-Se-nTE"/>
+                    <constraint firstItem="lWb-3G-o71" firstAttribute="centerY" secondItem="DS3-Ne-tZK" secondAttribute="centerY" id="vaP-FG-rqm"/>
                     <constraint firstAttribute="bottom" secondItem="DS3-Ne-tZK" secondAttribute="bottom" constant="5" id="y6u-wM-6jM"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="bulletPointLabel" destination="lWb-3G-o71" id="cDJ-T6-rUd"/>
                 <outlet property="exampleLabel" destination="DS3-Ne-tZK" id="IRe-OH-ORU"/>
             </connections>
             <point key="canvasLocation" x="-50" y="-73"/>
