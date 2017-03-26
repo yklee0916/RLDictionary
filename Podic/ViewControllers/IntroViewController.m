@@ -13,6 +13,8 @@
 #import "WordbookTableViewCell.h"
 #import "WordbookHasReadCell.h"
 
+#import "DefinitionViewController.h"
+
 @interface IntroViewController ()
 
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
@@ -197,23 +199,31 @@
 - (void)findDefinitionFromDictionaryForTerm:(NSString *)term {
     if(term.length == 0) return ;
     
-    [self.WordDataHandler findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *viewController, NSError *error) {
-        
-        if(error) {
-            [self.view makeToast:error.domain];
-            return ;
-        }
-        
-        if(viewController) {
-            [self presentViewController:viewController animated:YES completion:nil];
-        }
-    }];
+    [self.WordDataHandler addWordWithString:term];
+    [self performSegueWithIdentifier:@"showDefinitionSegue" sender:term];
+    
+//    [self.WordDataHandler findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *viewController, NSError *error) {
+//        
+//        if(error) {
+//            [self.view makeToast:error.domain];
+//            return ;
+//        }
+//        
+//        if(viewController) {
+//            [self presentViewController:viewController animated:YES completion:nil];
+//        }
+//    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if([segue.identifier isEqualToString:@"showSettingSegue"]) {
         
+    }
+    else if([segue.identifier isEqualToString:@"showDefinitionSegue"]) {
+        
+        DefinitionViewController * vc = segue.destinationViewController;
+        vc.wordString = sender;
     }
 }
 

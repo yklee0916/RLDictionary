@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DefinitionCell" id="78S-uG-znV" customClass="DefinitionCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="78S-uG-znV" id="aBe-fC-lHn">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMI-u1-JEQ">
+                        <rect key="frame" x="15" y="5" width="30" height="20"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gca-dT-jo7">
+                                <rect key="frame" x="3" y="3" width="24" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gca-dT-jo7" secondAttribute="trailing" constant="3" id="Mfm-vn-ifc"/>
+                            <constraint firstAttribute="width" constant="30" id="X6m-rz-Avg"/>
+                            <constraint firstItem="gca-dT-jo7" firstAttribute="leading" secondItem="fMI-u1-JEQ" secondAttribute="leading" constant="3" id="ZwX-k6-pE2"/>
+                            <constraint firstAttribute="bottom" secondItem="gca-dT-jo7" secondAttribute="bottom" constant="3" id="ggB-U1-Gkg"/>
+                            <constraint firstAttribute="height" constant="20" id="ig5-KT-q7r"/>
+                            <constraint firstItem="gca-dT-jo7" firstAttribute="top" secondItem="fMI-u1-JEQ" secondAttribute="top" constant="3" id="lum-rj-bBF"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Definition Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ys3-LD-ubx" userLabel="Definition Label">
+                        <rect key="frame" x="30" y="30" width="315" height="64.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ys3-LD-ubx" firstAttribute="leading" secondItem="aBe-fC-lHn" secondAttribute="leading" constant="30" id="0sS-ca-Hxe"/>
+                    <constraint firstItem="fMI-u1-JEQ" firstAttribute="top" secondItem="aBe-fC-lHn" secondAttribute="top" constant="5" id="9PD-ml-5BV"/>
+                    <constraint firstAttribute="trailing" secondItem="ys3-LD-ubx" secondAttribute="trailing" constant="30" id="GMl-f5-tMs"/>
+                    <constraint firstItem="fMI-u1-JEQ" firstAttribute="leading" secondItem="aBe-fC-lHn" secondAttribute="leading" constant="15" id="Mak-lu-y0O"/>
+                    <constraint firstItem="ys3-LD-ubx" firstAttribute="top" secondItem="fMI-u1-JEQ" secondAttribute="bottom" constant="5" id="SOz-dr-hiQ"/>
+                    <constraint firstAttribute="bottom" secondItem="ys3-LD-ubx" secondAttribute="bottom" constant="5" id="Sni-zD-dKR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="definitionLabel" destination="ys3-LD-ubx" id="FWb-hB-Whz"/>
+                <outlet property="partOfSpeechLabel" destination="gca-dT-jo7" id="NxL-Gc-wXz"/>
+                <outlet property="partOfSpeechView" destination="fMI-u1-JEQ" id="Mj4-fg-0lK"/>
+            </connections>
+            <point key="canvasLocation" x="15" y="-164"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -40,7 +40,9 @@
 }
 
 - (void)addWord:(Word *)word {
-    [self.words addObjectByString:word.string];
+    if(![self.words addObjectByString:word.string]) {
+        return ;
+    }
     [self.wordDataDBHelper addWord:word];
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vYF-EP-Pj0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vYF-EP-Pj0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -91,6 +91,7 @@
                         <outlet property="searchTextField" destination="gv6-pH-JlW" id="WLx-pm-KqZ"/>
                         <outlet property="tableView" destination="ycg-oj-PBl" id="MRV-CB-V5g"/>
                         <segue destination="bEN-m8-uAD" kind="presentation" identifier="presentSettingSegue" id="AIB-tO-tNl"/>
+                        <segue destination="2e7-QL-gpR" kind="show" identifier="showDefinitionSegue" id="TBA-p5-cME"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -115,7 +116,45 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4mm-9T-fI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="481" y="-57"/>
+            <point key="canvasLocation" x="15" y="706"/>
+        </scene>
+        <!--Definition View Controller-->
+        <scene sceneID="Bad-Oe-DTd">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2e7-QL-gpR" customClass="DefinitionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hTn-Vq-4k7"/>
+                        <viewControllerLayoutGuide type="bottom" id="oXG-FY-zbp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vsK-zK-upm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="2Nn-fY-zzW">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2e7-QL-gpR" id="H62-1v-i80"/>
+                                    <outlet property="delegate" destination="2e7-QL-gpR" id="WQx-Qa-NbP"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oXG-FY-zbp" firstAttribute="top" secondItem="2Nn-fY-zzW" secondAttribute="bottom" id="3Ij-r3-EJ8"/>
+                            <constraint firstAttribute="trailing" secondItem="2Nn-fY-zzW" secondAttribute="trailing" id="DkO-o1-uhG"/>
+                            <constraint firstItem="2Nn-fY-zzW" firstAttribute="top" secondItem="hTn-Vq-4k7" secondAttribute="bottom" id="FLe-Ec-jkD"/>
+                            <constraint firstItem="2Nn-fY-zzW" firstAttribute="leading" secondItem="vsK-zK-upm" secondAttribute="leading" id="ZaZ-YV-irm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="2Nn-fY-zzW" id="r5U-IJ-qcr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5y6-gM-jhq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="561" y="-57"/>
         </scene>
         <!--Setting-->
         <scene sceneID="4cn-9F-gGU">
@@ -240,7 +279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tYe-Fh-40d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1255" y="-57"/>
+            <point key="canvasLocation" x="831" y="706"/>
         </scene>
     </scenes>
 </document>
