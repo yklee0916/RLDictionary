@@ -49,6 +49,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEt-rj-JEg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fXG-lW-kCd">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                        <blurEffect style="dark"/>
+                    </visualEffectView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ys3-LD-ubx" firstAttribute="leading" secondItem="aBe-fC-lHn" secondAttribute="leading" constant="35" id="0sS-ca-Hxe"/>
@@ -57,11 +65,16 @@
                     <constraint firstItem="fMI-u1-JEQ" firstAttribute="leading" secondItem="aBe-fC-lHn" secondAttribute="leading" constant="20" id="Mak-lu-y0O"/>
                     <constraint firstItem="ys3-LD-ubx" firstAttribute="top" secondItem="fMI-u1-JEQ" secondAttribute="bottom" constant="20" id="SOz-dr-hiQ"/>
                     <constraint firstAttribute="bottom" secondItem="ys3-LD-ubx" secondAttribute="bottom" constant="5" id="Sni-zD-dKR"/>
+                    <constraint firstItem="TEt-rj-JEg" firstAttribute="top" secondItem="aBe-fC-lHn" secondAttribute="top" id="nBe-Jq-yYl"/>
+                    <constraint firstAttribute="bottom" secondItem="TEt-rj-JEg" secondAttribute="bottom" id="nbv-Fl-Mmn"/>
+                    <constraint firstAttribute="trailing" secondItem="TEt-rj-JEg" secondAttribute="trailing" id="tg2-Bk-4LJ"/>
+                    <constraint firstItem="TEt-rj-JEg" firstAttribute="leading" secondItem="aBe-fC-lHn" secondAttribute="leading" id="zA9-M4-7LB"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="definitionLabel" destination="ys3-LD-ubx" id="FWb-hB-Whz"/>
+                <outlet property="dimmedView" destination="TEt-rj-JEg" id="ccD-FZ-nI1"/>
                 <outlet property="partOfSpeechLabel" destination="gca-dT-jo7" id="NxL-Gc-wXz"/>
                 <outlet property="partOfSpeechView" destination="fMI-u1-JEQ" id="Mj4-fg-0lK"/>
             </connections>

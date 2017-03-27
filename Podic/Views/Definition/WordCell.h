@@ -11,5 +11,6 @@
 @interface WordCell : UITableViewCell
 
 @property (nonatomic, assign) IBOutlet UILabel *wordLabel;
+@property (nonatomic, assign) IBOutlet UIButton *speakerButton;
 
 @end

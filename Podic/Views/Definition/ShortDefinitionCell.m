@@ -10,4 +10,8 @@
 
 @implementation ShortDefinitionCell
 
+- (void)setDimmed:(BOOL)dimmed {
+    [self.dimmedView setHidden:!dimmed];
+}
+
 @end

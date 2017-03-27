@@ -19,22 +19,35 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Definition Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HcS-Ba-1LM" userLabel="Definition Label">
-                        <rect key="frame" x="35" y="0.0" width="310" height="44.5"/>
+                        <rect key="frame" x="35" y="15" width="310" height="29.5"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnU-sR-ttb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eqk-U5-Zgx">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                        <blurEffect style="dark"/>
+                    </visualEffectView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="tnU-sR-ttb" secondAttribute="trailing" id="02V-nh-hfy"/>
                     <constraint firstAttribute="trailing" secondItem="HcS-Ba-1LM" secondAttribute="trailing" constant="30" id="Cd8-vj-KjR"/>
+                    <constraint firstAttribute="bottom" secondItem="tnU-sR-ttb" secondAttribute="bottom" id="JH3-WF-YF9"/>
+                    <constraint firstItem="tnU-sR-ttb" firstAttribute="top" secondItem="xaW-6s-pTU" secondAttribute="top" id="Jk8-H8-ODO"/>
                     <constraint firstAttribute="bottom" secondItem="HcS-Ba-1LM" secondAttribute="bottom" constant="5" id="Nrx-uU-iWJ"/>
-                    <constraint firstItem="HcS-Ba-1LM" firstAttribute="top" secondItem="xaW-6s-pTU" secondAttribute="top" id="Vbn-6C-y9m"/>
+                    <constraint firstItem="HcS-Ba-1LM" firstAttribute="top" secondItem="xaW-6s-pTU" secondAttribute="top" constant="15" id="Vbn-6C-y9m"/>
                     <constraint firstItem="HcS-Ba-1LM" firstAttribute="leading" secondItem="xaW-6s-pTU" secondAttribute="leading" constant="35" id="XFP-sC-esv"/>
+                    <constraint firstItem="tnU-sR-ttb" firstAttribute="leading" secondItem="xaW-6s-pTU" secondAttribute="leading" id="Y2X-vO-LzJ"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="definitionLabel" destination="HcS-Ba-1LM" id="r5D-fu-N1u"/>
+                <outlet property="dimmedView" destination="tnU-sR-ttb" id="r36-Kk-ePA"/>
             </connections>
             <point key="canvasLocation" x="15" y="-164"/>
         </tableViewCell>

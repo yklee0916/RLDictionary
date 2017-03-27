@@ -12,5 +12,8 @@
 @interface ShortDefinitionCell : UITableViewCell
 
 @property (nonatomic, assign) IBOutlet UILabel *definitionLabel;
+@property (nonatomic, assign) IBOutlet UIView *dimmedView;
+
+- (void)setDimmed:(BOOL)dimmed;
 
 @end

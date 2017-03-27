@@ -10,4 +10,8 @@
 
 @implementation DefinitionCell
 
+- (void)setDimmed:(BOOL)dimmed {
+    [self.dimmedView setHidden:!dimmed];
+}
+
 @end

@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) WNWord *word;
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) WordCell *wordCell;
 
 @end
 
@@ -72,17 +73,27 @@
     return UITableViewAutomaticDimension;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//    return 0.0;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if(section >= self.word.definitions.count) return 25.0;
+    return CGFLOAT_MIN;
+}
+
+- (void)speakerButtonAction:(id)sender {
+    BOOL selected = self.wordCell.speakerButton.selected;
+    [self.wordCell.speakerButton setSelected:!selected];
+    [self.tableView reloadData];
+}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     if(section == 0) {
+        if(!self.wordCell) {
+            self.wordCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([WordCell class])];
+            [self.wordCell.speakerButton addTarget:self action:@selector(speakerButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        }
         
-        WordCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([WordCell class])];
-        [cell.wordLabel setText:self.word.word];
-        return cell;
+        [self.wordCell.wordLabel setText:self.word.word];
+        return self.wordCell;
     }
     
     if([self shouldShowPartOfSpeech:section]) {
@@ -91,12 +102,16 @@
         WNDefinition *definition = [self.word.definitions objectAtIndex:section-1];
         [cell.partOfSpeechLabel setText:[self partOfSpeechByType:definition.partOfSpeech]];
         [cell.definitionLabel setText:definition.definition withBulletNumber:section];
+        [cell setDimmed:self.wordCell.speakerButton.selected];
+        
         return cell;
     }
     else {
         ShortDefinitionCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ShortDefinitionCell class])];
         WNDefinition *definition = [self.word.definitions objectAtIndex:section-1];
         [cell.definitionLabel setText:definition.definition withBulletNumber:section];
+        [cell setDimmed:self.wordCell.speakerButton.selected];
+        
         return cell;
     }
     return nil;
