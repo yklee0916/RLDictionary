@@ -22,7 +22,7 @@
 
 - (void)setText:(NSString *)text withBulletNumber:(NSInteger)number {
     
-    NSString *textWithBulletPoint = [NSString stringWithFormat:@"%d. %@",(int)number, text];
+    NSString *textWithBulletPoint = [NSString stringWithFormat:@"%d.  %@",(int)number, text];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.headIndent = 20;
     
