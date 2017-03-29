@@ -89,6 +89,14 @@
     [self.wordCell.speakerButton setSelected:!selected];
     [self.tableView setAllowsSelection:!selected];
     [self.tableView reloadData];
+    
+    
+    if(!self.wordCell.speakerButton.selected) {
+        if(self.speechSynthesizer.isSpeaking) {
+            [self.speechSynthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
+            self.speechingIndexPath = nil;
+        }
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -242,6 +250,8 @@ willSpeakRangeOfSpeechString:(NSRange)characterRange
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
  didFinishSpeechUtterance:(AVSpeechUtterance *)utterance {
+    
+    if(!self.wordCell.speakerButton.selected) return ;
     
     if(self.speechingIndexPath) {
         ExampleCell *cell = [self.tableView cellForRowAtIndexPath:self.speechingIndexPath];
