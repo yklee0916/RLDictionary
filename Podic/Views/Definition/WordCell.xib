@@ -15,11 +15,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uSc-4a-3Nf" id="UsO-qx-Bxr">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WY1-2t-ROO" userLabel="Word Label">
-                        <rect key="frame" x="20" y="25" width="325" height="54.5"/>
+                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WY1-2t-ROO" userLabel="Word Label">
+                        <rect key="frame" x="20" y="25" width="271" height="54.5"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -38,8 +38,8 @@
                     <constraint firstAttribute="trailing" secondItem="48o-sc-p4H" secondAttribute="trailing" constant="20" id="0vy-li-rS9"/>
                     <constraint firstItem="WY1-2t-ROO" firstAttribute="top" secondItem="UsO-qx-Bxr" secondAttribute="top" constant="25" id="8d7-XG-yss"/>
                     <constraint firstAttribute="bottom" secondItem="WY1-2t-ROO" secondAttribute="bottom" constant="20" id="E20-x0-MHk"/>
-                    <constraint firstAttribute="trailing" secondItem="WY1-2t-ROO" secondAttribute="trailing" constant="30" id="JV4-cO-j92"/>
                     <constraint firstItem="WY1-2t-ROO" firstAttribute="leading" secondItem="UsO-qx-Bxr" secondAttribute="leading" constant="20" id="Yaw-Xy-zGt"/>
+                    <constraint firstItem="48o-sc-p4H" firstAttribute="leading" secondItem="WY1-2t-ROO" secondAttribute="trailing" constant="20" id="hem-6E-4QF"/>
                     <constraint firstItem="48o-sc-p4H" firstAttribute="centerY" secondItem="WY1-2t-ROO" secondAttribute="centerY" id="iU1-Ry-nqE"/>
                 </constraints>
             </tableViewCellContentView>

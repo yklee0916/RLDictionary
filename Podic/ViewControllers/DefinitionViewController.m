@@ -14,7 +14,7 @@
 #import "ShortDefinitionCell.h"
 #import "AVSpeechSynthesizer+AVSpeechUtterance.h"
 
-@interface DefinitionViewController () <AVSpeechSynthesizerDelegate>
+@interface DefinitionViewController () <AVSpeechSynthesizerDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) WNWord *word;
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
@@ -97,6 +97,9 @@
         if(!self.wordCell) {
             self.wordCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([WordCell class])];
             [self.wordCell.speakerButton addTarget:self action:@selector(speakerButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+            UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectHeaderAtIndexPath:)];
+            gesture.delegate = self;
+            [self.wordCell.wordLabel addGestureRecognizer:gesture];
         }
         
         [self.wordCell.wordLabel setText:self.word.word];
@@ -163,9 +166,30 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ExampleCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ExampleCell class])];
+- (void)didSelectHeaderAtIndexPath:(UITapGestureRecognizer *)gesture {
     
+    [self.speechSynthesizer speakWithString:self.wordCell.wordLabel.text];
+    [self.tableView setAllowsSelection:NO];
+    [self.wordCell setBackgroundColor:[UIColor whiteColor]];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)activeScrollView {
+    
+    [self.wordCell setBackgroundColor:[UIColor whiteColor]];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    
+    if(!self.tableView.allowsSelection) return NO;
+    
+    NSLog(@"touch.phase : %d", (int)touch.phase);
+    
+    [self.wordCell setBackgroundColor:[UIColor lightGrayColor]];
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
     WNDefinition *definition = [self.word.definitions objectAtIndex:indexPath.section - 1];
     WNExample *example = [definition.examples objectAtIndex:indexPath.row];
     [self.speechSynthesizer speakWithString:example.example];
@@ -185,18 +209,29 @@ willSpeakRangeOfSpeechString:(NSRange)characterRange
 //    NSLog(@"%@ %@", [self class], NSStringFromSelector(_cmd));
     
     
-    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:utterance.speechString];
-    [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:characterRange];
     
-    NSMutableAttributedString *m = [[NSMutableAttributedString alloc] initWithString:@"•  "];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.headIndent = 15;
+    if(self.speechingIndexPath) {
+        NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:utterance.speechString];
+        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:characterRange];
+        
+        NSMutableAttributedString *m = [[NSMutableAttributedString alloc] initWithString:@"•  "];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.headIndent = 15;
+        
+        [m appendAttributedString:mutableAttributedString];
+        [m addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, m.length)];
     
-    [m appendAttributedString:mutableAttributedString];
-    [m addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, m.length)];
+        ExampleCell *cell = [self.tableView cellForRowAtIndexPath:self.speechingIndexPath];
+        cell.exampleLabel.attributedText = m;
+    }
+    else {
+        NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:utterance.speechString];
+        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:characterRange];
+        self.wordCell.wordLabel.attributedText = mutableAttributedString;
+    }
     
-    ExampleCell *cell = [self.tableView cellForRowAtIndexPath:self.speechingIndexPath];
-    cell.exampleLabel.attributedText = m;
+    
+    
 }
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
@@ -207,8 +242,16 @@ willSpeakRangeOfSpeechString:(NSRange)characterRange
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
  didFinishSpeechUtterance:(AVSpeechUtterance *)utterance {
-    ExampleCell *cell = [self.tableView cellForRowAtIndexPath:self.speechingIndexPath];
-    [cell.exampleLabel setTextWithBulletPoint:utterance.speechString];
+    
+    if(self.speechingIndexPath) {
+        ExampleCell *cell = [self.tableView cellForRowAtIndexPath:self.speechingIndexPath];
+        [cell.exampleLabel setTextWithBulletPoint:utterance.speechString];
+    }
+    else {
+        [self.wordCell.wordLabel setText:utterance.speechString];
+    }
+    
+    self.speechingIndexPath = nil;
     
     if(self.wordCell.speakerButton.selected) {
         [self.tableView setAllowsSelection:YES];
