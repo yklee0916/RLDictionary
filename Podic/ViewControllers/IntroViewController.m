@@ -126,7 +126,7 @@
     NSString *term = word.string;
     
     [self findDefinitionFromDictionaryForTerm:term];
-    [self.tableView reloadData];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
