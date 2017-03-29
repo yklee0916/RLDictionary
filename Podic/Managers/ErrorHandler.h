@@ -19,7 +19,6 @@ typedef NS_ENUM(NSUInteger, ERROR_CODE) {
 
 @interface ErrorHandler : NSObject
 
-+ (ErrorHandler *)createInstance;
 + (ErrorHandler *)sharedInstance;
 
 - (NSError *)errorWithCode:(ERROR_CODE)code;

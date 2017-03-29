@@ -58,7 +58,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XYF-5K-fqN">
-                        <barButtonItem key="leftBarButtonItem" image="setting" style="plain" id="cbC-9V-Cud">
+                        <barButtonItem key="leftBarButtonItem" image="setting" id="cbC-9V-Cud">
                             <color key="tintColor" red="0.53329068422317505" green="0.53335732221603394" blue="0.53326809406280518" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="settingNavigationBarButtonItemAction:" destination="BYZ-38-t0r" id="L32-dd-nCq"/>
@@ -82,7 +82,7 @@
                                 <outlet property="delegate" destination="BYZ-38-t0r" id="0mj-ii-tt1"/>
                             </connections>
                         </textField>
-                        <barButtonItem key="rightBarButtonItem" image="search" style="plain" id="1Un-Sb-Y7Z">
+                        <barButtonItem key="rightBarButtonItem" image="search" id="1Un-Sb-Y7Z">
                             <color key="tintColor" red="0.53329068422317505" green="0.53335732221603394" blue="0.53326809406280518" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="searchNavigationBarButtonItemAction:" destination="BYZ-38-t0r" id="voN-IC-YiB"/>

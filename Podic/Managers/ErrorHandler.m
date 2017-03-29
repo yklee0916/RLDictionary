@@ -18,11 +18,6 @@
 
 #pragma mark - public methods
 
-+ (ErrorHandler *)createInstance {
-    
-    return [ErrorHandler sharedInstance];
-}
-
 SYNTHESIZE_SINGLETON_FOR_CLASS(ErrorHandler, sharedInstance);
 
 - (NSError *)errorWithCode:(ERROR_CODE)code {

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "WNDBHelper.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +18,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // create instance to handle error
-    [ErrorHandler createInstance];
+    [ErrorHandler sharedInstance];
+    [WNDBHelper sharedInstance];
     
     return YES;
 }
