@@ -32,7 +32,7 @@
     return _contents;
 }
 
-- (IBAction)doneNavigationBarButtonItemAction:(id)sender {
+- (IBAction)closeButtonItemAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

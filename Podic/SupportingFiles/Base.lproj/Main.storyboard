@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vYF-EP-Pj0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vYF-EP-Pj0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,13 +58,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XYF-5K-fqN">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="cbC-9V-Cud">
+                        <barButtonItem key="leftBarButtonItem" image="setting" style="plain" id="cbC-9V-Cud">
+                            <color key="tintColor" red="0.53329068422317505" green="0.53335732221603394" blue="0.53326809406280518" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="settingNavigationBarButtonItemAction:" destination="BYZ-38-t0r" id="L32-dd-nCq"/>
                             </connections>
                         </barButtonItem>
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="search" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="gv6-pH-JlW">
-                            <rect key="frame" x="54" y="9" width="270" height="26"/>
+                            <rect key="frame" x="64" y="9" width="247" height="26"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                             <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="textColor"/>
@@ -81,7 +82,8 @@
                                 <outlet property="delegate" destination="BYZ-38-t0r" id="0mj-ii-tt1"/>
                             </connections>
                         </textField>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="1Un-Sb-Y7Z">
+                        <barButtonItem key="rightBarButtonItem" image="search" style="plain" id="1Un-Sb-Y7Z">
+                            <color key="tintColor" red="0.53329068422317505" green="0.53335732221603394" blue="0.53326809406280518" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="searchNavigationBarButtonItemAction:" destination="BYZ-38-t0r" id="voN-IC-YiB"/>
                             </connections>
@@ -148,6 +150,14 @@
                             <constraint firstItem="2Nn-fY-zzW" firstAttribute="leading" secondItem="vsK-zK-upm" secondAttribute="leading" id="ZaZ-YV-irm"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Wxp-vV-AKW">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="t8E-UW-9us">
+                            <color key="tintColor" red="0.53329068422317505" green="0.53335732221603394" blue="0.53326809406280518" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="backButtonAction:" destination="2e7-QL-gpR" id="Tni-mL-IAo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="2Nn-fY-zzW" id="r5U-IJ-qcr"/>
                     </connections>
@@ -267,9 +277,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Setting" id="y18-5q-RBB">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="OMF-lZ-wtM">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="hcB-DT-K5d">
+                            <color key="tintColor" red="0.53329068422317505" green="0.53335732221603394" blue="0.53326809406280518" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="doneNavigationBarButtonItemAction:" destination="q50-xn-2YJ" id="pcN-u9-hcV"/>
+                                <action selector="closeButtonItemAction:" destination="q50-xn-2YJ" id="HYC-aS-6wB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -282,4 +293,9 @@
             <point key="canvasLocation" x="831" y="706"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back" width="24" height="24"/>
+        <image name="search" width="30" height="30"/>
+        <image name="setting" width="24" height="24"/>
+    </resources>
 </document>

@@ -111,7 +111,6 @@
 		0295F0681E81115A00E67BA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Podic/SupportingFiles/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		0295F06B1E8111BD00E67BA9 /* WordbookHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WordbookHeaderView.xib; path = Podic/Views/WordbookHeaderView.xib; sourceTree = SOURCE_ROOT; };
 		0295F0741E8114D100E67BA9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = SupportingFiles/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0295F0761E8114E500E67BA9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = SupportingFiles/ko.lproj/Main.strings; sourceTree = "<group>"; };
 		226ACEB3346D32941C04AFAA /* libPods-Podic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Podic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		284048E31E878EA8006FAFD9 /* WNDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WNDBHelper.h; path = Databases/WordNet/WNDBHelper.h; sourceTree = "<group>"; };
 		284048E41E878EA8006FAFD9 /* WNDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WNDBHelper.m; path = Databases/WordNet/WNDBHelper.m; sourceTree = "<group>"; };
@@ -694,7 +693,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				0295F0681E81115A00E67BA9 /* Base */,
-				0295F0761E8114E500E67BA9 /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

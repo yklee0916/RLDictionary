@@ -98,6 +98,10 @@
     return CGFLOAT_MIN;
 }
 
+- (IBAction)backButtonAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)speakerButtonAction:(id)sender {
     BOOL selected = self.wordCell.speakerButton.selected;
     [self.wordCell.speakerButton setSelected:!selected];
