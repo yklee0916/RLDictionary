@@ -52,6 +52,7 @@
 		284049251E87EF34006FAFD9 /* UILabel+BulletPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 284049241E87EF34006FAFD9 /* UILabel+BulletPoint.m */; };
 		284049271E881ACD006FAFD9 /* ShortDefinitionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 284049261E881ACD006FAFD9 /* ShortDefinitionCell.xib */; };
 		2840492A1E881B4A006FAFD9 /* ShortDefinitionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 284049291E881B4A006FAFD9 /* ShortDefinitionCell.m */; };
+		289DA8081E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.m in Sources */ = {isa = PBXBuildFile; fileRef = 289DA8071E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.m */; };
 		5C6684EB7433FF7FC74E772D /* libPods-PodicUnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C612AEC2FD72C2F12028173D /* libPods-PodicUnitTests.a */; };
 		980104AF7BB291675B94E071 /* libPods-Podic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C44C30A74F032040D6087 /* libPods-Podic.a */; };
 		A41D3126232B4FDAE10D4BAA /* libPods-Podic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 226ACEB3346D32941C04AFAA /* libPods-Podic.a */; };
@@ -148,6 +149,8 @@
 		284049281E881B4A006FAFD9 /* ShortDefinitionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShortDefinitionCell.h; path = Views/Definition/ShortDefinitionCell.h; sourceTree = "<group>"; };
 		284049291E881B4A006FAFD9 /* ShortDefinitionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShortDefinitionCell.m; path = Views/Definition/ShortDefinitionCell.m; sourceTree = "<group>"; };
 		28975D7B1E56AA3700B102B6 /* Podic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Podic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		289DA8061E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AVSpeechSynthesizer+AVSpeechUtterance.h"; path = "Categories/AVSpeechSynthesizer+AVSpeechUtterance.h"; sourceTree = "<group>"; };
+		289DA8071E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AVSpeechSynthesizer+AVSpeechUtterance.m"; path = "Categories/AVSpeechSynthesizer+AVSpeechUtterance.m"; sourceTree = "<group>"; };
 		49AB53D8935EED43090D3865 /* Pods-Podic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podic/Pods-Podic.release.xcconfig"; sourceTree = "<group>"; };
 		8F9C44C30A74F032040D6087 /* libPods-Podic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Podic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AB6FA849B3D5B3D10E1FAA /* Pods-Podic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Podic/Pods-Podic.debug.xcconfig"; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 				0295F02A1E810F5F00E67BA9 /* NSString+NSAssert.m */,
 				284049231E87EF34006FAFD9 /* UILabel+BulletPoint.h */,
 				284049241E87EF34006FAFD9 /* UILabel+BulletPoint.m */,
+				289DA8061E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.h */,
+				289DA8071E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -650,6 +655,7 @@
 				0295F0441E810F7600E67BA9 /* NSMutableArray+Word.m in Sources */,
 				284048E71E878EA8006FAFD9 /* WNDBHelper.m in Sources */,
 				0295F0601E810FA800E67BA9 /* main.m in Sources */,
+				289DA8081E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.m in Sources */,
 				0295F0391E810F6B00E67BA9 /* WordbookHasReadCell.m in Sources */,
 				0295F02F1E810F5F00E67BA9 /* NSString+NSAssert.m in Sources */,
 				0295F03B1E810F6B00E67BA9 /* WordbookTableViewCell.m in Sources */,

@@ -46,7 +46,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordDataHandler, sharedInstance);
     self.wordbooks = [NSMutableArray <Wordbook> array];
     self.groupingType = self.wordbookArrangeType ? WordbookManagerGroupingTypeByWeek : WordbookManagerGroupingTypeByDay;
     
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 //    NSLog(@"path: %@",path);
     
     NSDate *fromDate;

@@ -12,12 +12,15 @@
 #import "ExampleCell.h"
 #import "WNDBHelper.h"
 #import "ShortDefinitionCell.h"
+#import "AVSpeechSynthesizer+AVSpeechUtterance.h"
 
-@interface DefinitionViewController ()
+@interface DefinitionViewController () <AVSpeechSynthesizerDelegate>
 
 @property (nonatomic, strong) WNWord *word;
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) WordCell *wordCell;
+@property (nonatomic, strong) AVSpeechSynthesizer *speechSynthesizer;
+@property (nonatomic, strong) NSIndexPath *speechingIndexPath;
 
 @end
 
@@ -25,6 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.speechSynthesizer = [[AVSpeechSynthesizer alloc] init];
+    self.speechSynthesizer.delegate = self;
     
     NSString *wordCell = NSStringFromClass([WordCell class]);
     [self.tableView registerNib:[UINib nibWithNibName:wordCell bundle:nil] forCellReuseIdentifier:wordCell];
@@ -81,6 +87,7 @@
 - (void)speakerButtonAction:(id)sender {
     BOOL selected = self.wordCell.speakerButton.selected;
     [self.wordCell.speakerButton setSelected:!selected];
+    [self.tableView setAllowsSelection:!selected];
     [self.tableView reloadData];
 }
 
@@ -152,6 +159,60 @@
     WNDefinition *definition = [self.word.definitions objectAtIndex:indexPath.section - 1];
     WNExample *example = [definition.examples objectAtIndex:indexPath.row];
     [cell.exampleLabel setTextWithBulletPoint:example.example];
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ExampleCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ExampleCell class])];
+    
+    WNDefinition *definition = [self.word.definitions objectAtIndex:indexPath.section - 1];
+    WNExample *example = [definition.examples objectAtIndex:indexPath.row];
+    [self.speechSynthesizer speakWithString:example.example];
+    self.speechingIndexPath = indexPath;
+    
+    [self.tableView setAllowsSelection:NO];
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+
+#pragma mark - AVSpeechSynthesizerDelegate
+
+- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
+willSpeakRangeOfSpeechString:(NSRange)characterRange
+                utterance:(AVSpeechUtterance *)utterance {
+//    NSLog(@"%@ %@", [self class], NSStringFromSelector(_cmd));
+    
+    
+    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:utterance.speechString];
+    [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:characterRange];
+    
+    NSMutableAttributedString *m = [[NSMutableAttributedString alloc] initWithString:@"•  "];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.headIndent = 15;
+    
+    [m appendAttributedString:mutableAttributedString];
+    [m addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, m.length)];
+    
+    ExampleCell *cell = [self.tableView cellForRowAtIndexPath:self.speechingIndexPath];
+    cell.exampleLabel.attributedText = m;
+}
+
+- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
+  didStartSpeechUtterance:(AVSpeechUtterance *)utterance
+{
+    // lock for others selecting
+}
+
+- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
+ didFinishSpeechUtterance:(AVSpeechUtterance *)utterance {
+    ExampleCell *cell = [self.tableView cellForRowAtIndexPath:self.speechingIndexPath];
+    [cell.exampleLabel setTextWithBulletPoint:utterance.speechString];
+    
+    if(self.wordCell.speakerButton.selected) {
+        [self.tableView setAllowsSelection:YES];
+    }
+}
 @end
+
