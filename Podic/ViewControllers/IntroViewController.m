@@ -45,6 +45,11 @@
                                              selector:@selector(wordbookDidChanged:)
                                                  name:@"wordbookDidChangedNotification"
                                                object:nil];
+    
+    // enable back swipe gesture with custom left back bar button item
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    }
 }
 
 - (void)dealloc {
