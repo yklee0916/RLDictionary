@@ -277,7 +277,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Setting" id="y18-5q-RBB">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="hcB-DT-K5d">
+                        <barButtonItem key="leftBarButtonItem" image="close_b" id="hcB-DT-K5d">
                             <color key="tintColor" red="0.53329068422317505" green="0.53335732221603394" blue="0.53326809406280518" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="closeButtonItemAction:" destination="q50-xn-2YJ" id="HYC-aS-6wB"/>
@@ -295,6 +295,7 @@
     </scenes>
     <resources>
         <image name="back" width="24" height="24"/>
+        <image name="close_b" width="15" height="15"/>
         <image name="search" width="30" height="30"/>
         <image name="setting" width="24" height="24"/>
     </resources>
