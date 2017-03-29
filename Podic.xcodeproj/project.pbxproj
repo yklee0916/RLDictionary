@@ -54,7 +54,6 @@
 		2840492A1E881B4A006FAFD9 /* ShortDefinitionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 284049291E881B4A006FAFD9 /* ShortDefinitionCell.m */; };
 		289DA8081E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.m in Sources */ = {isa = PBXBuildFile; fileRef = 289DA8071E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.m */; };
 		5C6684EB7433FF7FC74E772D /* libPods-PodicUnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C612AEC2FD72C2F12028173D /* libPods-PodicUnitTests.a */; };
-		980104AF7BB291675B94E071 /* libPods-Podic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C44C30A74F032040D6087 /* libPods-Podic.a */; };
 		A41D3126232B4FDAE10D4BAA /* libPods-Podic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 226ACEB3346D32941C04AFAA /* libPods-Podic.a */; };
 /* End PBXBuildFile section */
 
@@ -174,7 +173,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A41D3126232B4FDAE10D4BAA /* libPods-Podic.a in Frameworks */,
-				980104AF7BB291675B94E071 /* libPods-Podic.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +465,7 @@
 		28975D731E56AA3700B102B6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Ryan Lee";
 				TargetAttributes = {
 					284048FB1E879C14006FAFD9 = {

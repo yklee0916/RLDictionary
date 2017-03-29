@@ -16,8 +16,8 @@
     AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:string];
     utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-US"];
     utterance.rate = 0.4;
-    utterance.preUtteranceDelay = 0.5f;
-    utterance.postUtteranceDelay = 0.1f;
+    utterance.preUtteranceDelay = 0.3f;
+    utterance.postUtteranceDelay = 0.2f;
     [self speakUtterance:utterance];
 }
 

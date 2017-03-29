@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="78S-uG-znV" id="aBe-fC-lHn">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMI-u1-JEQ">
@@ -49,32 +49,28 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEt-rj-JEg">
+                    <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbM-8Y-3Vy" userLabel="Dimmed View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
-                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fXG-lW-kCd">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        </view>
-                        <blurEffect style="dark"/>
-                    </visualEffectView>
+                        <color key="backgroundColor" red="0.4823529412" green="0.4823529412" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ys3-LD-ubx" firstAttribute="leading" secondItem="aBe-fC-lHn" secondAttribute="leading" constant="35" id="0sS-ca-Hxe"/>
+                    <constraint firstAttribute="trailing" secondItem="wbM-8Y-3Vy" secondAttribute="trailing" id="4Nt-9E-hL4"/>
+                    <constraint firstItem="wbM-8Y-3Vy" firstAttribute="top" secondItem="aBe-fC-lHn" secondAttribute="top" id="7P4-bV-hAW"/>
                     <constraint firstItem="fMI-u1-JEQ" firstAttribute="top" secondItem="aBe-fC-lHn" secondAttribute="top" constant="15" id="9PD-ml-5BV"/>
+                    <constraint firstItem="wbM-8Y-3Vy" firstAttribute="leading" secondItem="aBe-fC-lHn" secondAttribute="leading" id="A1J-ff-6B9"/>
                     <constraint firstAttribute="trailing" secondItem="ys3-LD-ubx" secondAttribute="trailing" constant="30" id="GMl-f5-tMs"/>
                     <constraint firstItem="fMI-u1-JEQ" firstAttribute="leading" secondItem="aBe-fC-lHn" secondAttribute="leading" constant="20" id="Mak-lu-y0O"/>
                     <constraint firstItem="ys3-LD-ubx" firstAttribute="top" secondItem="fMI-u1-JEQ" secondAttribute="bottom" constant="20" id="SOz-dr-hiQ"/>
                     <constraint firstAttribute="bottom" secondItem="ys3-LD-ubx" secondAttribute="bottom" constant="5" id="Sni-zD-dKR"/>
-                    <constraint firstItem="TEt-rj-JEg" firstAttribute="top" secondItem="aBe-fC-lHn" secondAttribute="top" id="nBe-Jq-yYl"/>
-                    <constraint firstAttribute="bottom" secondItem="TEt-rj-JEg" secondAttribute="bottom" id="nbv-Fl-Mmn"/>
-                    <constraint firstAttribute="trailing" secondItem="TEt-rj-JEg" secondAttribute="trailing" id="tg2-Bk-4LJ"/>
-                    <constraint firstItem="TEt-rj-JEg" firstAttribute="leading" secondItem="aBe-fC-lHn" secondAttribute="leading" id="zA9-M4-7LB"/>
+                    <constraint firstAttribute="bottom" secondItem="wbM-8Y-3Vy" secondAttribute="bottom" id="qT1-MM-IO4"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="definitionLabel" destination="ys3-LD-ubx" id="FWb-hB-Whz"/>
-                <outlet property="dimmedView" destination="TEt-rj-JEg" id="ccD-FZ-nI1"/>
+                <outlet property="dimmedView" destination="wbM-8Y-3Vy" id="FyH-zA-LSJ"/>
                 <outlet property="partOfSpeechLabel" destination="gca-dT-jo7" id="NxL-Gc-wXz"/>
                 <outlet property="partOfSpeechView" destination="fMI-u1-JEQ" id="Mj4-fg-0lK"/>
             </connections>

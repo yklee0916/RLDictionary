@@ -131,7 +131,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordDataHandler, sharedInstance);
     NSDate *toRangeDate;
     NSCalendar *calendar = [NSCalendar currentCalendar];
     [calendar setFirstWeekday:2];
-    NSCalendarUnit unit;
+    NSCalendarUnit unit = NSCalendarUnitDay;
     if(type == WordbookManagerGroupingTypeByDay) unit = NSCalendarUnitDay;
     else if(type == WordbookManagerGroupingTypeByWeek) unit = NSCalendarUnitWeekOfYear;
     
