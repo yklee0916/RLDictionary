@@ -29,9 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.speechSynthesizer = [[AVSpeechSynthesizer alloc] init];
-    self.speechSynthesizer.delegate = self;
-    
     NSString *wordCell = NSStringFromClass([WordCell class]);
     [self.tableView registerNib:[UINib nibWithNibName:wordCell bundle:nil] forCellReuseIdentifier:wordCell];
     
@@ -48,6 +45,23 @@
     if(self.wordString) {
         self.word = [[WNDBHelper sharedInstance] wordWithString:self.wordString];
         [self.tableView reloadData];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.speechSynthesizer = [[AVSpeechSynthesizer alloc] init];
+    self.speechSynthesizer.delegate = self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if(self.speechSynthesizer.isSpeaking) {
+        [self.speechSynthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
+        self.speechingIndexPath = nil;
+        self.speechSynthesizer = nil;
     }
 }
 
@@ -90,11 +104,12 @@
     [self.tableView setAllowsSelection:!selected];
     [self.tableView reloadData];
     
-    
     if(!self.wordCell.speakerButton.selected) {
         if(self.speechSynthesizer.isSpeaking) {
             [self.speechSynthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
             self.speechingIndexPath = nil;
+            self.speechSynthesizer = [[AVSpeechSynthesizer alloc] init];
+            self.speechSynthesizer.delegate = self;
         }
     }
 }
@@ -190,8 +205,6 @@
     
     if(!self.tableView.allowsSelection) return NO;
     
-    NSLog(@"touch.phase : %d", (int)touch.phase);
-    
     [self.wordCell setBackgroundColor:[UIColor lightGrayColor]];
     return YES;
 }
@@ -237,9 +250,6 @@ willSpeakRangeOfSpeechString:(NSRange)characterRange
         [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:characterRange];
         self.wordCell.wordLabel.attributedText = mutableAttributedString;
     }
-    
-    
-    
 }
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
