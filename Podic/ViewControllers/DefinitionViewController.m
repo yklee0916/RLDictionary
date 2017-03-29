@@ -55,8 +55,8 @@
     self.speechSynthesizer.delegate = self;
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     
     if(self.speechSynthesizer.isSpeaking) {
         [self.speechSynthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
