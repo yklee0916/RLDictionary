@@ -65,17 +65,31 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordDataDBHelper, sharedInstance);
     return @"words";
 }
 
-- (NSURL *)databaseFileURL {
+- (NSString *)databaseFolderPath {
     NSMutableString *filePath = [NSMutableString string];
     [filePath appendString:[NSFileManager pathForCachesDirectory]];
     [filePath appendString:NFFILE_SEPERATOR];
     [filePath appendString:[[NSBundle mainBundle] bundleIdentifier]];
     [filePath appendString:NFFILE_SEPERATOR];
-    [filePath appendString:self.databaseFileName];
-    return [NSURL URLWithString:filePath];
+    return filePath;
+}
+
+- (NSURL *)databaseFileURL {
+    NSString *fullPath = [self.databaseFolderPath stringByAppendingString:self.databaseFileName];
+    return [NSURL URLWithString:fullPath];
+}
+
+- (void)createDatabaseFolderIfNeeded {
+    BOOL isDirectory;
+    if(![[NSFileManager defaultManager] fileExistsAtPath:self.databaseFolderPath isDirectory:&isDirectory]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:self.databaseFolderPath withIntermediateDirectories:NO attributes:nil error:&error];
+    }
 }
 
 - (BOOL)openDatabase {
+    [self createDatabaseFolderIfNeeded];
+    
     NSURL *fileURL = self.databaseFileURL;
     return [self openDatabaseWithURL:fileURL];
 }
