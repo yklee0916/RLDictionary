@@ -141,13 +141,23 @@
                                     <outlet property="delegate" destination="2e7-QL-gpR" id="WQx-Qa-NbP"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ene-pf-1x8" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ab4-7W-jTY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ene-pf-1x8" firstAttribute="leading" secondItem="vsK-zK-upm" secondAttribute="leading" id="0Yx-av-2oC"/>
                             <constraint firstItem="oXG-FY-zbp" firstAttribute="top" secondItem="2Nn-fY-zzW" secondAttribute="bottom" id="3Ij-r3-EJ8"/>
                             <constraint firstAttribute="trailing" secondItem="2Nn-fY-zzW" secondAttribute="trailing" id="DkO-o1-uhG"/>
                             <constraint firstItem="2Nn-fY-zzW" firstAttribute="top" secondItem="hTn-Vq-4k7" secondAttribute="bottom" id="FLe-Ec-jkD"/>
+                            <constraint firstAttribute="trailing" secondItem="Ene-pf-1x8" secondAttribute="trailing" id="Vhd-Gi-giO"/>
                             <constraint firstItem="2Nn-fY-zzW" firstAttribute="leading" secondItem="vsK-zK-upm" secondAttribute="leading" id="ZaZ-YV-irm"/>
+                            <constraint firstItem="oXG-FY-zbp" firstAttribute="top" secondItem="Ene-pf-1x8" secondAttribute="bottom" id="ii1-J9-RTT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Wxp-vV-AKW">
@@ -159,6 +169,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bannerView" destination="Ene-pf-1x8" id="Xdf-a7-BNt"/>
                         <outlet property="tableView" destination="2Nn-fY-zzW" id="r5U-IJ-qcr"/>
                     </connections>
                 </viewController>
@@ -295,7 +306,7 @@
     </scenes>
     <resources>
         <image name="back" width="24" height="24"/>
-        <image name="close_b" width="15" height="15"/>
+        <image name="close_b" width="18" height="18"/>
         <image name="search" width="30" height="30"/>
         <image name="setting" width="24" height="24"/>
     </resources>

@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "WNDBHelper.h"
 
+@import GoogleMobileAds;
+
 @interface AppDelegate ()
 
 @end
@@ -20,6 +22,8 @@
     // create instance to handle error
     [ErrorHandler sharedInstance];
     [WNDBHelper sharedInstance];
+    
+    [GADMobileAds configureWithApplicationID:@"ca-app-pub-3075402229356558~9638918820"];
     
     return YES;
 }

@@ -14,10 +14,13 @@
 #import "ShortDefinitionCell.h"
 #import "AVSpeechSynthesizer+AVSpeechUtterance.h"
 
+@import GoogleMobileAds;
+
 @interface DefinitionViewController () <AVSpeechSynthesizerDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) WNWord *word;
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
+@property (nonatomic, assign) IBOutlet GADBannerView *bannerView;
 @property (nonatomic, strong) WordCell *wordCell;
 @property (nonatomic, strong) AVSpeechSynthesizer *speechSynthesizer;
 @property (nonatomic, strong) NSIndexPath *speechingIndexPath;
@@ -46,6 +49,10 @@
         self.word = [[WNDBHelper sharedInstance] wordWithString:self.wordString];
         [self.tableView reloadData];
     }
+    
+    self.bannerView.adUnitID = @"ca-app-pub-3075402229356558/2115652029";
+    self.bannerView.rootViewController = self;
+    [self.bannerView loadRequest:[GADRequest request]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

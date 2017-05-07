@@ -832,6 +832,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8BCVHFF9UB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Podic/Libraries/AdMob",
+				);
 				GCC_PREFIX_HEADER = Podic/SupportingFiles/common.pch;
 				INFOPLIST_FILE = Podic/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -849,6 +853,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8BCVHFF9UB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Podic/Libraries/AdMob",
+				);
 				GCC_PREFIX_HEADER = Podic/SupportingFiles/common.pch;
 				INFOPLIST_FILE = Podic/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
