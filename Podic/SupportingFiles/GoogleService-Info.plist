@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>1007031903342-obi07ijrupil85p9arfn2i52qjtq3bnp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1007031903342-obi07ijrupil85p9arfn2i52qjtq3bnp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCEA2W0amvDVDZPKdYLDGy89Jsk7SuiNu8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1007031903342</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>kr.co.deniz.podic</string>
+	<key>PROJECT_ID</key>
+	<string>podic-bf1a6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>podic-bf1a6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1007031903342:ios:6d3b6d2a7f301b0a</string>
+	<key>DATABASE_URL</key>
+	<string>https://podic-bf1a6.firebaseio.com</string>
+</dict>
+</plist>

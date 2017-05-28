@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "WNDBHelper.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+@import Firebase;
 
 @import GoogleMobileAds;
 
@@ -19,11 +22,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [Fabric with:@[[Crashlytics class]]];
+    
     // create instance to handle error
     [ErrorHandler sharedInstance];
     [WNDBHelper sharedInstance];
     
-    [GADMobileAds configureWithApplicationID:@"ca-app-pub-3075402229356558~9638918820"];
+    [FIRApp configure];
+//    [GADMobileAds configureWithApplicationID:@"ca-app-pub-2336447731794699~9104742766"];
+    
+    
     
     return YES;
 }

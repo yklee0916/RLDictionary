@@ -50,7 +50,7 @@
         [self.tableView reloadData];
     }
     
-    self.bannerView.adUnitID = @"ca-app-pub-3075402229356558/2115652029";
+    self.bannerView.adUnitID = @"ca-app-pub-2336447731794699/1581475965";
     self.bannerView.rootViewController = self;
     [self.bannerView loadRequest:[GADRequest request]];
 }

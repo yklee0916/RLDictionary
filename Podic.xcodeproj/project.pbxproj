@@ -31,6 +31,8 @@
 		0295F06C1E8111BD00E67BA9 /* WordbookHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0295F06B1E8111BD00E67BA9 /* WordbookHeaderView.xib */; };
 		0295F0721E81135100E67BA9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0295F0651E81115A00E67BA9 /* Localizable.strings */; };
 		0295F0731E81135100E67BA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0295F0671E81115A00E67BA9 /* Main.storyboard */; };
+		1714E188077A8DD2E7660988 /* libPods-Podic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C44C30A74F032040D6087 /* libPods-Podic.a */; };
+		282162CD1ED194C000678213 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 282162CC1ED194C000678213 /* GoogleService-Info.plist */; };
 		284048E71E878EA8006FAFD9 /* WNDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 284048E41E878EA8006FAFD9 /* WNDBHelper.m */; };
 		284048E81E878EA8006FAFD9 /* WNWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 284048E61E878EA8006FAFD9 /* WNWord.m */; };
 		284048EC1E878EC2006FAFD9 /* WNDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 284048EB1E878EC2006FAFD9 /* WNDefinition.m */; };
@@ -113,6 +115,7 @@
 		0295F06B1E8111BD00E67BA9 /* WordbookHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WordbookHeaderView.xib; path = Podic/Views/WordbookHeaderView.xib; sourceTree = SOURCE_ROOT; };
 		0295F0741E8114D100E67BA9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = SupportingFiles/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		226ACEB3346D32941C04AFAA /* libPods-Podic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Podic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		282162CC1ED194C000678213 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "SupportingFiles/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		284048E31E878EA8006FAFD9 /* WNDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WNDBHelper.h; path = Databases/WordNet/WNDBHelper.h; sourceTree = "<group>"; };
 		284048E41E878EA8006FAFD9 /* WNDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WNDBHelper.m; path = Databases/WordNet/WNDBHelper.m; sourceTree = "<group>"; };
 		284048E51E878EA8006FAFD9 /* WNWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WNWord.h; path = Databases/WordNet/WNWord.h; sourceTree = "<group>"; };
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A41D3126232B4FDAE10D4BAA /* libPods-Podic.a in Frameworks */,
+				1714E188077A8DD2E7660988 /* libPods-Podic.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +253,7 @@
 		28150C4C1E5930E200F807A3 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				282162CC1ED194C000678213 /* GoogleService-Info.plist */,
 				0295F0651E81115A00E67BA9 /* Localizable.strings */,
 				0295F0671E81115A00E67BA9 /* Main.storyboard */,
 				0295F0561E810FA800E67BA9 /* Info.plist */,
@@ -453,6 +458,7 @@
 				28975D791E56AA3700B102B6 /* Resources */,
 				569040288BBE11956D48D0DD /* [CP] Embed Pods Frameworks */,
 				4AF3B1F327E24BFA607777A2 /* [CP] Copy Pods Resources */,
+				28EB298B1ED1826D00CDC8CB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -479,7 +485,7 @@
 					};
 					28975D7A1E56AA3700B102B6 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 8BCVHFF9UB;
+						DevelopmentTeam = XHDKK9BWBF;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -518,6 +524,7 @@
 			files = (
 				284049131E87A640006FAFD9 /* DefinitionCell.xib in Resources */,
 				284049271E881ACD006FAFD9 /* ShortDefinitionCell.xib in Resources */,
+				282162CD1ED194C000678213 /* GoogleService-Info.plist in Resources */,
 				284048F31E87929B006FAFD9 /* 170319.WN3.1.db in Resources */,
 				0295F0721E81135100E67BA9 /* Localizable.strings in Resources */,
 				0295F0731E81135100E67BA9 /* Main.storyboard in Resources */,
@@ -536,6 +543,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		28EB298B1ED1826D00CDC8CB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 5b82dfc1ed94aa6be1bf8cffbcc9d76bfedcb91c 5939d6132c51390a018a7004378321a7806e7c84097a7f5c32179df89977e1e6";
+		};
 		4AF3B1F327E24BFA607777A2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -831,7 +851,8 @@
 			baseConfigurationReference = 96AB6FA849B3D5B3D10E1FAA /* Pods-Podic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8BCVHFF9UB;
+				CODE_SIGN_IDENTITY = "iPhone Developer: YOUNG KI LEE (RMECF4NGRY)";
+				DEVELOPMENT_TEAM = XHDKK9BWBF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Podic/Libraries/AdMob",
@@ -840,10 +861,10 @@
 				INFOPLIST_FILE = Podic/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.tmap;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.deniz.podic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "74cac3d7-b8b5-4e84-acc1-bb9f118b354f";
-				PROVISIONING_PROFILE_SPECIFIER = com.test.tmap;
+				PROVISIONING_PROFILE = "e3aebc50-3ec3-4ec4-88a5-48e0564dad3d";
+				PROVISIONING_PROFILE_SPECIFIER = podic_dev;
 			};
 			name = Debug;
 		};
@@ -852,7 +873,8 @@
 			baseConfigurationReference = 49AB53D8935EED43090D3865 /* Pods-Podic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8BCVHFF9UB;
+				CODE_SIGN_IDENTITY = "iPhone Developer: YOUNG KI LEE (RMECF4NGRY)";
+				DEVELOPMENT_TEAM = XHDKK9BWBF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Podic/Libraries/AdMob",
@@ -861,10 +883,10 @@
 				INFOPLIST_FILE = Podic/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.tmap;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.deniz.podic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "74cac3d7-b8b5-4e84-acc1-bb9f118b354f";
-				PROVISIONING_PROFILE_SPECIFIER = com.test.tmap;
+				PROVISIONING_PROFILE = "e3aebc50-3ec3-4ec4-88a5-48e0564dad3d";
+				PROVISIONING_PROFILE_SPECIFIER = podic_dev;
 			};
 			name = Release;
 		};
