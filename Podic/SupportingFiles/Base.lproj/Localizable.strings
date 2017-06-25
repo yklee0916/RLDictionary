@@ -10,17 +10,22 @@
 
 "kSettingDictionary" = "Dictionary";
 "kResetWordbook" = "Reset";
-"kWordbookArrangeByType" = "ArrangeType";
+"kWordbookArrangeByType" = "Arrange";
 "kWordbookHideReadWords" = "Filter";
 
+"kDescription" = "Description";
 "kContact" = "Contact";
 "kAppVersion" = "Version";
 
+"Description" = "This app is an offline-based dictionary that does not use any data while using it.\n\nIts databases are based on the WordNet project databases from the Cognitive Science Institute at Princeton University.";
 "ResetWordbook" = "Reset wordbook list";
 "Contact" = "developer.deniz@gmail.com";
 
 "WordbookArrangeByTypeDay" = "By Day";
 "WordbookArrangeByTypeWeek" = "By Week";
+
+"WordbookHideReadWordsYES" = "Show read words";
+"WordbookHideReadWordsNO" = "Hide read words";
 
 "SettingResetAlertTitle" = "Warning";
 "SettingResetAlertMessage" = "Are you sure you want to reset wordbook?";
@@ -29,3 +34,7 @@
 "SettingResetAlertResetActionToastMessage" = "Wordbook has been initialized succesfully.";
 
 "IntroWordbookHeaderDateFormat" = "MMM d, yyyy";
+"IntroWordbookHideReadWordsNO" = "Mark as Read";
+"IntroWordbookHideReadWordsYES" = "Mark as Unread";
+
+"IntroWordbookDeleteRow" = "Delete";

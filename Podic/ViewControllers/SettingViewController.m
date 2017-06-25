@@ -16,6 +16,7 @@
 
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *contents;
+@property (nonatomic, assign) NSUInteger hiddenMenuCount;
 
 @end
 
@@ -86,6 +87,12 @@
         [cell.linkableContent addTarget:self action:@selector(linkContentButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         cell.linkableContent.tag = 903;
     }
+    else if([key isEqualToString:@"kHiddenMenu"]) {
+        [cell.title setText:@"          "];
+        [cell.content setText:@""];
+        UITapGestureRecognizer *hiddenMenuTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenMenuAction:)];
+        [cell.title addGestureRecognizer:hiddenMenuTap];
+    }
     
     return cell;
 }
@@ -121,18 +128,37 @@
     }
 }
 
+- (void)hiddenMenuAction:(id)sender {
+    self.hiddenMenuCount ++;
+    
+    NSLog(@"hiddenMenuAction %ld",self.hiddenMenuCount);
+    
+    if(self.hiddenMenuCount > 5) {
+        self.hiddenMenuCount = 0;
+        
+        [self presenHiddenMenuAlertViewControllerWithCompletionHandler:^(UIAlertAction *action) {
+            
+            BOOL hidden = NO;
+            if([action.title isEqualToString:@"Apple"]) hidden = YES;
+            NSString *key = @"DatabaseType";
+            [[NSUserDefaults standardUserDefaults] setBool:hidden forKey:key];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+        }];
+    }
+}
+
 - (void)setWordbookArrangeTypeAction:(id)sender {
     NSString *key = @"WordbookManagerGroupingType";
     BOOL byDate = [self wordbookArrangeType];
     [[NSUserDefaults standardUserDefaults] setBool:!byDate forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
     
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [[WordDataHandler sharedInstance] reload];
 }
-
 
 - (void)setHideReadWordsAction:(id)sender {
     NSString *key = @"WordbookHideReadWords";
@@ -140,7 +166,7 @@
     [[NSUserDefaults standardUserDefaults] setBool:!hide forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
     
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [[WordDataHandler sharedInstance] reload];
@@ -168,6 +194,23 @@
                                                         handler:handler];
     [alertController addAction:resetAction];
     [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)presenHiddenMenuAlertViewControllerWithCompletionHandler:(void (^)(UIAlertAction *action))handler {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert"
+message:@"choose databases"
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"WordNet"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:handler];
+    UIAlertAction *destructiveAction = [UIAlertAction actionWithTitle:@"Apple"
+                                                          style:UIAlertActionStyleDestructive
+                                                        handler:handler];
+    [alertController addAction:defaultAction];
+    [alertController addAction:destructiveAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 

@@ -182,7 +182,8 @@
                         tableView.editing = NO;
                         [self.WordDataHandler deleteWordFromString:string];
                   }];
-    deleteAction.backgroundColor = getColorWithLabelText(@"삭제", [UIColor whiteColor], [UIColor redColor]);
+    NSString *deleteActionTitle = NSLocalizedString(@"IntroWordbookDeleteRow", nil);
+    deleteAction.backgroundColor = getColorWithLabelText(deleteActionTitle, [UIColor whiteColor], [UIColor redColor]);
     
     
     return @[deleteAction, moreAction];
@@ -201,23 +202,32 @@
     }
 }
 
+- (BOOL)isHidden {
+    NSString *key = @"DatabaseType";
+    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
+}
+
 - (void)findDefinitionFromDictionaryForTerm:(NSString *)term {
     if(term.length == 0) return ;
     
     [self.WordDataHandler addWordWithString:term];
-    [self performSegueWithIdentifier:@"showDefinitionSegue" sender:term];
     
-//    [self.WordDataHandler findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *viewController, NSError *error) {
-//        
-//        if(error) {
-//            [self.view makeToast:error.domain];
-//            return ;
-//        }
-//        
-//        if(viewController) {
-//            [self presentViewController:viewController animated:YES completion:nil];
-//        }
-//    }];
+    if(self.isHidden) {
+        [self.WordDataHandler findDefinitionFromDictionaryForTerm:term completionHandler:^(UIReferenceLibraryViewController *viewController, NSError *error) {
+            
+            if(error) {
+                [self.view makeToast:error.domain];
+                return ;
+            }
+            
+            if(viewController) {
+                [self presentViewController:viewController animated:YES completion:nil];
+            }
+        }];
+    }
+    else {
+        [self performSegueWithIdentifier:@"showDefinitionSegue" sender:term];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
