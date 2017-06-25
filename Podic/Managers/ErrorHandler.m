@@ -23,9 +23,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ErrorHandler, sharedInstance);
 - (NSError *)errorWithCode:(ERROR_CODE)code {
 
     NSError *error = [NSError errorWithDomain:[self errorDomainAtCode:code] code:code userInfo:nil];
-    if(DEBUG) {
-        [self printError:error];
-    }
     return error;
 }
 
