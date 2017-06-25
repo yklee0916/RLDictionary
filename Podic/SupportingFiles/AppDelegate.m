@@ -29,9 +29,7 @@
     [WNDBHelper sharedInstance];
     
     [FIRApp configure];
-//    [GADMobileAds configureWithApplicationID:@"ca-app-pub-2336447731794699~9104742766"];
-    
-    
+    [GADMobileAds configureWithApplicationID:@"ca-app-pub-2336447731794699~9104742766"];
     
     return YES;
 }
