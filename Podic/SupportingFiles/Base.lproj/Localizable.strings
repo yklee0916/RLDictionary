@@ -13,19 +13,11 @@
 "kWordbookArrangeByType" = "ArrangeType";
 "kWordbookHideReadWords" = "Filter";
 
-"kDescription" = "Description";
-"kAppVersion" = "Version";
 "kContact" = "Contact";
-"kArchor" = "Developer";
-"kUsage" = "Usage";
-"kDonate" = "";
+"kAppVersion" = "Version";
 
-"SettingDictionary" = " ";
-"ResetWordbook" = "Reset all wordbook contents";
-"Description" = "It is based on Apple Dictionary";
-"Contact" = "mailto.ryan.lee@gmail.com";
-"Archor" = "Ryan Lee";
-"Donate" = "Donate to developer";
+"ResetWordbook" = "Reset wordbook list";
+"Contact" = "developer.deniz@gmail.com";
 
 "WordbookArrangeByTypeDay" = "By Day";
 "WordbookArrangeByTypeWeek" = "By Week";

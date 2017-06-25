@@ -86,14 +86,6 @@
         [cell.linkableContent addTarget:self action:@selector(linkContentButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         cell.linkableContent.tag = 903;
     }
-    else if([key isEqualToString:@"kDonate"]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"linkableCell"];
-        [cell.title setText:title];
-        [cell.linkableContent setTitle:content forState:UIControlStateNormal];
-        [cell.linkableContent setTitle:content forState:UIControlStateHighlighted];
-        [cell.linkableContent addTarget:self action:@selector(linkContentButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        cell.linkableContent.tag = 904;
-    }
     
     return cell;
 }
@@ -123,10 +115,6 @@
             [self setHideReadWordsAction:sender];
             break;
         }
-        case 904: {
-            [self donateToDeveloperAction:sender];
-            break;
-        }
         default :
             break;
             
@@ -139,7 +127,7 @@
     [[NSUserDefaults standardUserDefaults] setBool:!byDate forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
     
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [[WordDataHandler sharedInstance] reload];
@@ -152,7 +140,7 @@
     [[NSUserDefaults standardUserDefaults] setBool:!hide forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:4 inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
     
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [[WordDataHandler sharedInstance] reload];
@@ -181,10 +169,6 @@
     [alertController addAction:resetAction];
     [alertController addAction:cancelAction];
     [self presentViewController:alertController animated:YES completion:nil];
-}
-
-- (void)donateToDeveloperAction:(id)sender {
-    [self.view makeToast:@"기부되었습니다."];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
