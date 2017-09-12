@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0295F02E1E810F5F00E67BA9 /* NSDate+NSDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F0281E810F5F00E67BA9 /* NSDate+NSDateFormatter.m */; };
 		0295F02F1E810F5F00E67BA9 /* NSString+NSAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F02A1E810F5F00E67BA9 /* NSString+NSAssert.m */; };
-		0295F0301E810F5F00E67BA9 /* NSFileManager+RL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F02D1E810F5F00E67BA9 /* NSFileManager+RL.m */; };
+		0295F0301E810F5F00E67BA9 /* NSFileManager+NSSearchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F02D1E810F5F00E67BA9 /* NSFileManager+NSSearchPath.m */; };
 		0295F0391E810F6B00E67BA9 /* WordbookHasReadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F0321E810F6B00E67BA9 /* WordbookHasReadCell.m */; };
 		0295F03A1E810F6B00E67BA9 /* WordbookHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F0341E810F6B00E67BA9 /* WordbookHeaderView.m */; };
 		0295F03B1E810F6B00E67BA9 /* WordbookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F0361E810F6B00E67BA9 /* WordbookTableViewCell.m */; };
@@ -75,8 +75,8 @@
 		0295F0291E810F5F00E67BA9 /* NSDate+NSDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+NSDateFormatter.h"; path = "Podic/Categories/NSDate+NSDateFormatter.h"; sourceTree = SOURCE_ROOT; };
 		0295F02A1E810F5F00E67BA9 /* NSString+NSAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+NSAssert.m"; path = "Podic/Categories/NSString+NSAssert.m"; sourceTree = SOURCE_ROOT; };
 		0295F02B1E810F5F00E67BA9 /* NSString+NSAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+NSAssert.h"; path = "Podic/Categories/NSString+NSAssert.h"; sourceTree = SOURCE_ROOT; };
-		0295F02C1E810F5F00E67BA9 /* NSFileManager+RL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+RL.h"; path = "Podic/Categories/NSFileManager+RL.h"; sourceTree = SOURCE_ROOT; };
-		0295F02D1E810F5F00E67BA9 /* NSFileManager+RL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+RL.m"; path = "Podic/Categories/NSFileManager+RL.m"; sourceTree = SOURCE_ROOT; };
+		0295F02C1E810F5F00E67BA9 /* NSFileManager+NSSearchPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+NSSearchPath.h"; path = "Podic/Categories/NSFileManager+NSSearchPath.h"; sourceTree = SOURCE_ROOT; };
+		0295F02D1E810F5F00E67BA9 /* NSFileManager+NSSearchPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+NSSearchPath.m"; path = "Podic/Categories/NSFileManager+NSSearchPath.m"; sourceTree = SOURCE_ROOT; };
 		0295F0311E810F6B00E67BA9 /* WordbookHasReadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordbookHasReadCell.h; path = Podic/Views/WordbookHasReadCell.h; sourceTree = SOURCE_ROOT; };
 		0295F0321E810F6B00E67BA9 /* WordbookHasReadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordbookHasReadCell.m; path = Podic/Views/WordbookHasReadCell.m; sourceTree = SOURCE_ROOT; };
 		0295F0331E810F6B00E67BA9 /* WordbookHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordbookHeaderView.h; path = Podic/Views/WordbookHeaderView.h; sourceTree = SOURCE_ROOT; };
@@ -207,8 +207,8 @@
 			children = (
 				0295F0291E810F5F00E67BA9 /* NSDate+NSDateFormatter.h */,
 				0295F0281E810F5F00E67BA9 /* NSDate+NSDateFormatter.m */,
-				0295F02C1E810F5F00E67BA9 /* NSFileManager+RL.h */,
-				0295F02D1E810F5F00E67BA9 /* NSFileManager+RL.m */,
+				0295F02C1E810F5F00E67BA9 /* NSFileManager+NSSearchPath.h */,
+				0295F02D1E810F5F00E67BA9 /* NSFileManager+NSSearchPath.m */,
 				0295F02B1E810F5F00E67BA9 /* NSString+NSAssert.h */,
 				0295F02A1E810F5F00E67BA9 /* NSString+NSAssert.m */,
 				284049231E87EF34006FAFD9 /* UILabel+BulletPoint.h */,
@@ -592,13 +592,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Podic-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9905AD3880420CD659E25159 /* [CP] Copy Pods Resources */ = {
@@ -637,13 +640,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PodicUnitTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -666,7 +672,7 @@
 				284049251E87EF34006FAFD9 /* UILabel+BulletPoint.m in Sources */,
 				284049161E87DDDC006FAFD9 /* WordCell.m in Sources */,
 				0295F04F1E810F8700E67BA9 /* WordDataHandler.m in Sources */,
-				0295F0301E810F5F00E67BA9 /* NSFileManager+RL.m in Sources */,
+				0295F0301E810F5F00E67BA9 /* NSFileManager+NSSearchPath.m in Sources */,
 				2840492A1E881B4A006FAFD9 /* ShortDefinitionCell.m in Sources */,
 				284048E81E878EA8006FAFD9 /* WNWord.m in Sources */,
 				0295F03A1E810F6B00E67BA9 /* WordbookHeaderView.m in Sources */,
@@ -885,8 +891,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.deniz.podic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "13cd423d-1a70-42fe-8976-9f8f98bc8ab0";
-				PROVISIONING_PROFILE_SPECIFIER = podic_release;
+				PROVISIONING_PROFILE = "e3aebc50-3ec3-4ec4-88a5-48e0564dad3d";
+				PROVISIONING_PROFILE_SPECIFIER = podic_dev;
 			};
 			name = Release;
 		};

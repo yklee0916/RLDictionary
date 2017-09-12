@@ -1,5 +1,5 @@
 //
-//  NSFileManager+RL.h
+//  NSFileManager+NSSearchPath.h
 //  Podic
 //
 //  Created by younggi.lee on 06/03/2017.
@@ -10,7 +10,7 @@
 
 #define NFFILE_SEPERATOR  @"/"
 
-@interface NSFileManager (RL)
+@interface NSFileManager (NSSearchPath)
 
 + (NSString *)pathForCachesDirectory;
 + (NSString *)pathForDocumentDirectory;

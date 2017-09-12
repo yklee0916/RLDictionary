@@ -162,7 +162,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordDataHandler, sharedInstance);
     
     [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PAndrew LeeRITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         UIReferenceLibraryViewController* libraryViewController;
         NSError *error;

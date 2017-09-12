@@ -14,7 +14,7 @@
     #import "SynthesizeSingleton.h"
     #import "ErrorHandler.h"
     #import "UIView+Toast.h"
-    #import "NSFileManager+RL.h"
+    #import "NSFileManager+NSSearchPath.h"
     #import "UIViewController+UpsideDown.h"
     #import "NSString+NSAssert.h"
 #endif

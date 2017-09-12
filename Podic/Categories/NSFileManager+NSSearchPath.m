@@ -1,14 +1,14 @@
 //
-//  NSFileManager+RL.m
+//  NSFileManager+NSSearchPath.m
 //  Podic
 //
 //  Created by younggi.lee on 06/03/2017.
 //  Copyright © 2017 Andrew Lee. All rights reserved.
 //
 
-#import "NSFileManager+RL.h"
+#import "NSFileManager+NSSearchPath.h"
 
-@implementation NSFileManager (RL)
+@implementation NSFileManager (NSSearchPath)
 
 + (NSString *)pathForCachesDirectory {
     static NSString *cachesDirectoryPath = nil;
