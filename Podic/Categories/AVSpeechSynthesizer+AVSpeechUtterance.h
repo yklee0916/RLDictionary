@@ -2,8 +2,8 @@
 //  AVSpeechSynthesizer+AVSpeechUtterance.h
 //  Podic
 //
-//  Created by Rio on 29/03/2017.
-//  Copyright © 2017 Ryan Lee. All rights reserved.
+//  Created by Andrew Lee on 29/03/2017.
+//  Copyright © 2017 Andrew Lee. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

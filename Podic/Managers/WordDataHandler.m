@@ -2,8 +2,8 @@
 //  WordDataHandler.m
 //  Podic
 //
-//  Created by Ryan Lee on 21/02/2017.
-//  Copyright © 2017 Ryan Lee. All rights reserved.
+//  Created by Andrew Lee on 21/02/2017.
+//  Copyright © 2017 Andrew Lee. All rights reserved.
 //
 
 #import "WordDataHandler.h"
@@ -162,7 +162,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WordDataHandler, sharedInstance);
     
     [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PAndrew LeeRITY_DEFAULT, 0), ^{
         
         UIReferenceLibraryViewController* libraryViewController;
         NSError *error;

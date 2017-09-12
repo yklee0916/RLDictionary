@@ -2,8 +2,8 @@
 //  NSDate+NSDateFormatter.m
 //  Podic
 //
-//  Created by Ryan Lee on 22/02/2017.
-//  Copyright © 2017 Ryan Lee. All rights reserved.
+//  Created by Andrew Lee on 22/02/2017.
+//  Copyright © 2017 Andrew Lee. All rights reserved.
 //
 
 #define DEFAULT_DATE_FORMAT @"yyyy-MM-dd'T'HH:mm:ssZ"
