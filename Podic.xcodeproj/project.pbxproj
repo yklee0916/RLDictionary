@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		024371AB1F723A05000E62EE /* UITableView+CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 024371AA1F723A05000E62EE /* UITableView+CustomCell.m */; };
 		0295F02E1E810F5F00E67BA9 /* NSDate+NSDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F0281E810F5F00E67BA9 /* NSDate+NSDateFormatter.m */; };
-		0295F02F1E810F5F00E67BA9 /* NSString+NSAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F02A1E810F5F00E67BA9 /* NSString+NSAssert.m */; };
+		0295F02F1E810F5F00E67BA9 /* NSObject+NSAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F02A1E810F5F00E67BA9 /* NSObject+NSAssert.m */; };
 		0295F0301E810F5F00E67BA9 /* NSFileManager+NSSearchPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F02D1E810F5F00E67BA9 /* NSFileManager+NSSearchPath.m */; };
 		0295F0391E810F6B00E67BA9 /* WordbookHasReadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F0321E810F6B00E67BA9 /* WordbookHasReadCell.m */; };
 		0295F03A1E810F6B00E67BA9 /* WordbookHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0295F0341E810F6B00E67BA9 /* WordbookHeaderView.m */; };
@@ -71,10 +72,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		024371A91F723A05000E62EE /* UITableView+CustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UITableView+CustomCell.h"; path = "Categories/UITableView+CustomCell.h"; sourceTree = "<group>"; };
+		024371AA1F723A05000E62EE /* UITableView+CustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UITableView+CustomCell.m"; path = "Categories/UITableView+CustomCell.m"; sourceTree = "<group>"; };
 		0295F0281E810F5F00E67BA9 /* NSDate+NSDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+NSDateFormatter.m"; path = "Podic/Categories/NSDate+NSDateFormatter.m"; sourceTree = SOURCE_ROOT; };
 		0295F0291E810F5F00E67BA9 /* NSDate+NSDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+NSDateFormatter.h"; path = "Podic/Categories/NSDate+NSDateFormatter.h"; sourceTree = SOURCE_ROOT; };
-		0295F02A1E810F5F00E67BA9 /* NSString+NSAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+NSAssert.m"; path = "Podic/Categories/NSString+NSAssert.m"; sourceTree = SOURCE_ROOT; };
-		0295F02B1E810F5F00E67BA9 /* NSString+NSAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+NSAssert.h"; path = "Podic/Categories/NSString+NSAssert.h"; sourceTree = SOURCE_ROOT; };
+		0295F02A1E810F5F00E67BA9 /* NSObject+NSAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+NSAssert.m"; path = "Podic/Categories/NSObject+NSAssert.m"; sourceTree = SOURCE_ROOT; };
+		0295F02B1E810F5F00E67BA9 /* NSObject+NSAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+NSAssert.h"; path = "Podic/Categories/NSObject+NSAssert.h"; sourceTree = SOURCE_ROOT; };
 		0295F02C1E810F5F00E67BA9 /* NSFileManager+NSSearchPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+NSSearchPath.h"; path = "Podic/Categories/NSFileManager+NSSearchPath.h"; sourceTree = SOURCE_ROOT; };
 		0295F02D1E810F5F00E67BA9 /* NSFileManager+NSSearchPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+NSSearchPath.m"; path = "Podic/Categories/NSFileManager+NSSearchPath.m"; sourceTree = SOURCE_ROOT; };
 		0295F0311E810F6B00E67BA9 /* WordbookHasReadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordbookHasReadCell.h; path = Podic/Views/WordbookHasReadCell.h; sourceTree = SOURCE_ROOT; };
@@ -209,14 +212,16 @@
 				0295F0281E810F5F00E67BA9 /* NSDate+NSDateFormatter.m */,
 				0295F02C1E810F5F00E67BA9 /* NSFileManager+NSSearchPath.h */,
 				0295F02D1E810F5F00E67BA9 /* NSFileManager+NSSearchPath.m */,
-				0295F02B1E810F5F00E67BA9 /* NSString+NSAssert.h */,
-				0295F02A1E810F5F00E67BA9 /* NSString+NSAssert.m */,
+				0295F02B1E810F5F00E67BA9 /* NSObject+NSAssert.h */,
+				0295F02A1E810F5F00E67BA9 /* NSObject+NSAssert.m */,
 				284049231E87EF34006FAFD9 /* UILabel+BulletPoint.h */,
 				284049241E87EF34006FAFD9 /* UILabel+BulletPoint.m */,
 				289DA8061E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.h */,
 				289DA8071E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.m */,
 				285A84761E8C0C4900351810 /* UIViewController+UpsideDown.h */,
 				285A84771E8C0C4900351810 /* UIViewController+UpsideDown.m */,
+				024371A91F723A05000E62EE /* UITableView+CustomCell.h */,
+				024371AA1F723A05000E62EE /* UITableView+CustomCell.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -685,7 +690,7 @@
 				0295F0601E810FA800E67BA9 /* main.m in Sources */,
 				289DA8081E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.m in Sources */,
 				0295F0391E810F6B00E67BA9 /* WordbookHasReadCell.m in Sources */,
-				0295F02F1E810F5F00E67BA9 /* NSString+NSAssert.m in Sources */,
+				0295F02F1E810F5F00E67BA9 /* NSObject+NSAssert.m in Sources */,
 				0295F03B1E810F6B00E67BA9 /* WordbookTableViewCell.m in Sources */,
 				0295F0461E810F7600E67BA9 /* Wordbook.m in Sources */,
 				0295F02E1E810F5F00E67BA9 /* NSDate+NSDateFormatter.m in Sources */,
@@ -695,6 +700,7 @@
 				0295F05F1E810FA800E67BA9 /* AppDelegate.m in Sources */,
 				284048EF1E878EDD006FAFD9 /* WNExample.m in Sources */,
 				284049111E87A626006FAFD9 /* DefinitionCell.m in Sources */,
+				024371AB1F723A05000E62EE /* UITableView+CustomCell.m in Sources */,
 				284049221E87E5A1006FAFD9 /* PartOfSpeechView.m in Sources */,
 				285A84781E8C0C4900351810 /* UIViewController+UpsideDown.m in Sources */,
 				2840490D1E87A243006FAFD9 /* DefinitionViewController.m in Sources */,

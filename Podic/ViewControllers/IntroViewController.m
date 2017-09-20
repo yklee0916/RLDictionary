@@ -26,13 +26,10 @@
 @implementation IntroViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
-    NSString *wordbookTableViewCell = NSStringFromClass([WordbookTableViewCell class]);
-    [self.tableView registerNib:[UINib nibWithNibName:wordbookTableViewCell bundle:nil] forCellReuseIdentifier:wordbookTableViewCell];
     
-    NSString *wordbookHasReadCell = NSStringFromClass([WordbookHasReadCell class]);
-    [self.tableView registerNib:[UINib nibWithNibName:wordbookHasReadCell bundle:nil] forCellReuseIdentifier:wordbookHasReadCell];
+    NSArray *customCellClasses = @[[WordbookTableViewCell class], [WordbookHasReadCell class]];
+    self.tableView.customCellClasses = customCellClasses;
     
     self.WordDataHandler = [WordDataHandler sharedInstance];
     [self.WordDataHandler reload];

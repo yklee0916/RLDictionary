@@ -2,8 +2,8 @@
 //  WNDBHelper.h
 //  Tmap5
 //
-//  Created by younggi.lee on 24/03/2017.
-//  Copyright © 2017 SK telecom. All rights reserved.
+//  Created by Andrew Lee on 24/03/2017.
+//  Copyright © 2017 Andrew Lee. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

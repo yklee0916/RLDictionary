@@ -16,7 +16,8 @@
     #import "UIView+Toast.h"
     #import "NSFileManager+NSSearchPath.h"
     #import "UIViewController+UpsideDown.h"
-    #import "NSString+NSAssert.h"
+    #import "NSObject+NSAssert.h"
+    #import "UITableView+CustomCell.h"
 #endif
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)

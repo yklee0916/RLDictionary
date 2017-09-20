@@ -18,9 +18,10 @@
 
 @interface DefinitionViewController () <AVSpeechSynthesizerDelegate, UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) WNWord *word;
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) IBOutlet GADBannerView *bannerView;
+
+@property (nonatomic, strong) WNWord *word;
 @property (nonatomic, strong) WordCell *wordCell;
 @property (nonatomic, strong) AVSpeechSynthesizer *speechSynthesizer;
 @property (nonatomic, strong) NSIndexPath *speechingIndexPath;
@@ -32,23 +33,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *wordCell = NSStringFromClass([WordCell class]);
-    [self.tableView registerNib:[UINib nibWithNibName:wordCell bundle:nil] forCellReuseIdentifier:wordCell];
+    NSArray *customCellClasses = @[[WordCell class], [DefinitionCell class], [ShortDefinitionCell class], [ExampleCell class]];
+    self.tableView.customCellClasses = customCellClasses;
     
-    NSString *definitionCell = NSStringFromClass([DefinitionCell class]);
-    [self.tableView registerNib:[UINib nibWithNibName:definitionCell bundle:nil] forCellReuseIdentifier:definitionCell];
-    
-    NSString *shortDefinitionCell = NSStringFromClass([ShortDefinitionCell class]);
-    [self.tableView registerNib:[UINib nibWithNibName:shortDefinitionCell bundle:nil] forCellReuseIdentifier:shortDefinitionCell];
-    
-    
-    NSString *exampleCell = NSStringFromClass([ExampleCell class]);
-    [self.tableView registerNib:[UINib nibWithNibName:exampleCell bundle:nil] forCellReuseIdentifier:exampleCell];
+    [self configureGADBannerView];
     
     if(self.wordString) {
         self.word = [[WNDBHelper sharedInstance] wordWithString:self.wordString];
         [self.tableView reloadData];
     }
+}
+
+- (void)configureGADBannerView {
     
     self.bannerView.adUnitID = @"ca-app-pub-2336447731794699/1581475965";
     self.bannerView.rootViewController = self;
@@ -58,12 +54,21 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.speechSynthesizer = [[AVSpeechSynthesizer alloc] init];
-    self.speechSynthesizer.delegate = self;
+    [self initializeSpeechSynthesizer];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    
+    [self stopSpeechSynthesizerIfNeeded];
+}
+
+- (void)initializeSpeechSynthesizer {
+    self.speechSynthesizer = [[AVSpeechSynthesizer alloc] init];
+    self.speechSynthesizer.delegate = self;
+}
+
+- (void)stopSpeechSynthesizerIfNeeded {
     
     if(self.speechSynthesizer.isSpeaking) {
         [self.speechSynthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
@@ -235,12 +240,7 @@
 
 #pragma mark - AVSpeechSynthesizerDelegate
 
-- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
-willSpeakRangeOfSpeechString:(NSRange)characterRange
-                utterance:(AVSpeechUtterance *)utterance {
-//    NSLog(@"%@ %@", [self class], NSStringFromSelector(_cmd));
-    
-    
+- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer willSpeakRangeOfSpeechString:(NSRange)characterRange utterance:(AVSpeechUtterance *)utterance {
     
     if(self.speechingIndexPath) {
         NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:utterance.speechString];
@@ -263,14 +263,10 @@ willSpeakRangeOfSpeechString:(NSRange)characterRange
     }
 }
 
-- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
-  didStartSpeechUtterance:(AVSpeechUtterance *)utterance
-{
-    // lock for others selecting
+- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didStartSpeechUtterance:(AVSpeechUtterance *)utterance {
 }
 
-- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
- didFinishSpeechUtterance:(AVSpeechUtterance *)utterance {
+- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance {
     
     if(!self.wordCell.speakerButton.selected) return ;
     

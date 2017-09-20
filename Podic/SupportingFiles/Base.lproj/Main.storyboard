@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vYF-EP-Pj0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vYF-EP-Pj0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +16,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="vYF-EP-Pj0" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XiI-aw-BYr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
@@ -32,8 +33,8 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="IntroViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="aTX-xC-g57"/>
+                        <viewControllerLayoutGuide type="bottom" id="dGc-R7-6ZE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -53,8 +54,8 @@
                         <constraints>
                             <constraint firstItem="ycg-oj-PBl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0Hw-jz-iwR"/>
                             <constraint firstAttribute="trailing" secondItem="ycg-oj-PBl" secondAttribute="trailing" id="IQZ-AG-MaI"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ycg-oj-PBl" secondAttribute="bottom" id="T8f-bA-kyP"/>
-                            <constraint firstItem="ycg-oj-PBl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="X9A-dB-jcM"/>
+                            <constraint firstItem="dGc-R7-6ZE" firstAttribute="top" secondItem="ycg-oj-PBl" secondAttribute="bottom" id="T8f-bA-kyP"/>
+                            <constraint firstItem="ycg-oj-PBl" firstAttribute="top" secondItem="aTX-xC-g57" secondAttribute="bottom" id="X9A-dB-jcM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XYF-5K-fqN">
@@ -105,11 +106,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bEN-m8-uAD" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="syj-hb-d3T">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Rw9-LZ-4v0">
-                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -125,8 +125,8 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="2e7-QL-gpR" customClass="DefinitionViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hTn-Vq-4k7"/>
-                        <viewControllerLayoutGuide type="bottom" id="oXG-FY-zbp"/>
+                        <viewControllerLayoutGuide type="top" id="nGB-Kg-r5E"/>
+                        <viewControllerLayoutGuide type="bottom" id="7ll-i0-oB8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vsK-zK-upm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -153,11 +153,11 @@
                         <constraints>
                             <constraint firstItem="Ene-pf-1x8" firstAttribute="leading" secondItem="vsK-zK-upm" secondAttribute="leading" id="0Yx-av-2oC"/>
                             <constraint firstAttribute="trailing" secondItem="2Nn-fY-zzW" secondAttribute="trailing" id="DkO-o1-uhG"/>
-                            <constraint firstItem="2Nn-fY-zzW" firstAttribute="top" secondItem="hTn-Vq-4k7" secondAttribute="bottom" id="FLe-Ec-jkD"/>
+                            <constraint firstItem="2Nn-fY-zzW" firstAttribute="top" secondItem="nGB-Kg-r5E" secondAttribute="bottom" id="FLe-Ec-jkD"/>
                             <constraint firstAttribute="trailing" secondItem="Ene-pf-1x8" secondAttribute="trailing" id="Vhd-Gi-giO"/>
                             <constraint firstItem="2Nn-fY-zzW" firstAttribute="leading" secondItem="vsK-zK-upm" secondAttribute="leading" id="ZaZ-YV-irm"/>
                             <constraint firstItem="2Nn-fY-zzW" firstAttribute="bottom" secondItem="Ene-pf-1x8" secondAttribute="top" id="dgE-za-iBu"/>
-                            <constraint firstItem="oXG-FY-zbp" firstAttribute="top" secondItem="Ene-pf-1x8" secondAttribute="bottom" id="ii1-J9-RTT"/>
+                            <constraint firstItem="7ll-i0-oB8" firstAttribute="top" secondItem="Ene-pf-1x8" secondAttribute="bottom" id="ii1-J9-RTT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Wxp-vV-AKW">
@@ -182,8 +182,8 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="q50-xn-2YJ" customClass="SettingViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2rJ-NJ-Qff"/>
-                        <viewControllerLayoutGuide type="bottom" id="eOf-zw-JQP"/>
+                        <viewControllerLayoutGuide type="top" id="QhM-cZ-PDk"/>
+                        <viewControllerLayoutGuide type="bottom" id="mIl-xj-M1h"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WUc-9n-agU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -281,9 +281,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="o5I-xT-ZHF" firstAttribute="top" secondItem="2rJ-NJ-Qff" secondAttribute="bottom" id="4iV-TG-qge"/>
+                            <constraint firstItem="o5I-xT-ZHF" firstAttribute="top" secondItem="QhM-cZ-PDk" secondAttribute="bottom" id="4iV-TG-qge"/>
                             <constraint firstItem="o5I-xT-ZHF" firstAttribute="leading" secondItem="WUc-9n-agU" secondAttribute="leading" id="ODH-a8-sij"/>
-                            <constraint firstItem="eOf-zw-JQP" firstAttribute="top" secondItem="o5I-xT-ZHF" secondAttribute="bottom" id="SuY-gD-GaC"/>
+                            <constraint firstItem="mIl-xj-M1h" firstAttribute="top" secondItem="o5I-xT-ZHF" secondAttribute="bottom" id="SuY-gD-GaC"/>
                             <constraint firstAttribute="trailing" secondItem="o5I-xT-ZHF" secondAttribute="trailing" id="pc1-IL-3n1"/>
                         </constraints>
                     </view>
