@@ -55,7 +55,6 @@
 		2840491D1E87E011006FAFD9 /* ExampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2840491C1E87E011006FAFD9 /* ExampleCell.m */; };
 		2840491F1E87E584006FAFD9 /* PartOfSpeechView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2840491E1E87E584006FAFD9 /* PartOfSpeechView.xib */; };
 		284049221E87E5A1006FAFD9 /* PartOfSpeechView.m in Sources */ = {isa = PBXBuildFile; fileRef = 284049211E87E5A1006FAFD9 /* PartOfSpeechView.m */; };
-		284049251E87EF34006FAFD9 /* UILabel+BulletPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 284049241E87EF34006FAFD9 /* UILabel+BulletPoint.m */; };
 		284049271E881ACD006FAFD9 /* ShortDefinitionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 284049261E881ACD006FAFD9 /* ShortDefinitionCell.xib */; };
 		2840492A1E881B4A006FAFD9 /* ShortDefinitionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 284049291E881B4A006FAFD9 /* ShortDefinitionCell.m */; };
 		285A84781E8C0C4900351810 /* UIViewController+UpsideDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A84771E8C0C4900351810 /* UIViewController+UpsideDown.m */; };
@@ -157,8 +156,6 @@
 		2840491E1E87E584006FAFD9 /* PartOfSpeechView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PartOfSpeechView.xib; path = Views/Definition/PartOfSpeechView.xib; sourceTree = "<group>"; };
 		284049201E87E5A1006FAFD9 /* PartOfSpeechView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PartOfSpeechView.h; path = Views/Definition/PartOfSpeechView.h; sourceTree = "<group>"; };
 		284049211E87E5A1006FAFD9 /* PartOfSpeechView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PartOfSpeechView.m; path = Views/Definition/PartOfSpeechView.m; sourceTree = "<group>"; };
-		284049231E87EF34006FAFD9 /* UILabel+BulletPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+BulletPoint.h"; path = "Categories/UILabel+BulletPoint.h"; sourceTree = "<group>"; };
-		284049241E87EF34006FAFD9 /* UILabel+BulletPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+BulletPoint.m"; path = "Categories/UILabel+BulletPoint.m"; sourceTree = "<group>"; };
 		284049261E881ACD006FAFD9 /* ShortDefinitionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShortDefinitionCell.xib; path = Views/Definition/ShortDefinitionCell.xib; sourceTree = "<group>"; };
 		284049281E881B4A006FAFD9 /* ShortDefinitionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShortDefinitionCell.h; path = Views/Definition/ShortDefinitionCell.h; sourceTree = "<group>"; };
 		284049291E881B4A006FAFD9 /* ShortDefinitionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShortDefinitionCell.m; path = Views/Definition/ShortDefinitionCell.m; sourceTree = "<group>"; };
@@ -223,8 +220,6 @@
 				0295F02D1E810F5F00E67BA9 /* NSFileManager+NSSearchPath.m */,
 				0295F02B1E810F5F00E67BA9 /* NSObject+NSAssert.h */,
 				0295F02A1E810F5F00E67BA9 /* NSObject+NSAssert.m */,
-				284049231E87EF34006FAFD9 /* UILabel+BulletPoint.h */,
-				284049241E87EF34006FAFD9 /* UILabel+BulletPoint.m */,
 				289DA8061E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.h */,
 				289DA8071E8B76E50070EB7D /* AVSpeechSynthesizer+AVSpeechUtterance.m */,
 				285A84761E8C0C4900351810 /* UIViewController+UpsideDown.h */,
@@ -689,7 +684,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				284048F71E879747006FAFD9 /* ErrorHandler.m in Sources */,
-				284049251E87EF34006FAFD9 /* UILabel+BulletPoint.m in Sources */,
 				02DE9C011F735D2C00FBEFED /* NSString+ColorAttribute.m in Sources */,
 				284049161E87DDDC006FAFD9 /* WordCell.m in Sources */,
 				0295F04F1E810F8700E67BA9 /* WordDataHandler.m in Sources */,

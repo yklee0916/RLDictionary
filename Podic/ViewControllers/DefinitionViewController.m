@@ -35,13 +35,24 @@
     
     NSArray *customCellClasses = @[[WordCell class], [DefinitionCell class], [ShortDefinitionCell class], [ExampleCell class]];
     self.tableView.customCellClasses = customCellClasses;
-    
     [self configureGADBannerView];
     
     if(self.wordString) {
         self.word = [[WNDBHelper sharedInstance] wordWithString:self.wordString];
         [self.tableView reloadData];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self initializeSpeechSynthesizer];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    [self stopSpeechSynthesizerIfNeeded];
 }
 
 - (void)configureGADBannerView {
@@ -51,23 +62,11 @@
     [self.bannerView loadRequest:[GADRequest request]];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self initializeSpeechSynthesizer];
-}
-
 - (void)initializeSpeechSynthesizer {
+    
     self.speechSynthesizer = [[AVSpeechSynthesizer alloc] init];
     self.speechSynthesizer.delegate = self;
 }
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    
-    [self stopSpeechSynthesizerIfNeeded];
-}
-
 
 - (void)stopSpeechSynthesizerIfNeeded {
     
@@ -84,7 +83,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if(section == 0) return 0;
+    if(section == 0) {
+        return 0;
+    }
     
     WNDefinition *definition = [self.word.definitions objectAtIndex:section-1];
     return definition.examples.count;
@@ -107,33 +108,36 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if(section >= self.word.definitions.count) return 25.0;
+    
+    if(section >= self.word.definitions.count) {
+        return 25.0;
+    }
+    
     return CGFLOAT_MIN;
 }
 
 - (IBAction)backButtonAction:(id)sender {
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)speakerButtonAction:(id)sender {
+    
     BOOL selected = self.wordCell.speakerButton.selected;
-    [self.wordCell.speakerButton setSelected:!selected];
-    [self.tableView setAllowsSelection:!selected];
+    self.wordCell.speakerButton.selected = !selected;
+    self.tableView.allowsSelection = !selected;
     [self.tableView reloadData];
     
     if(!self.wordCell.speakerButton.selected) {
-        if(self.speechSynthesizer.isSpeaking) {
-            [self.speechSynthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
-            self.speechingIndexPath = nil;
-            self.speechSynthesizer = [[AVSpeechSynthesizer alloc] init];
-            self.speechSynthesizer.delegate = self;
-        }
+        [self stopSpeechSynthesizerIfNeeded];
+        [self initializeSpeechSynthesizer];
     }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     if(section == 0) {
+        
         if(!self.wordCell) {
             self.wordCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([WordCell class])];
             [self.wordCell.speakerButton addTarget:self action:@selector(speakerButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -142,39 +146,42 @@
             [self.wordCell.wordLabel addGestureRecognizer:gesture];
         }
         
-        [self.wordCell.wordLabel setText:self.word.word];
+        self.wordCell.wordLabel.text = self.word.word;
         return self.wordCell;
     }
     
     if([self shouldShowPartOfSpeech:section]) {
-        
         DefinitionCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DefinitionCell class])];
         WNDefinition *definition = [self.word.definitions objectAtIndex:section-1];
         [cell.partOfSpeechLabel setText:[self partOfSpeechByType:definition.partOfSpeech]];
-        [cell.definitionLabel setText:definition.definition withBulletNumber:section];
+        cell.definitionLabel.attributedText = [definition.definition attributedStringWithOrderedNumber:section];
         [cell setDimmed:self.wordCell.speakerButton.selected];
-        
         return cell;
     }
     else {
         ShortDefinitionCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ShortDefinitionCell class])];
         WNDefinition *definition = [self.word.definitions objectAtIndex:section-1];
-        [cell.definitionLabel setText:definition.definition withBulletNumber:section];
+        cell.definitionLabel.attributedText = [definition.definition attributedStringWithOrderedNumber:section];
         [cell setDimmed:self.wordCell.speakerButton.selected];
-        
         return cell;
     }
+    
     return nil;
 }
 
 - (BOOL)shouldShowPartOfSpeech:(NSInteger)section {
-    if(section-1 == 0) return YES;
+    
+    if(section - 1 == 0) {
+        return YES;
+    }
+    
     WNDefinition *pre = [self.word.definitions objectAtIndex:section-2];
     WNDefinition *def = [self.word.definitions objectAtIndex:section-1];
     return pre.partOfSpeech != def.partOfSpeech;
 }
 
 - (NSString *)partOfSpeechByType:(NSInteger)type {
+    
     switch(type) {
         case 0:
             return @"Noun";
@@ -202,27 +209,28 @@
     WNDefinition *definition = [self.word.definitions objectAtIndex:indexPath.section - 1];
     WNExample *example = [definition.examples objectAtIndex:indexPath.row];
     cell.exampleLabel.attributedText = example.example.attributedStringWithBulletPoint;
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (void)didSelectHeaderAtIndexPath:(UITapGestureRecognizer *)gesture {
     
     [self.speechSynthesizer speakWithString:self.wordCell.wordLabel.text];
-    [self.tableView setAllowsSelection:NO];
-    [self.wordCell setBackgroundColor:[UIColor whiteColor]];
+    self.tableView.allowsSelection = NO;
+    self.wordCell.backgroundColor = UIColor.whiteColor;
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)activeScrollView {
     
-    [self.wordCell setBackgroundColor:[UIColor whiteColor]];
+    self.wordCell.backgroundColor = UIColor.whiteColor;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     
-    if(!self.tableView.allowsSelection) return NO;
+    if(!self.tableView.allowsSelection) {
+        return NO;
+    }
     
-    [self.wordCell setBackgroundColor:[UIColor lightGrayColor]];
+    self.wordCell.backgroundColor = UIColor.lightGrayColor;
     return YES;
 }
 
@@ -232,9 +240,7 @@
     WNExample *example = [definition.examples objectAtIndex:indexPath.row];
     [self.speechSynthesizer speakWithString:example.example];
     self.speechingIndexPath = indexPath;
-    
-    [self.tableView setAllowsSelection:NO];
-    
+    self.tableView.allowsSelection = NO;
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
@@ -244,21 +250,14 @@
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer willSpeakRangeOfSpeechString:(NSRange)characterRange utterance:(AVSpeechUtterance *)utterance {
     
     UIColor *speechCharacterColor = [UIColor redColor];
+    NSString *speechString = utterance.speechString;
+    NSMutableAttributedString *attributedString = [speechString stringWithColor:speechCharacterColor inRange:characterRange];
     
     if(self.speechingIndexPath) {
-        
-        NSString *speechString = utterance.speechString;
-        NSMutableAttributedString *mutableAttributedString = [speechString stringWithColor:speechCharacterColor inRange:characterRange];
+        attributedString = attributedString.attributedStringWithBulletPoint;
+    }
     
-        ExampleCell *cell = [self.tableView cellForRowAtIndexPath:self.speechingIndexPath];
-        cell.exampleLabel.attributedText = mutableAttributedString.attributedStringWithBulletPoint;
-    }
-    else {
-        
-        NSString *speechString = utterance.speechString;
-        NSMutableAttributedString *mutableAttributedString = [speechString stringWithColor:speechCharacterColor inRange:characterRange];
-        self.wordCell.wordLabel.attributedText = mutableAttributedString;
-    }
+    [self setSpeechAttributedStringToSelectedLabel:attributedString];
 }
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didStartSpeechUtterance:(AVSpeechUtterance *)utterance {
@@ -271,21 +270,33 @@
     }
     
     NSString *speechString = utterance.speechString;
-    
-    if(self.speechingIndexPath) {
-        ExampleCell *cell = [self.tableView cellForRowAtIndexPath:self.speechingIndexPath];
-        cell.exampleLabel.attributedText = speechString.attributedStringWithBulletPoint;
-    }
-    else {
-        self.wordCell.wordLabel.attributedText = speechString.defaultColorAttributedString;
-    }
-    
+    [self setSpeechStringToSelectedLabel:speechString];
     self.speechingIndexPath = nil;
     
     if(self.wordCell.speakerButton.selected) {
-        [self.tableView setAllowsSelection:YES];
+        self.tableView.allowsSelection = YES;
     }
 }
 
-@end
+- (void)setSpeechStringToSelectedLabel:(NSString *)speechString {
+    
+    NSAttributedString *attributedString = self.speechingIndexPath ? speechString.attributedStringWithBulletPoint : speechString.defaultColorAttributedString ;
+    [self setSpeechAttributedStringToSelectedLabel:attributedString];
+}
 
+- (void)setSpeechAttributedStringToSelectedLabel:(NSAttributedString *)speechAttributedString {
+    
+    UILabel *selectedLabel;
+    
+    if(self.speechingIndexPath) {
+        ExampleCell *cell = [self.tableView cellForRowAtIndexPath:self.speechingIndexPath];
+        selectedLabel = cell.exampleLabel;
+    }
+    else {
+        selectedLabel = self.wordCell.wordLabel;
+    }
+    
+    selectedLabel.attributedText = speechAttributedString;
+}
+
+@end

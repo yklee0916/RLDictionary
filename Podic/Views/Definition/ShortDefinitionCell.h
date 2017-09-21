@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UILabel+BulletPoint.h"
 
 @interface ShortDefinitionCell : UITableViewCell
 
