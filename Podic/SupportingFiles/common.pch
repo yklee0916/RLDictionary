@@ -18,6 +18,8 @@
     #import "UIViewController+UpsideDown.h"
     #import "NSObject+NSAssert.h"
     #import "UITableView+CustomCell.h"
+    #import "NSString+FormattedList.h"
+    #import "NSString+ColorAttribute.h"
 #endif
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)

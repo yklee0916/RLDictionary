@@ -57,16 +57,17 @@
     [self initializeSpeechSynthesizer];
 }
 
+- (void)initializeSpeechSynthesizer {
+    self.speechSynthesizer = [[AVSpeechSynthesizer alloc] init];
+    self.speechSynthesizer.delegate = self;
+}
+
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
     [self stopSpeechSynthesizerIfNeeded];
 }
 
-- (void)initializeSpeechSynthesizer {
-    self.speechSynthesizer = [[AVSpeechSynthesizer alloc] init];
-    self.speechSynthesizer.delegate = self;
-}
 
 - (void)stopSpeechSynthesizerIfNeeded {
     
@@ -243,22 +244,18 @@
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer willSpeakRangeOfSpeechString:(NSRange)characterRange utterance:(AVSpeechUtterance *)utterance {
     
     if(self.speechingIndexPath) {
-        NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:utterance.speechString];
-        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:characterRange];
         
-        NSMutableAttributedString *m = [[NSMutableAttributedString alloc] initWithString:@"•  "];
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.headIndent = 15;
-        
-        [m appendAttributedString:mutableAttributedString];
-        [m addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, m.length)];
+        NSString *speechString = utterance.speechString;
+        NSMutableAttributedString *mutableAttributedString = [speechString stringWithColor:[UIColor redColor] inRange:characterRange];
+        NSMutableAttributedString *bulletPointString = [mutableAttributedString stringWithBulletPoint];
     
         ExampleCell *cell = [self.tableView cellForRowAtIndexPath:self.speechingIndexPath];
-        cell.exampleLabel.attributedText = m;
+        cell.exampleLabel.attributedText = bulletPointString;
     }
     else {
-        NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:utterance.speechString];
-        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:characterRange];
+        
+        NSString *speechString = utterance.speechString;
+        NSMutableAttributedString *mutableAttributedString = [speechString stringWithColor:[UIColor redColor] inRange:characterRange];
         self.wordCell.wordLabel.attributedText = mutableAttributedString;
     }
 }
@@ -284,5 +281,6 @@
         [self.tableView setAllowsSelection:YES];
     }
 }
+
 @end
 
