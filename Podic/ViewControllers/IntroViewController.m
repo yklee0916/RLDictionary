@@ -230,10 +230,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if([segue.identifier isEqualToString:@"showSettingSegue"]) {
-        
     }
     else if([segue.identifier isEqualToString:@"showDefinitionSegue"]) {
-        
         DefinitionViewController * vc = segue.destinationViewController;
         vc.title = sender;
         vc.wordString = sender;
