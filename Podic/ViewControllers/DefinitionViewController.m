@@ -201,7 +201,7 @@
     ExampleCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ExampleCell class])];
     WNDefinition *definition = [self.word.definitions objectAtIndex:indexPath.section - 1];
     WNExample *example = [definition.examples objectAtIndex:indexPath.row];
-    [cell.exampleLabel setTextWithBulletPoint:example.example];
+    cell.exampleLabel.attributedText = example.example.attributedStringWithBulletPoint;
 //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -243,19 +243,20 @@
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer willSpeakRangeOfSpeechString:(NSRange)characterRange utterance:(AVSpeechUtterance *)utterance {
     
+    UIColor *speechCharacterColor = [UIColor redColor];
+    
     if(self.speechingIndexPath) {
         
         NSString *speechString = utterance.speechString;
-        NSMutableAttributedString *mutableAttributedString = [speechString stringWithColor:[UIColor redColor] inRange:characterRange];
-        NSMutableAttributedString *bulletPointString = [mutableAttributedString stringWithBulletPoint];
+        NSMutableAttributedString *mutableAttributedString = [speechString stringWithColor:speechCharacterColor inRange:characterRange];
     
         ExampleCell *cell = [self.tableView cellForRowAtIndexPath:self.speechingIndexPath];
-        cell.exampleLabel.attributedText = bulletPointString;
+        cell.exampleLabel.attributedText = mutableAttributedString.attributedStringWithBulletPoint;
     }
     else {
         
         NSString *speechString = utterance.speechString;
-        NSMutableAttributedString *mutableAttributedString = [speechString stringWithColor:[UIColor redColor] inRange:characterRange];
+        NSMutableAttributedString *mutableAttributedString = [speechString stringWithColor:speechCharacterColor inRange:characterRange];
         self.wordCell.wordLabel.attributedText = mutableAttributedString;
     }
 }
@@ -265,14 +266,18 @@
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance {
     
-    if(!self.wordCell.speakerButton.selected) return ;
+    if(!self.wordCell.speakerButton.selected) {
+        return ;
+    }
+    
+    NSString *speechString = utterance.speechString;
     
     if(self.speechingIndexPath) {
         ExampleCell *cell = [self.tableView cellForRowAtIndexPath:self.speechingIndexPath];
-        [cell.exampleLabel setTextWithBulletPoint:utterance.speechString];
+        cell.exampleLabel.attributedText = speechString.attributedStringWithBulletPoint;
     }
     else {
-        [self.wordCell.wordLabel setText:utterance.speechString];
+        self.wordCell.wordLabel.attributedText = speechString.defaultColorAttributedString;
     }
     
     self.speechingIndexPath = nil;

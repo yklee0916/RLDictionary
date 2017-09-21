@@ -13,7 +13,6 @@
 
 - (void)setCustomCellClasses:(NSArray <Class> *)customCellClasses {
     objc_setAssociatedObject(self, @selector(customCellClasses), customCellClasses, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
     [self registerNibCustomCellClasses:customCellClasses];
 }
 

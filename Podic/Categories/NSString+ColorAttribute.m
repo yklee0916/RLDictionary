@@ -11,9 +11,18 @@
 @implementation NSString (ColorAttribute)
 
 - (NSMutableAttributedString *)stringWithColor:(UIColor *)color inRange:(NSRange)range {
-    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:self];
-    [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:color range:range];
-    return mutableAttributedString;
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:color range:range];
+    return attributedString;
+}
+
+- (NSMutableAttributedString *)defaultColorAttributedString {
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
+    NSDictionary *attributes = @{NSParagraphStyleAttributeName: [[NSMutableParagraphStyle alloc] init]};
+    [attributedString addAttributes:attributes range:NSMakeRange(0, self.length)];
+    return attributedString;
 }
 
 @end
@@ -21,9 +30,18 @@
 @implementation NSAttributedString (ColorAttribute)
 
 - (NSMutableAttributedString *)stringWithColor:(UIColor *)color inRange:(NSRange)range {
-    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self];
-    [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:color range:range];
-    return mutableAttributedString;
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:color range:range];
+    return attributedString;
+}
+
+- (NSMutableAttributedString *)defaultColorAttributedString {
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self];
+    NSDictionary *attributes = @{NSParagraphStyleAttributeName: [[NSMutableParagraphStyle alloc] init]};
+    [attributedString addAttributes:attributes range:NSMakeRange(0, self.length)];
+    return attributedString;
 }
 
 @end

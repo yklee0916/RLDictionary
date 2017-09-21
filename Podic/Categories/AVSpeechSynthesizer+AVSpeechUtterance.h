@@ -13,5 +13,6 @@
 @interface AVSpeechSynthesizer (AVSpeechUtterance)
 
 - (void)speakWithString:(NSString *)string;
+- (void)speakWithString:(NSString *)string languageCode:(NSString *)languageCode;
 
 @end

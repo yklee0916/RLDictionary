@@ -15,8 +15,8 @@
     NSString *textWithBulletPoint = [NSString stringWithFormat:@"•  %@",text];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.headIndent = 15;
-    
-    self.attributedText = [[NSAttributedString alloc] initWithString:textWithBulletPoint attributes:@{NSParagraphStyleAttributeName: paragraphStyle}];
+    NSDictionary *attributes = @{NSParagraphStyleAttributeName: paragraphStyle};
+    self.attributedText = [[NSAttributedString alloc] initWithString:textWithBulletPoint attributes:attributes];
 }
 
 
@@ -25,7 +25,7 @@
     NSString *textWithBulletPoint = [NSString stringWithFormat:@"%d.  %@",(int)number, text];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.headIndent = 20;
-    
-    self.attributedText = [[NSAttributedString alloc] initWithString:textWithBulletPoint attributes:@{NSParagraphStyleAttributeName: paragraphStyle}];
+    NSDictionary *attributes = @{NSParagraphStyleAttributeName: paragraphStyle};
+    self.attributedText = [[NSAttributedString alloc] initWithString:textWithBulletPoint attributes:attributes];
 }
 @end

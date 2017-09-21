@@ -10,18 +10,15 @@
 
 @interface NSString (FormattedList)
 
-+ (NSParagraphStyle *)bulletPointParagraphStyle;
-+ (NSParagraphStyle *)orderedNumberParagraphStyle;
-
-- (NSMutableAttributedString *)stringWithBulletPoint;
-- (NSMutableAttributedString *)stringWithOrderedNumber:(NSInteger)number;
+- (NSMutableAttributedString *)attributedStringWithBulletPoint;
+- (NSMutableAttributedString *)attributedStringWithOrderedNumber:(NSInteger)number;
 
 @end
 
 @interface NSAttributedString (FormattedList)
 
-- (NSMutableAttributedString *)stringWithBulletPoint;
-- (NSMutableAttributedString *)stringWithOrderedNumber:(NSInteger)number;
+- (NSMutableAttributedString *)attributedStringWithBulletPoint;
+- (NSMutableAttributedString *)attributedStringWithOrderedNumber:(NSInteger)number;
 
 @end
 

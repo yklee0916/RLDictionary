@@ -10,27 +10,31 @@
 
 @implementation NSString (FormattedList)
 
-+ (NSParagraphStyle *)bulletPointParagraphStyle {
+- (NSParagraphStyle *)bulletPointParagraphStyle {
+    
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.headIndent = 15;
     return paragraphStyle;
 }
 
-+ (NSParagraphStyle *)orderedNumberParagraphStyle {
+- (NSParagraphStyle *)orderedNumberParagraphStyle {
+    
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.headIndent = 20;
     return paragraphStyle;
 }
 
-- (NSMutableAttributedString *)stringWithBulletPoint {
+- (NSMutableAttributedString *)attributedStringWithBulletPoint {
+    
     NSString *textWithBulletPoint = [NSString stringWithFormat:@"•  %@",self];
-    NSDictionary *attributes = @{NSParagraphStyleAttributeName: [NSString bulletPointParagraphStyle]};
+    NSDictionary *attributes = @{NSParagraphStyleAttributeName:self.bulletPointParagraphStyle};
     return [[NSMutableAttributedString alloc] initWithString:textWithBulletPoint attributes:attributes];
 }
 
-- (NSMutableAttributedString *)stringWithOrderedNumber:(NSInteger)number {
+- (NSMutableAttributedString *)attributedStringWithOrderedNumber:(NSInteger)number {
+    
     NSString *textWithOrderedNumber = [NSString stringWithFormat:@"%d.  %@",(int)number, self];
-    NSDictionary *attributes = @{NSParagraphStyleAttributeName: [NSString orderedNumberParagraphStyle]};
+    NSDictionary *attributes = @{NSParagraphStyleAttributeName:self.orderedNumberParagraphStyle};
     return [[NSMutableAttributedString alloc] initWithString:textWithOrderedNumber attributes:attributes];
 }
 
@@ -38,17 +42,35 @@
 
 @implementation NSAttributedString (FormattedList)
 
-- (NSMutableAttributedString *)stringWithBulletPoint {
-    NSMutableAttributedString *textWithBulletPoint = [[NSString string] stringWithBulletPoint];
+- (NSParagraphStyle *)bulletPointParagraphStyle {
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.headIndent = 15;
+    return paragraphStyle;
+}
+
+- (NSParagraphStyle *)orderedNumberParagraphStyle {
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.headIndent = 20;
+    return paragraphStyle;
+}
+
+- (NSMutableAttributedString *)attributedStringWithBulletPoint {
+    
+    NSMutableAttributedString *textWithBulletPoint = [[NSString string] attributedStringWithBulletPoint];
     [textWithBulletPoint appendAttributedString:self];
-    [textWithBulletPoint addAttribute:NSParagraphStyleAttributeName value:[NSString bulletPointParagraphStyle] range:NSMakeRange(0, textWithBulletPoint.length)];
+    NSRange textRange = NSMakeRange(0, textWithBulletPoint.length);
+    [textWithBulletPoint addAttribute:NSParagraphStyleAttributeName value:self.bulletPointParagraphStyle range:textRange];
     return textWithBulletPoint;
 }
 
-- (NSMutableAttributedString *)stringWithOrderedNumber:(NSInteger)number {
-    NSMutableAttributedString *textWithOrderedNumber = [[NSString string] stringWithOrderedNumber:number];
+- (NSMutableAttributedString *)attributedStringWithOrderedNumber:(NSInteger)number {
+    
+    NSMutableAttributedString *textWithOrderedNumber = [[NSString string] attributedStringWithOrderedNumber:number];
     [textWithOrderedNumber appendAttributedString:self];
-    [textWithOrderedNumber addAttribute:NSParagraphStyleAttributeName value:[NSString orderedNumberParagraphStyle] range:NSMakeRange(0, textWithOrderedNumber.length)];
+    NSRange textRange = NSMakeRange(0, textWithOrderedNumber.length);
+    [textWithOrderedNumber addAttribute:NSParagraphStyleAttributeName value:self.orderedNumberParagraphStyle range:textRange];
     return textWithOrderedNumber;
 }
 

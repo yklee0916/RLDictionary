@@ -11,11 +11,13 @@
 @interface NSString (ColorAttribute)
 
 - (NSMutableAttributedString *)stringWithColor:(UIColor *)color inRange:(NSRange)range;
+- (NSMutableAttributedString *)defaultColorAttributedString;
 
 @end
 
 @interface NSAttributedString (ColorAttribute)
 
 - (NSMutableAttributedString *)stringWithColor:(UIColor *)color inRange:(NSRange)range;
+- (NSMutableAttributedString *)defaultColorAttributedString;
 
 @end
